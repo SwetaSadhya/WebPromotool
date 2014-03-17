@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Promotool</title>
+	<!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" href="./Styles/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="./Styles/grid/grid.css" />
+	<!-- Jquery & Angular  Files -->
+    <script type="text/javascript" src="./Library/jquery/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="./Library/jquery/jquery-ui-1.9.1.custom.min.js"></script> 
+    <script type="text/javascript" src="./Library/jquery/jquery.layout-latest.min.js"></script>  
+    <script type="text/javascript" src="./Library/angular/angular.js"></script>
+	<!-- Grid Files -->
+	<script type="text/javascript" src="./Library/grid/plugins/ng-grid-layout.js"></script> 
+    <script type="text/javascript" src="./Library/grid/build/ng-grid.debug.js"></script>
+    <script type="text/javascript" src="./Javascript/listCtrl.js"></script>
+    <script>
+        angular.module('myApp',['ngGrid']);
+    </script>
+</head>
+    <body ng-app="myApp" ng-controller="userController">
+   <!-- Center Portion -->
+	<div class="ui-layout-center">	
+	<div style="position: absolute;  left: 0; right: 0; top: 0; bottom: 0; overflow: hidden; height 100%" ng-grid="gridOptions">
+	</div>
+	</div> 
+	
+	</div>
+		<!-- Header Portion -->
+		<div class="ui-layout-north">Header</div>
+		<!-- Middle Portion  -->
+		<div class="ui-layout-south">Footer</div>
+		<!-- Right Portion  -->
+		<!--<div class="ui-layout-east">General Actions</div> -->
+		<!-- Left Portion  -->
+		<div class="ui-layout-west" >Search</div>
+    </body>
+</html>

@@ -1,0 +1,209 @@
+<div class="control-group">
+                                          <label class="control-label" for="Volume Requirement">Volume Requirement</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="" type="text" value="">
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="free goods">Free goods</label>
+                                          <div class="controls">
+										  <table>
+										  <tr>
+										  <td><input class="input-small focused" id="" type="text" value=""></td>
+										  <td><select class="chzn-select" id="promoUnit" ng-model="promoUnit">
+											  <option ng:repeat="PromoUnit in Unit"  value="{{PromoUnit.prmUNID}}" ng-selected="'1' == PromoUnit.prmUNID">{{PromoUnit.prmUnitDesc}}</option>
+											</select></td>
+										  </tr>
+										  </table>
+                                          </div>
+										</div> 
+										<div class="control-group">
+                                          <label class="control-label" for="MC">Mail Costs</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="" type="text" value="">RM
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="POS">POS Material Costs</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="" type="text" value="">RM
+                                          </div>
+                                        </div>
+										<br/><br/>
+										<div class="control-group">
+										  <div class="span5">
+											<div class="radio">
+											<label>
+												<input type="radio" id="selProductSame" name="selProduct" value="0" checked onChange="selPrd(0);">
+												Same Product Group
+											  </label>
+											</div>
+										  </div>
+										  <div class="span5">
+											<div class="radio">
+												  <label>
+													<input type="radio" id="selProductDiff" name="selProduct" value="1"  onChange="selPrd(1);">
+													Different Product Group
+												  </label>
+											</div>
+										</div>
+										</div>
+										<div style="padding:10px;" class="hide" id="prdSelection" >
+										<div id="" style="overflow-y: scroll; height:500px;">
+										<div ng-controller="ProductListCtrl">
+										<legend>Selected Free goods</legend>
+										<div class="control-group">
+                                          <label class="control-label" for="Building Block">Building Block</label>
+                                          <div class="controls">
+                                            <select id="prdBlock"  ng-model="selectedPrdOptionBlock" ng-change="changePrdGroupItems1(PrdGroupOption7);">
+											<option value="0">---Select All----------</option>
+											<option ng:repeat="PrdOption7 in PrdGroupOption7 | unique:'prdGroup7ID'" value="{{PrdOption7.prdGroup7ID}}">{{PrdOption7.prdGroup7Desc}}</option>
+											</select>
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="Product Group">Product Group</label>
+                                          <div class="controls">
+                                            <select id="prdGroup"  ng-model="selectedPrdOptionGroup" ng-change="changePrdGroupItems2(PrdGroupOption9);">
+											 <option value="0">---Select All----------</option>
+											 <option ng:repeat="PrdOption9 in PrdGroupOption9 | unique:'prdGroup9ID'" value="{{PrdOption9.prdGroup9ID}}">{{PrdOption9.prdGroup9Desc}}</option>
+											</select>
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="Brand">Brand</label>
+                                          <div class="controls">
+                                            <select id="prdBrand"  ng-model="selectedPrdOptionBrand" ng-change="changePrdGroupItems3(PrdGroupOption4);">
+											  <option value="0">---Select All----------</option>
+											 <option ng:repeat="PrdOption4 in PrdGroupOption4 | unique:'prdGroup4ID'" value="{{PrdOption4.prdGroup4ID}}">{{PrdOption4.prdGroup4Desc}}</option>
+											</select>
+										</div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="Parent Code">Parent Code</label>
+                                          <div class="controls">
+                                            <select class="form-control">
+											  <option value="0">---Select All----------------</option>
+											</select>
+										</div>
+                                        </div>
+										<div class="control-group">
+										<table>
+												<tr>
+													<td>
+													   <tr>
+												<td>Avaiable
+												<!-- /.form-group -->
+												<div class="control-group">
+												<select id="frmInlProduct" multiple="multiple" size="10" style="width:100%;"  ng-model="selectedPrdOptionName">	
+												<option ng:repeat="PrdName in PrdOptionName | unique:'ProductID'" value="{{PrdName.prdID}}">{{PrdName.prdProductClientCode}}  {{PrdName.ProductName}}</option>
+												</select>
+												</div>
+												<!-- /.form-group -->
+												</td>
+												<td>
+												<div class="btn-group btn-group-vertical">
+												<button type="button" class="btn btn-small" id="moverightall" ng-click="moveAllItems('frmInlProduct','toInlProduct');"><b>>></b></button>
+												<button type="button" class="btn btn-small" id="moveright" ng-click="moveItems('frmInlProduct','toInlProduct');SelProduct();"><b>></b></button>
+												<button type="button" class="btn btn-small" id="moveleft" ng-click="moveItems('toInlProduct','frmInlProduct');" ><b><</b></button>
+												<button type="button" class="btn btn-small" id="moveleftall" ng-click="moveAllItems('toInlProduct','frmInlProduct');"><b><<</b></button>
+												</div>
+												</td>
+												<td>Selected
+												<!-- /.form-group -->
+												<div class="control-group">
+												<select id="toInlProduct" multiple="multiple" size="10" style="width:100%;"></select>
+												</div>
+												<!-- /.form-group -->
+												</td>
+												</tr>
+												</td>
+											</tr>		
+										</table>
+                                        </div>
+										<legend>Excluded Free goods</legend>
+										<div class="control-group">
+                                          <label class="control-label" for="Building Block">Building Block</label>
+                                          <div class="controls">
+                                            <select id="prdBlock"  ng-model="selectedPrdOptionBlock" ng-change="changePrdGroupItems1(PrdGroupOption7);">
+											<option value="0">---Select All----------</option>
+											<option ng:repeat="PrdOption7 in PrdGroupOption7 | unique:'prdGroup7ID'" value="{{PrdOption7.prdGroup7ID}}">{{PrdOption7.prdGroup7Desc}}</option>
+											</select>
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="Product Group">Product Group</label>
+                                          <div class="controls">
+                                            <select id="prdGroup"  ng-model="selectedPrdOptionGroup" ng-change="changePrdGroupItems2(PrdGroupOption9);">
+											 <option value="0">---Select All----------</option>
+											 <option ng:repeat="PrdOption9 in PrdGroupOption9 | unique:'prdGroup9ID'" value="{{PrdOption9.prdGroup9ID}}">{{PrdOption9.prdGroup9Desc}}</option>
+											</select>
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="Brand">Brand</label>
+                                          <div class="controls">
+                                            <select id="prdBrand"  ng-model="selectedPrdOptionBrand" ng-change="changePrdGroupItems3(PrdGroupOption4);">
+											  <option value="0">---Select All----------</option>
+											 <option ng:repeat="PrdOption4 in PrdGroupOption4 | unique:'prdGroup4ID'" value="{{PrdOption4.prdGroup4ID}}">{{PrdOption4.prdGroup4Desc}}</option>
+											</select>
+										</div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="Parent Code">Parent Code</label>
+                                          <div class="controls">
+                                            <select class="form-control">
+											  <option value="0">---Select All----------------</option>
+											</select>
+										</div>
+                                        </div>
+										<div class="control-group">
+										<table>
+												<tr>
+													<td>
+													   <tr>
+												<td>Avaiable
+												<!-- /.form-group -->
+												<div class="control-group">
+												<select id="frmExProduct" multiple="multiple" size="10" style="width:100%;"  ng-model="selectedPrdOptionName">	
+												<option ng:repeat="PrdName in PrdOptionName | unique:'ProductID'" value="{{PrdName.prdID}}">{{PrdName.prdProductClientCode}}  {{PrdName.ProductName}}</option>
+												</select>
+												</div>
+												<!-- /.form-group -->
+												</td>
+												<td>
+												<div class="btn-group btn-group-vertical">
+												<button type="button" class="btn btn-small" id="moverightall" ng-click="moveAllItems('frmExProduct','toExProduct');"><b>>></b></button>
+												<button type="button" class="btn btn-small" id="moveright" ng-click="moveItems('frmExProduct','toExProduct');"><b>></b></button>
+												<button type="button" class="btn btn-small" id="moveleft" ng-click="moveItems('toExProduct','frmExProduct');" ><b><</b></button>
+												<button type="button" class="btn btn-small" id="moveleftall" ng-click="moveAllItems('toExProduct','frmExProduct');"><b><<</b></button>
+												</div>
+												</td>
+												<td>Selected
+												<!-- /.form-group -->
+												<div class="control-group">
+												<select id="toExProduct" multiple="multiple" size="10" style="width:100%;"></select>
+												</div>
+												<!-- /.form-group -->
+												</td>
+												</tr>
+												</td>
+											</tr>		
+										</table>
+                                        </div>
+										</div>
+										</div>
+										</div>
+<script>
+function selPrd(value){
+if(value=='1'){
+$('#prdSelection').removeClass('hide');
+$('#prdSelection').addClass('show'); 
+}
+if(value=='0'){
+$('#prdSelection').removeClass('show');
+$('#prdSelection').addClass('hide'); 
+}
+}
+
+</script>		

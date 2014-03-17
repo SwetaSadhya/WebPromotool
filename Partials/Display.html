@@ -1,0 +1,33 @@
+<div class="control-group">
+                                          <label class="control-label" for="DF"  ng-model="promoTypeParent">{{promoTypeParent}} Fee</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="promoTypeParent" type="text" value=""  onmouseover="changeText('1');" onmouseout="changeTextout('1');">RM
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="POS">POS Material Costs</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="" type="text" value="">RM
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="Free">Number OF Free CTN</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="promoFreeCTN" type="text" value=""   onmouseover="changeText('2');" onmouseout="changeTextout('1');">
+                                          </div>
+                                        </div>
+<script>
+function changeText(){
+if($('#promoTypeParent').val()!=''){
+$("#promoFreeCTN").prop('disabled', true);
+}else{
+$("#promoFreeCTN").prop('disabled', false);
+}
+if($('#promoFreeCTN').val()!=''){
+$("#promoTypeParent").prop('disabled', true);
+}else{
+$("#promoTypeParent").prop('disabled', false);
+}
+}
+
+</script>

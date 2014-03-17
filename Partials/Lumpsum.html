@@ -1,0 +1,161 @@
+										 <div class="control-group">
+                                          <label class="control-label" for="LumpSumType">Number of Lump sum Types</label>
+                                          <div class="controls">
+                                            <select id="lumpsumType"  class="chzn-select"  onChange="changeLumpsum();">
+											<option value="0">-----Select Type------</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											</select>
+                                          </div>
+                                        </div>
+										<div id="L1" class="hide">
+										  <div class="control-group">
+										  <div class="span8">
+										  <label for="focusedInput">Type</label>
+                                           <select id="lumpsumTypeID">
+											<option value="1">Store Development</option>
+											<option value="2">New Store Opening</option>
+											<option value="3">Listing Free</option>
+											<option value="4">Anniversary/Sponsorship</option>
+											<option value="5">Scandata/Lightbox/Billboard</option>
+											<option value="5">Incentive</option>
+											</select>
+										  </div>
+                                          <div class="span3">
+										  <label for="focusedInput">Amount</label>
+                                            <input class="input-small focused" id="" type="text" value="">RM
+                                          </div>
+                                        </div>
+										</div>
+										<div id="L2" class="hide">
+										<div class="control-group">
+										  <div class="span8">
+                                           <select id="lumpsumTypeID">
+											<option value="1">Store Development</option>
+											<option value="2">New Store Opening</option>
+											<option value="3">Listing Free</option>
+											<option value="4">Anniversary/Sponsorship</option>
+											<option value="5">Scandata/Lightbox/Billboard</option>
+											<option value="5">Incentive</option>
+											</select>
+										  </div>
+                                          <div class="span3">
+                                            <input class="input-small focused" id="" type="text" value="">RM
+                                          </div>
+                                        </div>
+										</div>
+										<div id="L3" class="hide">
+										<div class="control-group">
+										  <div class="span8">
+                                           <select id="lumpsumTypeID">
+											<option value="1">Store Development</option>
+											<option value="2">New Store Opening</option>
+											<option value="3">Listing Free</option>
+											<option value="4">Anniversary/Sponsorship</option>
+											<option value="5">Scandata/Lightbox/Billboard</option>
+											<option value="5">Incentive</option>
+											</select>
+										  </div>
+                                          <div class="span3">
+                                            <input class="input-small focused" id="" type="text" value="">RM
+                                          </div>
+                                        </div>
+										</div>
+										<div id="L4" class="hide">
+										<div class="control-group">
+										  <div class="span8">
+                                           <select id="lumpsumTypeID">
+											<option value="1">Store Development</option>
+											<option value="2">New Store Opening</option>
+											<option value="3">Listing Free</option>
+											<option value="4">Anniversary/Sponsorship</option>
+											<option value="5">Scandata/Lightbox/Billboard</option>
+											<option value="5">Incentive</option>
+											</select>
+										  </div>
+                                          <div class="span3">
+                                            <input class="input-small focused" id="" type="text" value="">RM
+                                          </div>
+                                        </div>
+										</div>
+										<div id="L5" class="hide">
+										<div class="control-group" id="L5">
+										  <div class="span8">
+                                           <select id="lumpsumTypeID">
+											<option value="1">Store Development</option>
+											<option value="2">New Store Opening</option>
+											<option value="3">Listing Free</option>
+											<option value="4">Anniversary/Sponsorship</option>
+											<option value="5">Scandata/Lightbox/Billboard</option>
+											<option value="5">Incentive</option>
+											</select>
+										  </div>
+                                          <div class="span3">
+                                            <input class="input-small focused" id="" type="text" value="">RM
+                                          </div>
+										  </div>
+										  </div>
+ <script>
+ function changeLumpsum(){
+ if($('#lumpsumType').val()=='1'){
+ $('#L1').removeClass('hide');
+ $('#L1').addClass('show'); 
+ $('#L2').addClass('hide'); 
+ $('#L3').addClass('hide'); 
+ $('#L4').addClass('hide'); 
+ $('#L5').addClass('hide'); 
+ }
+ if($('#lumpsumType').val()=='2'){
+ $('#L1').removeClass('hide');
+ $('#L1').addClass('show'); 
+ $('#L2').removeClass('hide');
+ $('#L2').addClass('show'); 
+ $('#L3').addClass('hide'); 
+ $('#L4').addClass('hide'); 
+ $('#L5').addClass('hide'); 
+ }
+ if($('#lumpsumType').val()=='3'){
+ $('#L1').removeClass('hide');
+ $('#L1').addClass('show'); 
+ $('#L2').removeClass('hide');
+ $('#L2').addClass('show'); 
+ $('#L3').removeClass('hide');
+ $('#L3').addClass('show'); 
+ $('#L4').addClass('hide'); 
+ $('#L5').addClass('hide'); 
+ }
+ if($('#lumpsumType').val()=='4'){
+ $('#L1').removeClass('hide');
+ $('#L1').addClass('show'); 
+ $('#L2').removeClass('hide');
+ $('#L2').addClass('show'); 
+ $('#L3').removeClass('hide');
+ $('#L3').addClass('show'); 
+ $('#L4').removeClass('hide');
+ $('#L4').addClass('show'); 
+ $('#L5').addClass('hide'); 
+ }
+  if($('#lumpsumType').val()=='5'){
+ $('#L1').removeClass('hide');
+ $('#L1').addClass('show'); 
+ $('#L2').removeClass('hide');
+ $('#L2').addClass('show'); 
+ $('#L3').removeClass('hide');
+ $('#L3').addClass('show'); 
+ $('#L4').removeClass('hide');
+ $('#L4').addClass('show'); 
+ $('#L5').removeClass('hide');
+ $('#L5').addClass('show'); 
+ }
+ if($('#lumpsumType').val()=='0'){
+ $('#L1').addClass('hide'); 
+ $('#L2').addClass('hide'); 
+ $('#L3').addClass('hide'); 
+ $('#L4').addClass('hide'); 
+ $('#L5').addClass('hide'); 
+ }
+ }
+ </script>

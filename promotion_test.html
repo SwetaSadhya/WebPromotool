@@ -1,0 +1,188 @@
+<!doctype html>
+<html ng-app="sampleApp">
+  <head>
+   <script type="text/javascript" src="./Library/angular/angular.js"></script>
+	<script type="text/javascript" src="./Library/jquery/jquery-1.9.1.js"></script>
+   <script type="text/javascript">
+   
+	
+      var sampleApp = angular.module('sampleApp', []); // Define new module for our application
+	//------------filter---------------------------//
+		sampleApp.filter('unique', function() {
+    return function(input, key) {
+        var unique = {};
+        var uniqueList = [];
+        for(var i = 0; i < input.length; i++){
+            if(typeof unique[input[i][key]] == "undefined"){
+                unique[input[i][key]] = "";
+                uniqueList.push(input[i]);
+            }
+        }
+        return uniqueList;
+    };
+});
+      // Create new controller, that accepts two services $scope and $http
+      function SampleCtrl($scope, $http) {
+          //$http.get('customerCtrl.php').success(function(data) {
+		  //alert(data);
+			//$scope.driversList = data;
+		    //$scope.CusOptionName =  data;
+          //});
+		  
+		   
+		   $scope.moveItem = function(sourceid, destinationid) {
+		   $("#"+sourceid+"  option:selected").appendTo("#"+destinationid);
+           }
+		   
+		   $scope.moveAllItems = function(sourceid, destinationid) {
+		   alert("sdfsdf");
+		   $("#"+sourceid+"  option").appendTo("#"+destinationid);
+           }
+		   
+		  $http.get('Pages/CustomerGroup.php').success(function(group1Data) {
+		 //alert(data);// Bind the data returned from web service to $scope	
+		  $scope.CusGroupOption1 = group1Data;
+		  $scope.CusGroupOption5 = group1Data;
+		   });
+		   
+		 $scope.test = function(){
+			$("#toSelChannel option").prop("selected","selected");
+			var selectedValues = $("#toSelChannel").val();
+			
+			$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'; 
+			 $http.post('test.php', {'data': selectedValues}
+                   ).success(function(data5) {
+				    $scope.result = data5;
+					$scope.CusGroupOption5 = data5;
+				   });
+	}		 
+		
+		 
+	//$scope.person = 1;
+
+    $scope.persons =
+    [
+        { id: 1, name: "Mohit" },
+		{ id: 1, name: "Mohit" },
+		{ id: 1, name: "Mohit" },
+        { id: 2, name: "Rajeev" },
+		{ id: 2, name: "Rajeev" },
+		{ id: 2, name: "Rajeev" },
+		{ id: 2, name: "Rajeev" },
+        { id: 3, name: "Yashwant" },
+        { id: 4, name: "Hamender" }
+    ];  
+
+	//$scope.selectedPerson = $scope.persons[0];
+	 $scope.GetSelectedPerson= function () {
+         //alert($scope.selectedPerson.id); 
+		 //alert($("#person").val());
+		alert($scope.person);
+     }
+	
+ 
+      };
+ 
+    </script>
+  </head>
+  <!-- Use our controller to control the page behaviour -->
+  <body>
+    <form ng-controller="SampleCtrl">
+    <div>
+<table>
+<tr>
+																		<td>Avaiable
+																		<!-- /.form-group -->
+																			<div class="control-group">
+																			<select id="frmAllChannel" multiple="multiple" size="7" ng-model="selectedCusGroupOption1">	
+																			 <option ng:repeat="GroupOption1 in CusGroupOption1 | unique:'cusGroup1ID'" value="{{GroupOption1.cusGroup1ID}}">{{GroupOption1.cusGroup1Desc}}</option> 
+																			</select>
+																			</div>
+																		<!-- /.form-group -->
+																		</td>
+																		<td>
+																				
+																				 <div class="btn-group btn-group-vertical">
+																				 <button type="button" class="btn btn-small" id="moverightall" ng-click="moveAllItems('frmAllChannel','toSelChannel');test();"><b>>></b></button>
+																				 <button type="button" class="btn btn-small" id="moveright" ng-click="moveItem('frmAllChannel','toSelChannel');test();"><b>></b></button>
+																				 <button type="button" class="btn btn-small" id="moveleft" ng-click="moveItem('toSelChannel','frmAllChannel');" ><b><</b></button>
+																				 <button type="button" class="btn btn-small" id="moveleftall" ng-click="moveAllItems('toSelChannel','frmAllChannel');"><b><<</b></button>
+																				</div>
+																		
+																		</td>
+																		<td>Selected
+																		<!-- /.form-group -->
+																			<div class="control-group">
+																			<select id="toSelChannel" multiple="multiple" size="7" >
+																			</select>
+																			</div>
+																		<!-- /.form-group -->
+																		</td>
+																		</tr>
+<tr>
+																		<td>Avaiable
+																		<!-- /.form-group -->
+																			<div class="control-group">
+																			<select id="frmAllSubChannel" multiple="multiple" size="7" ng-model="selectedCusGroupOption5">
+																				<option ng:repeat="GroupOption5 in CusGroupOption5 | unique:'cusGroup5ID'" value="{{GroupOption5.cusGroup5ID}}">{{GroupOption5.cusGroup5Desc}}</option>
+																				
+																			</select>
+																			</div>
+																		<!-- /.form-group -->
+																		</td>
+																		<td>
+																				<div class="btn-group btn-group-vertical">
+																				 <button type="button" class="btn btn-small" id="moverightall" onclick="moveAllItems('frmAllSubChannel','toSelSubChannel');"><b>>></b></button>
+																				 <button type="button" class="btn btn-small" id="moveright" ng-click="moveItem('frmAllSubChannel','toSelSubChannel');"><b>></b></button>
+																				 <button type="button" class="btn btn-small" id="moveleft" ng-click="moveItem('toSelSubChannel','frmAllSubChannel');" ><b><</b></button>
+																				 <button type="button" class="btn btn-small" id="moveleftall" onclick="moveAllItems('toSelSubChannel','frmAllSubChannel');"><b><<</b></button>
+																				</div>
+																		</td>
+																		<td>Selected
+																		<!-- /.form-group -->
+																			<div class="control-group">
+																			<select id="toSelSubChannel" multiple="multiple" size="7"></select>
+																			</div>
+																		<!-- /.form-group -->
+																		</td>
+																		</tr>																
+<!-- <tr>
+<td>
+<select id="frmAllChannel" multiple="multiple" size="16" ng-model="CusGroupOption1">	
+<option ng:repeat="GroupOption1 in CusGroupOption1" value="{{GroupOption1.cusGroup1ID}}">{{GroupOption1.cusGroup1Desc}}</option>
+																			</select>
+</td>
+</tr> -->
+<!-- <tr>
+					<td><select  ng-model="selectedCusOptionName"  multiple size="16">	
+					<option ng-repeat="OptionName in CusOptionName" value="{{OptionName.cusID}}">{{OptionName.cusCustomerName}}</option>
+					</select></td>
+					
+					</tr> -->
+					
+					<!--  <tr>
+					<td> <select data-ng-model="person"
+        data-ng-options="t.id as t.name for t in persons | unique:'id'" multiple size="16" ng-change="GetSelectedPerson()">              
+</select>
+					</td>
+					</tr>   -->
+      <!-- When button is clicked the controller will use the fetch() in $scope
+
+      <hr>
+      <!-- {{date}} is bound to $scope.date and automatically updates when changed ($scope.fetch()) call -->
+      <!-- <tr ng-repeat="driver in driversList">
+						<td></td>
+						<td>{{driver.cusGroup1Desc}}</td>
+						<td>{{driver.cusCustomerName}}</td>
+						<td>{{driver.cusCustomerClientCode}}</td>
+					  </tr> -->
+					<pre ng-model="result">
+					{{result}}
+					</pre>
+					</table>
+    </div>
+	</form>
+	<!-- JavaScript -->
+
+  </body>
+</html>

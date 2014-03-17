@@ -1,0 +1,477 @@
+<div ng-controller="DetailCtrl">
+			<table  align="left" style="border:1px solid #E6E6E6">
+			<tr>
+			<td valign="top" style="border:1px solid #E6E6E6"><table cellpadding="15" cellspacing="15" align="left" border="0">
+			<tr>
+			<td valign="top">
+		    <table cellpadding="15" cellspacing="15" align="left" border="0">
+			<tr>
+			<td colspan="3"><strong>PromoType</strong></td>
+			</tr>
+				<tr>
+					<td><label for="block">Objective</label></td>
+					<td class="span1"><b>:</b></td>
+					<td class="span1"><select id="promoObjective"  ng-model="promoObjective">
+					   <option ng:repeat="PromoObjective in Objective"  value="{{PromoObjective.prmObjID}}" ng-selected="'1' == PromoObjective.prmObjID">{{PromoObjective.prmObjectiveDesc}}</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td><label for="structure">Structure</label></td>
+					<td><b>:</b></td>
+					<td><select id="promoStructure" ng-model="promoStructure">
+					   <option value="1">Stand alone</option>
+					   <option value="2">Parent</option>
+					   <option value="3">Daughter</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td><label for="Type">Type</label></td>
+					<td><b>:</b></td>
+					<td><select class="form-control" id="promoType"  ng-model="promoType" ng-change="changeDiv();">
+				  <option ng:repeat="PromoType in Type"  value="{{PromoType.prmtypeID +','+PromoType.ptyPromotionTypeParent }}" ng-selected="'1' == PromoType.prmtypeID">{{PromoType.ptyPromotionTypeName}}</option>
+				</select></td>
+				</tr>
+				<tr>
+				<td><label for="Unit">Unit</label></td>
+				<td>:</td>
+				<td><select class="form-control" id="promoUnit" ng-model="promoUnit">
+				  <option ng:repeat="PromoUnit in Unit"  value="{{PromoUnit.prmUNID}}" ng-selected="'1' == PromoUnit.prmUNID">{{PromoUnit.prmUnitDesc}}</option>
+				</select></td>
+				</tr>
+				<tr>
+					<td><label for="Owner">TM Owner</label></td>
+					<td>:</td>
+					<td><select class="form-control">
+				  <option>1</option>
+				  <option>2</option>
+				  <option>3</option>
+				  <option>4</option>
+				  <option>5</option>
+				</select></td>
+				</tr></td>
+			   </tr>
+			  </table> 
+			</td>
+			</tr>
+			<tr>
+			<td valign="top">
+			<table cellpadding="15" cellspacing="15" align="left" border="0" >
+			<tr>
+			<td colspan="3"><strong>Information</strong></td>
+			</tr>
+			<tr>
+			<td><label for="Title">Title<span style="color:red">*</span></label></td>
+			<td>:</td>
+			<td><input type="textbox" class="form-control" id="promoTitle" ng-required="true"></td>
+			</tr>
+			<tr>
+			<td><label for="Desc">Description</label></td>
+			<td>:</td>
+			<td><textarea class="form-control" id="promoDesc"></textarea></td>
+			</tr>
+			<tr>
+			<td><label for="IO">IO Number</label></td>
+			<td>:</td>
+			<td><label>Draft</label></td>
+			</tr>
+			<tr>
+			<tr>
+			<td><label for="Cost">Cost Center</label></td>
+			<td>:</td>
+			<td><label>2141414</label></td>
+			</tr>
+			<tr>
+			<td><label for="Title">Promo Start Date</label></td>
+			<td>:</td>
+			<td><input type="textbox" class="form-control" id="Title"></td>
+			</tr>
+			<tr>
+			<td><label for="Title">Promo End Date</label></td>
+			<td>:</td>
+			<td><input type="textbox" class="form-control" id="Title"></td>
+			</tr>
+			<tr>
+			<td><label for="Title">First Order Date</label></td>
+			<td>:</td>
+			<td>  <div class="row">
+			<div class="col-md-6">
+            <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+		</div></td>
+			</tr>
+			<tr>
+			<td><label for="Title">Last Order Date</label></td>
+			<td>:</td>
+			<td><input type="textbox" class="form-control" id="Title"></td>
+			</tr>
+			<tr>
+			<tr>
+			<td><label for="Title">Request Dates From</label></td>
+			<td>:</td>
+			<td><input type="textbox" class="form-control" id="Title"></td>
+			</tr>
+			</table>
+			</td>
+			</tr>
+			</table>
+			</td>
+			<td valign="top">
+			<div id="Discounts" ng-hide="Discounts">
+			<!-- Discount/Premium -->
+			<table cellpadding="15" cellspacing="15" align="left" border="0">
+					<tr>
+						<td><strong>Promo Details</strong></td>
+					  </tr>
+					  <tr>
+						<td><table cellpadding="15" cellspacing="15" align="left" border="0">
+					  <tr>
+						<td><label>Enter promotion discounts &amp; rebates</label></td>
+						<td>:</td>
+						<td><div class="radio">
+									  <label>
+										<input type="radio" name="optionsRadios3" id="optionsRadios3" value="option1" checked>
+										For all products combine
+									  </label><br/>
+									  <label>
+										<input type="radio" name="optionsRadios3" id="optionsRadios1" value="option3" >
+										By individual product
+									  </label>
+									</div></td>
+					  </tr>
+					  <tr>
+						<td><label for="Product">Product  </label></td>
+						<td>:</td>
+						<td><select class="form-control">
+									  <option>1</option>
+									  <option>2</option>
+									  <option>3</option>
+									  <option>4</option>
+									  <option>5</option>
+									</select></td>
+					  </tr>
+					</table>
+					</td>
+					  </tr>
+					  <tr>
+						<td><table cellpadding="15" cellspacing="15" align="left" border="0">
+						<tr>
+						<td colspan="3"><strong>Details applicable to selected products</strong></td>
+					  </tr>
+					  <tr>
+						<td><label for="Volume">Volume Requirnment</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+					   <tr>
+						<td><label for="PromoSelfprice">Promo Shelf Price</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+						<tr>
+						<td><label for="Selfprice">Self Price</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+						<tr>
+						<td><label for="Consumerdiscount">Consumer Discount</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+						<tr>
+						<td><label for="Tradediscount">Trade Discount</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+						<tr>
+						<td><label for="TD%">Trade Discount %</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+						<tr>
+						<td><label for="TR">Trade Rebate</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+						<tr>
+						<td><label for="CP">Customer Points (Value)</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+						<tr>
+						<td><label for="PM">Premium Mechanic</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+					</table>
+					</td>
+					  </tr>
+					  <tr>
+						<td><table cellpadding="15" cellspacing="15" align="left" border="0">
+						<tr>
+						<td colspan="3"><strong>Details applicable to all products</strong></td>
+					  </tr>
+					  <tr>
+						<td><label for="MC">Mail Costs (lump sum)</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+					   <tr>
+						<td><label for="POS">POS Material Costs</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+					  <tr>
+						<td><label for="PC">Premium Cost</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+					  <tr>
+						<td><label for="PQ">Premium Quantity</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+					</table>
+					</td>
+					  </tr>
+					</table>
+					</div>
+					<!-- End -->
+					<!-- Display -->
+					<div id="Display" ng-show="Display"> 
+					<table cellpadding="15" cellspacing="15" align="left" border="0">
+						<tr>
+						<td colspan="3"><strong>Promo Details</strong></td>
+					  </tr>
+					  <tr>
+						<td><label for="DF">Display Fee (lump sum)</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+					   <tr>
+						<td><label for="POS">POS Material Costs</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+					  <tr>
+						<td><label for="PC">Number OF Free CTN</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+					  <tr>
+						<td colspan="3"><p>Note: Free CTN Value will be calculated using GSV and Fixed Discounts<p></td>
+					  </tr>
+					</table>
+					</div>
+					<!-- End -->
+					<!-- Lumsum Amount -->
+					<div id="Lumpsum" ng-show="Lumpsum">
+					<table cellpadding="15" cellspacing="15" align="left" border="0">
+						<tr>
+						<td colspan="3"><strong>Promo Details</strong></td>
+					  </tr>
+					  <tr>
+						<td><label for="DF">Display Fee (lump sum)</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+					   <tr>
+						<td><label for="POS">POS Material Costs</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+					  <tr>
+						<td><label for="PC">Number OF Free CTN</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+					  <tr>
+						<td colspan="3"><p>Note: Free CTN Value will be calculated using GSV and Fixed Discounts.<p></td>
+					  </tr>
+					</table>
+					</div>
+					<!--End -->
+					<!-- Mix and Match -->
+					<div id="MixnMatch" ng-show="MixnMatch">
+					<table cellpadding="15" cellspacing="15" align="left" border="0">
+						<tr>
+						<td colspan="3"><strong>Promo Details</strong></td>
+					  </tr>
+					  <tr>
+						<td colspan="3">
+                        <label>Selected Products</label><br/>
+                        <textarea class="form-control"></textarea></td>
+					  </tr>
+					   <tr>
+						<td><button>Add To Group1</button></td>
+						<td><button>Add To Group2</button></td>
+						<td><button>Add To Group3</button></td>
+					  </tr>
+                        <tr>
+						<td><label>Product Group</label></td>
+						<td><label>Volume Required</label></td>
+						<td><label>Percentage Of Budget</label></td>
+					  </tr>
+					  <tr>
+						<td><label>Group1:</label><textarea class="form-control"></textarea></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+					  <tr>
+						<td><label>Group2:</label><textarea class="form-control"></textarea></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                        <tr>
+						<td><label>Group3:</label><textarea class="form-control"></textarea></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+					   <tr>
+						<td><label for="PromoSelfprice">Promo Shelf Price</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                       <tr>
+						<td><label for="NormalSelfprice">Normal Self Price</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                      <tr>
+						<td><label for="Consumerdiscount">Consumer Discount</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                      <tr>
+						<td><label for="Tradediscount">Trade Discount</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                     <tr>
+						<td><label for="TD%">Trade Discount %</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                       <tr>
+						<td><label for="TR">Trade Rebate</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                     <tr>
+						<td><label for="CP">Customer Points (Value)</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                     <tr>
+						<td><label for="PM">Premium Mechanic</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                       <tr>
+						<td><label for="MC">Mail Costs (lump sum)</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                      <tr>
+						<td><label for="POS">POS Material Costs</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                      <tr>
+						<td><label for="PC">Premium Cost</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                       <tr>
+						<td><label for="PQ">Premium Quantity</label></td>
+						<td>:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+					</table>
+					</div>
+					<!-- End -->
+					<!-- Step Discount/Free Goods -->
+					<div id="Stepdiscount" ng-show="Stepdiscount">
+					<table cellpadding="15" cellspacing="15" align="left" border="0">
+						<tr>
+						<td colspan="5"><strong>Promo Detail</strong></td>
+					  </tr>
+						<tr>
+						<td colspan="5"><label>Volume Requirnment</label></td>
+					  </tr>
+                        <tr>
+                        <td></td>
+                        <td><label>From:</label></td>
+						<td><label>To:</label></td>
+						<td><label>Discount</label></td>
+						<td><label>Percentage Of Budget</label></td>
+					  </tr>
+                       <tr>
+                        <td></td>
+                        <td><label>CTN</label></td>
+						<td><label>CTN</label></td>
+						<td><select></select></td>
+						<td><label>NTT(THB)</label></td>
+					  </tr>
+					  <tr>
+                      	<td>Step1:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+                        <td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                       <tr>
+                      	<td>Step2:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+                        <td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                       <tr>
+                      	<td>Step3:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+                        <td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                       <tr>
+                      	<td>Step4:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+                        <td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                       <tr>
+                      	<td>Step5:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+                        <td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                       <tr>
+                      	<td>Step6:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+                        <td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+                       <tr>
+                      	<td>Step7:</td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+						<td><input type="textbox" class="form-control" id="Title"></td>
+                        <td><input type="textbox" class="form-control" id="Title"></td>
+					  </tr>
+					</table>
+					</div>
+					<!-- End -->
+			</td>		
+			</tr>
+			</table>		
+</div>

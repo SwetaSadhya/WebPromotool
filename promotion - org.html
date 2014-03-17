@@ -1,0 +1,399 @@
+<!doctype html>
+<html ng-app="promo">
+  <head>
+  <meta charset="utf-8" />
+  <title>Promotool</title>
+  <!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" href="./Styles/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="./Styles/grid/grid.css" />
+	<link rel="stylesheet" type="text/css" href="./Styles/bootstrap/bootstrap.min.css" />
+	<!-- Jquery & Angular  Files -->
+    <script type="text/javascript" src="./Library/jquery/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="./Library/jquery/jquery-ui-1.9.1.custom.min.js"></script> 
+    <script type="text/javascript" src="./Library/jquery/jquery.layout-latest.min.js"></script>  
+    <script type="text/javascript" src="./Library/angular/angular.js"></script>
+	<script type="text/javascript" src="./Library/bootstrap/bootstrap-tab.js"></script>
+	<!-- Grid Files -->
+	<script type="text/javascript" src="./Library/grid/plugins/ng-grid-layout.js"></script> 
+    <script type="text/javascript" src="./Library/grid/build/ng-grid.debug.js"></script>
+    <script type="text/javascript" src="./Javascript/listCtrl.js"></script> 
+    <script type="text/javascript" src="./Javascript/promoCtrl.js"></script>
+</head>
+  <body ng-app="myApp" ng-controller="userController">
+   <!-- Center Portion -->
+	<div class="ui-layout-center">	
+		<div ng-controller="TabsDemoCtrl">
+		  <tabset justified="true">
+			<tab heading="Customer">
+			<!-- Cutomer Selction-->
+					<form>
+					 <!-- <div><pre ng-model="result">
+					{{result}}
+					</pre></div>  -->
+					<table cellpadding="15" cellspacing="15" align="left" border="0">
+					<tr>
+					<td valign="top"><div class="radio">
+						  <label>
+							<input type="radio" id="channel" name="channel" value="allChannel" checked>
+							All Channel
+						  </label>
+						</div></td>
+					<td></td>
+					<td valign="top">
+					<div class="radio">
+						  <label>
+							<input type="radio" id="channel" name="channel" value="selChannel">
+							Selected Channel
+						  </label>
+					</div>
+					<div style="padding:10px;" class="hide" id="Channel" >
+						<table>
+																<tr>
+																<td>
+																	<tr>
+																		<td>Avaiable
+																		<!-- /.form-group -->
+																			<div class="control-group">
+																			<select id="frmAllChannel" multiple="multiple" size="7" ng-model="selectedCusGroupOption1">	
+																			<option ng:repeat="GroupOption1 in CusGroupOption1" value="{{GroupOption1.cusGroup1ID}}">{{GroupOption1.cusGroup1Desc}}</option>
+																			</select>
+																			</div>
+																		<!-- /.form-group -->
+																		</td>
+																		<td>
+																				
+																				 <div class="btn-group btn-group-vertical">
+																				 <button type="button" class="btn btn-small" id="moverightall" ng-click="moveAllItems('frmAllChannel','toSelChannel');changeGroupItems1();"><b>>></b></button>
+																				 <button type="button" class="btn btn-small" id="moveright" ng-click="moveItems('frmAllChannel','toSelChannel');changeGroupItems1();"><b>></b></button>
+																				 <button type="button" class="btn btn-small" id="moveleft" ng-click="moveItems('toSelChannel','frmAllChannel');changeGroupItems1();" ><b><</b></button>
+																				 <button type="button" class="btn btn-small" id="moveleftall" ng-click="moveAllItems('toSelChannel','frmAllChannel');changeGroupItems1();"><b><<</b></button>
+																				</div>
+																		
+																		</td>
+																		<td>Selected
+																		<!-- /.form-group -->
+																			<div class="control-group">
+																			<select id="toSelChannel" multiple="multiple" size="7"></select>
+																			</div>
+																		<!-- /.form-group -->
+																		</td>
+																		</tr>
+																	</td>
+																</tr>		
+																</table>
+					</div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top"><div class="radio">
+						  <label>
+							<input type="radio" name="subchannel" id="subchannel" value="allSubChannel" checked>
+							All Sub Channel (BW)
+						  </label>
+						</div></td>
+					<td></td>
+					<td valign="top"><div class="radio">
+						  <label>
+							<input type="radio" name="subchannel" id="subchannel" value="selSubChannel">
+							Selected Sub Channel (BW)
+						  </label>
+						</div>
+						<div style="padding:10px;" class="hide" id="SubChannel">
+						<table>
+																<tr>
+																<td>
+																	<tr>
+																		<td>Avaiable
+																		<!-- /.form-group -->
+																			<div class="control-group">
+																			<select id="frmAllSubChannel" multiple="multiple" size="7" ng-model="selectedCusGroupOption5">
+																				<option ng:repeat="GroupOption5 in CusGroupOption5 | unique:'cusGroup5ID'" value="{{GroupOption5.cusGroup5ID}}">{{GroupOption5.cusGroup5Desc}}</option>
+																				
+																			</select>
+																			</div>
+																		<!-- /.form-group -->
+																		</td>
+																		<td>
+																				<div class="btn-group btn-group-vertical">
+																				 <button type="button" class="btn btn-small" id="moverightall" ng-click="moveAllItems('frmAllSubChannel','toSelSubChannel');changeGroupItems2();"><b>>></b></button>
+																				 <button type="button" class="btn btn-small" id="moveright" ng-click="moveItems('frmAllSubChannel','toSelSubChannel');changeGroupItems2();"><b>></b></button>
+																				 <button type="button" class="btn btn-small" id="moveleft" ng-click="moveItems('toSelSubChannel','frmAllSubChannel');changeGroupItems2();" ><b><</b></button>
+																				 <button type="button" class="btn btn-small" id="moveleftall" ng-click="moveAllItems('toSelSubChannel','frmAllSubChannel');changeGroupItems2();"><b><<</b></button>
+																				</div>
+																		</td>
+																		<td>Selected
+																		<!-- /.form-group -->
+																			<div class="control-group">
+																			<select id="toSelSubChannel" multiple="multiple" size="7"></select>
+																			</div>
+																		<!-- /.form-group -->
+																		</td>
+																		</tr>
+																	</td>
+																</tr>		
+																</table>
+					</div>
+					</td>
+					</tr>
+						<tr>
+					<td valign="top"><div class="radio">
+						  <label>
+							<input type="radio" name="region" id="region" value="allRegion" checked>
+							All Region (BW)
+						  </label>
+						</div></td>
+					<td></td>
+					<td valign="top"><div class="radio">
+						  <label>
+							<input type="radio" name="region" id="region" value="selRegion">
+							Selected Region (BW)
+						  </label>
+						</div>
+						<div style="padding:10px;" class="hide" id="Region">
+						<table>
+																<tr>
+																<td>
+																	<tr>
+																		<td>Avaiable
+																		<!-- /.form-group -->
+																			<div class="control-group">
+																			<select id="frmAllRegion" multiple="multiple" size="7" ng-model="selectedCusGroupOption6">
+																				<option ng:repeat="GroupOption6 in CusGroupOption6 | unique:'cusGroup6ID'" value="{{GroupOption6.cusGroup6ID}}">{{GroupOption6.cusGroup6Desc}}</option>
+																				
+																			</select>
+																			</div>
+																		<!-- /.form-group -->
+																		</td>
+																		<td>
+																				<div class="btn-group btn-group-vertical">
+																				 <button type="button" class="btn btn-small" id="moverightall" ng-click="moveAllItems('frmAllRegion','toSelRegion');changeGroupItems3();"><b>>></b></button>
+																				 <button type="button" class="btn btn-small" id="moveright" ng-click="moveItems('frmAllRegion','toSelRegion');changeGroupItems3();"><b>></b></button>
+																				 <button type="button" class="btn btn-small" id="moveleft" ng-click="moveItems('toSelRegion','frmAllRegion');changeGroupItems3();" ><b><</b></button>
+																				 <button type="button" class="btn btn-small" id="moveleftall" ng-click="moveAllItems('toSelRegion','frmAllRegion');changeGroupItems3();"><b><<</b></button>
+																				</div>
+																		</td>
+																		<td>Selected
+																		<!-- /.form-group -->
+																			<div class="control-group">
+																			<select id="toSelRegion" multiple="multiple" size="7" ></select>
+																			</div>
+																		<!-- /.form-group -->
+																		</td>
+																		</tr>
+																	</td>
+																</tr>		
+																</table>
+					</div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top"><div class="radio">
+						  <label>
+							<input type="radio" name="customer" id="customer" value="allCustomer" checked>
+							All Customers
+						  </label>
+						</div></td>
+					<td></td>
+					<td valign="top"><div class="radio">
+						  <label>
+							<input type="radio" name="customer" id="customer" value="selCustomer">
+							Selected Customers
+						  </label>
+						</div>
+						<div style="padding:10px;" class="hide" id="Customer">
+						<table>
+																<tr>
+																<td>
+																	<tr>
+																		<td>Avaiable
+																		<!-- /.form-group -->
+																			<div class="control-group">
+																			<select id="frmAllCustomer" multiple="multiple" size="7" ng-model="selectedCusOptionName">	
+																			<option ng:repeat="OptionName in CusOptionName | unique:'cusID'" value="{{OptionName.cusID}}">{{OptionName.cusCustomerClientCode}}  {{OptionName.cusCustomerName}}</option>
+																			</select>
+																			</div>
+																		<!-- /.form-group -->
+																		</td>
+																		<td>
+																				<div class="btn-group btn-group-vertical">
+																				 <button type="button" class="btn btn-small" id="moverightall" ng-click="moveAllItems('frmAllCustomer','toSelCustomer');"><b>>></b></button>
+																				 <button type="button" class="btn btn-small" id="moveright" ng-click="moveItems('frmAllCustomer','toSelCustomer');"><b>></b></button>
+																				 <button type="button" class="btn btn-small" id="moveleft" ng-click="moveItems('toSelCustomer','frmAllCustomer');" ><b><</b></button>
+																				 <button type="button" class="btn btn-small" id="moveleftall" ng-click="moveAllItems('toSelCustomer','frmAllCustomer');"><b><<</b></button>
+																				</div>
+																		</td>
+																		<td>Selected
+																		<!-- /.form-group -->
+																			<div class="control-group">
+																			<select id="toSelCustomer" multiple="multiple" size="7"></select>
+																			</div>
+																		<!-- /.form-group -->
+																		</td>
+																		</tr>
+																	</td>
+																</tr>		
+																</table>
+					</div>
+					</td>
+					</tr>
+					</table>
+					</form>
+			<!-- End -->
+			</tab>
+			<tab heading="Product">
+			<!-- Product -->
+			<form>
+			<div class="form-group">
+			<table cellpadding="15" cellspacing="15" align="left" border="0">
+			<tr>
+					<td><label for="block">Building Block</label></td>
+					<td><b>:</b></td>
+					<td><select id="prdBlock"  ng-model="selectedPrdOptionBlock" ng-change="changePrdGroupItems1();">
+					  <option value="0">---Select All----------</option>
+					  <option ng:repeat="PrdOption7 in PrdGroupOption7" value="{{PrdOption7.prdGroup7ID}}">{{PrdOption7.prdGroup7Desc}}</option>
+					</select>
+					</td>
+			</tr>
+			<tr>
+					<td><label for="group">Product Group</label></td>
+					<td><b>:</b></td>
+					<td><select id="prdGroup"  ng-model="selectedPrdOptionGroup" ng-change="changePrdGroupItems2();">
+					 <option value="0">---Select All----------</option>
+					 <option ng:repeat="PrdOption9 in PrdGroupOption9" value="{{PrdOption9.prdGroup9ID}}">{{PrdOption9.prdGroup9Desc}}</option>
+					</select>
+					</td>
+			</tr>
+			<tr>
+					<td><label for="group">Brand</label></td>
+					<td><b>:</b></td>
+					<td><select id="prdBrand"  ng-model="selectedPrdOptionBrand" ng-change="changePrdGroupItems3();">
+					  <option value="0">---Select All----------</option>
+					 <option ng:repeat="PrdOption4 in PrdGroupOption4" value="{{PrdOption4.prdGroup4ID}}">{{PrdOption4.prdGroup4Desc}}</option>
+					</select>
+					</td>
+			</tr>
+			<tr>
+					<td><label for="group">Parent Code</label></td>
+					<td><b>:</b></td>
+					<td><select class="form-control">
+					  <option value="0">---Select All----------------</option>
+					</select>
+					</td>
+			</tr>
+			<tr>
+			<td colspan=3>
+			<table>
+				<tr>
+				    <td>
+					   <tr>
+							<td>Avaiable
+							<!-- /.form-group -->
+							<div class="control-group">
+							<select id="frmAllProduct" multiple="multiple" size="7" ng-model="selectedPrdOptionName">	
+							<option ng:repeat="PrdName in PrdOptionName" value="{{PrdName.ProductID}}">{{PrdName.prdProductClientCode}}  {{PrdName.ProductName}}</option>
+							</select>
+							</div>
+							<!-- /.form-group -->
+							</td>
+							<td>
+							<div class="btn-group btn-group-vertical">
+							<button type="button" class="btn btn-small" id="moverightall" ng-click="moveAllItems('frmAllProduct','toSelProduct');"><b>>></b></button>
+							<button type="button" class="btn btn-small" id="moveright" ng-click="moveItems('frmAllProduct','toSelProduct');"><b>></b></button>
+							<button type="button" class="btn btn-small" id="moveleft" ng-click="moveItems('toSelProduct','frmAllProduct');" ><b><</b></button>
+							<button type="button" class="btn btn-small" id="moveleftall" ng-click="moveAllItems('toSelProduct','frmAllProduct');"><b><<</b></button>
+							</div>
+							</td>
+							<td>Selected
+							<!-- /.form-group -->
+							<div class="control-group">
+							<select id="toSelProduct" multiple="multiple" size="7"></select>
+							</div>
+							<!-- /.form-group -->
+							</td>
+							</tr>
+						</td>
+					</tr>		
+			</table>
+			</td>
+			</tr>
+			</table>
+			</div>
+			</form>
+			<!-- End -->
+			</tab>
+			<tab heading="Details">
+			<!-- Promotion Detail -->
+			<form>
+			<div class="form-group">
+			<table cellpadding="15" cellspacing="15" align="left" border="0">
+			<tr>
+					<td><label for="block">Promotion Name</label></td>
+					<td><b>:</b></td>
+					<td><input type="textbox" class="form-control" id="promoName" >
+					</td>
+			</tr>
+			</table>
+			</div>
+			</form>
+			<!-- End -->
+			</tab>
+			<tab heading="Volumes">Long Labeled Justified content</tab>
+			<tab heading="Budget Review">Long Labeled Justified content</tab>
+			<tab heading="P&L">Long Labeled Justified content</tab>
+			<tab heading="Evaluation">Long Labeled Justified content</tab>
+			<tab heading="Approval">Long Labeled Justified content</tab>
+		  </tabset>
+		</div>
+	</div> 
+		<!-- Header Portion -->
+		<div class="ui-layout-north">Header</div>
+		<!-- Middle Portion  -->
+		<div class="ui-layout-south">Footer</div>
+		<!-- Left Portion  -->
+		<div class="ui-layout-west" >
+		<button ng-click="reset()">RESET</button><br/>
+		<button ng-click="update(user)">SAVE</button>
+		</div>
+		<!-- Jquery  -->
+		<script>
+		$(document).ready(function(){
+		//----on click multislect will open------------------
+        $('input[type="radio"]').click(function(){  
+		if($(this).attr("value")=="selChannel"){
+		   $('#Channel').removeClass('hide');
+		   $('#Channel').addClass('show');  
+		}
+		if($(this).attr("value")=="allChannel"){
+		   $('#Channel').removeClass('show');
+		   $('#Channel').addClass('hide');
+        }
+		if($(this).attr("value")=="selSubChannel"){
+		   $('#SubChannel').removeClass('hide');
+		   $('#SubChannel').addClass('show');  
+		}
+		if($(this).attr("value")=="allSubChannel"){
+		   $('#SubChannel').removeClass('show');
+		   $('#SubChannel').addClass('hide');
+        }
+		if($(this).attr("value")=="selRegion"){
+		   $('#Region').removeClass('hide');
+		   $('#Region').addClass('show');  
+		}
+		if($(this).attr("value")=="allRegion"){
+		   $('#Region').removeClass('show');
+		   $('#Region').addClass('hide');
+        }
+		if($(this).attr("value")=="selCustomer"){
+		   $('#Customer').removeClass('hide');
+		   $('#Customer').addClass('show');  
+		}
+		if($(this).attr("value")=="allCustomer"){
+		   $('#Customer').removeClass('show');
+		   $('#Customer').addClass('hide');
+        }
+		});
+	 });
+	</script>
+    </body>
+ 
+</html>
