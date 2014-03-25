@@ -16,9 +16,9 @@ class ProductHierarchyController extends Controller_ViewCtrl {
 
 	   }
 	 //Group 1 Hierarchy-list
-     function productHierarchyGroup($pGroup4ID,$pGroup7ID,$pGroup9ID){
+     function productHierarchyGroup($pGroup4ID,$pGroup7ID,$pGroup9ID,$pGroup14ID,$pGroup15ID){
 	   $model = new Model_ProductHierarchy();
-	   $PrdHierarchyData = $model->getHierarchyGroup($pGroup4ID,$pGroup7ID,$pGroup9ID);
+	   $PrdHierarchyData = $model->getHierarchyGroup($pGroup4ID,$pGroup7ID,$pGroup9ID,$pGroup14ID,$pGroup15ID);
 	   $this->loadView('ProductHierarchy.php', $PrdHierarchyData);
      }
 	 

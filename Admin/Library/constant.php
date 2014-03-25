@@ -17,7 +17,12 @@ define('DB_PREFIX', 'tbl');
 // it will change with adminemail id
 define('ADMIN_EMAIL', 'admin@promo.com');
 //------------------tables name-------------------------------------------------
+define ( 'CUST_COUNTRY_TABLE', DB_PREFIX .'Country' );
 define ( 'CUST_TEMP_TABLE', 'tempCustomer' );
+define ( 'SECCUST_TEMP_TABLE', 'tempSecondaryCustomer' );
+define ( 'SECCUST_MASTER_TABLE', DB_PREFIX . 'SecondaryCustomer' );
+define ( 'SECCUST_G1_TABLE', DB_PREFIX . 'SecGroup1' );
+define ( 'SECCUST_G2_TABLE', DB_PREFIX . 'SecGroup2' );
 define ( 'CUST_MASTER_TABLE', DB_PREFIX . 'Customer' );
 define ( 'CUST_Hierarchy_TABLE', DB_PREFIX . 'CustomerHierarchy' );
 define ( 'CUST_G1_TABLE', DB_PREFIX . 'CusGroup1' );

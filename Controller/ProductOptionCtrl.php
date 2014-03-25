@@ -19,9 +19,9 @@ class ProductController extends Controller_ViewCtrl {
 	   }
 //----------------Product Selection--------------------
    
-     function productListingOptions(){
+     function productListingOptions($prdsearchTxt){
 	   $model = new Model_ProductSelectionOptions();
-	   $PrdListingOptions = $model->getProduct();
+	   $PrdListingOptions = $model->getProduct($prdsearchTxt);
 	   $this->loadView('ProductListOptions.php', $PrdListingOptions);
      }
 	 

@@ -17,7 +17,7 @@
                                           <label class="control-label" for="Objective">Objective</label>
                                           <div class="controls">
                                             <select id="promoObjective"  class="chzn-select" ng-model="promoObjective">
-											<option ng:repeat="PromoObjective in Objective"  value="{{PromoObjective.prmObjID}}" ng-selected="'1' == PromoObjective.prmObjID">{{PromoObjective.prmObjectiveDesc}}</option>
+											<option ng:repeat="PromoObjective in Objective"  value="{{PromoObjective.prmObjectiveID}}" ng-selected="'102001' == PromoObjective.prmObjectiveID">{{PromoObjective.prmObjectiveDesc}}</option>
 											</select>
                                           </div>
                                         </div>
@@ -35,7 +35,7 @@
                                           <label class="control-label" for="Type">Type</label>
                                           <div class="controls">
                                             <select class="chzn-select" id="promoType"  ng-model="promoType" ng-change="changeDiv();">
-												<option ng:repeat="PromoType in Type"  value="{{PromoType.prmtypeID +','+PromoType.ptyPromotionTypeParent+','+PromoType.ptyPromotionTypeName }}" ng-selected="'1' == PromoType.prmtypeID">{{PromoType.ptyPromotionTypeName}}</option>
+												<option ng:repeat="PromoType in Type"  value="{{PromoType.promotiontypeID +','+PromoType.ptyPromotionTypeParent+','+PromoType.ptyPromotionTypeName }}" ng-selected="'102001' == PromoType.promotiontypeID">{{PromoType.ptyPromotionTypeName}}</option>
 											</select>
                                           </div>
                                         </div>
@@ -43,11 +43,11 @@
                                           <label class="control-label" for="Unit">Unit</label>
                                           <div class="controls">
                                             <select class="chzn-select" id="promoUnit" ng-model="promoUnit">
-											  <option ng:repeat="PromoUnit in Unit"  value="{{PromoUnit.prmUNID}}" ng-selected="'1' == PromoUnit.prmUNID">{{PromoUnit.prmUnitDesc}}</option>
+											  <option ng:repeat="PromoUnit in Unit"  value="{{PromoUnit.prmUnitID}}" ng-selected="'102001' == PromoUnit.prmUnitID">{{PromoUnit.prmUnitDesc}}</option>
 											</select>
                                           </div>
                                         </div>
-										<div class="control-group">
+										<!-- <div class="control-group">
 										<div class="controls">
 										<table>
 										<tr>
@@ -66,9 +66,9 @@
 										</tr>
 										</table>
 										</div>
-                                        </div>
+                                        </div> -->
 										<div class="control-group">
-                                          <label class="control-label" for="TM Owner">TM Owner</label>
+                                          <label class="control-label" for="Budget Owner">Budget Owner</label>
                                           <div class="controls">
 										  <select class="chzn-select">
 											  <option>DIRECT KEY ACCOUNTS</option>
@@ -77,7 +77,7 @@
 											  <option>FOOD SERVICE</option>
 											  <option>SHOPPER MARKETING</option>
 											  <option>CONSUMER MARKETING</option>
-											  <option>MEDICAL MARKETING</option>
+											  <!-- <option>MEDICAL MARKETING</option> -->
 											</select>
 										</div>
                                         </div>

@@ -1,6 +1,6 @@
 <?php
 class Product{
-    public $prdID;
+
     public $ProductID;
     public $countryID;
 	public $prdProductClientCode;
@@ -59,8 +59,8 @@ class Product{
 	public $prdGroup18ID;
 	public $prdGroup18ClientID;
 	public $prdGroup18Desc;	
-    public function __construct($prdID, $ProductID, $countryID, $prdProductClientCode, $ProductName, $prdCreatedOn, $prdGSTGroup, $prdGroup1ID, $prdGroup1ClientID, $prdGroup1Desc,$prdGroup2ID, $prdGroup2ClientID, $prdGroup2Desc,$prdGroup3ID, $prdGroup3ClientID, $prdGroup3Desc,$prdGroup4ID, $prdGroup4ClientID, $prdGroup4Desc,$prdGroup5ID, $prdGroup5ClientID, $prdGroup5Desc,$prdGroup6ID, $prdGroup6ClientID, $prdGroup6Desc,$prdGroup7ID, $prdGroup7ClientID, $prdGroup7Desc,$prdGroup8ID, $prdGroup8ClientID, $prdGroup8Desc,$prdGroup9ID, $prdGroup9ClientID, $prdGroup9Desc,$prdGroup10ID, $prdGroup10ClientID, $prdGroup10Desc,$prdGroup11ID, $prdGroup11ClientID, $prdGroup11Desc,$prdGroup12ID, $prdGroup12ClientID, $prdGroup12Desc,$prdGroup13ID, $prdGroup13ClientID, $prdGroup13Desc,$prdGroup14ID, $prdGroup14ClientID, $prdGroup14Desc,$prdGroup15ID, $prdGroup15ClientID, $prdGroup15Desc,$prdGroup16ID, $prdGroup16ClientID, $prdGroup16Desc,$prdGroup17ID, $prdGroup17ClientID, $prdGroup17Desc,$prdGroup18ID, $prdGroup18ClientID, $prdGroup18Desc ) {
-        $this->prdID = $prdID;
+    public function __construct($ProductID, $countryID, $prdProductClientCode, $ProductName, $prdCreatedOn, $prdGSTGroup, $prdGroup1ID, $prdGroup1ClientID, $prdGroup1Desc,$prdGroup2ID, $prdGroup2ClientID, $prdGroup2Desc,$prdGroup3ID, $prdGroup3ClientID, $prdGroup3Desc,$prdGroup4ID, $prdGroup4ClientID, $prdGroup4Desc,$prdGroup5ID, $prdGroup5ClientID, $prdGroup5Desc,$prdGroup6ID, $prdGroup6ClientID, $prdGroup6Desc,$prdGroup7ID, $prdGroup7ClientID, $prdGroup7Desc,$prdGroup8ID, $prdGroup8ClientID, $prdGroup8Desc,$prdGroup9ID, $prdGroup9ClientID, $prdGroup9Desc,$prdGroup10ID, $prdGroup10ClientID, $prdGroup10Desc,$prdGroup11ID, $prdGroup11ClientID, $prdGroup11Desc,$prdGroup12ID, $prdGroup12ClientID, $prdGroup12Desc,$prdGroup13ID, $prdGroup13ClientID, $prdGroup13Desc,$prdGroup14ID, $prdGroup14ClientID, $prdGroup14Desc,$prdGroup15ID, $prdGroup15ClientID, $prdGroup15Desc,$prdGroup16ID, $prdGroup16ClientID, $prdGroup16Desc,$prdGroup17ID, $prdGroup17ClientID, $prdGroup17Desc,$prdGroup18ID, $prdGroup18ClientID, $prdGroup18Desc ) {
+
         $this->ProductID = $ProductID;
         $this->countryID = $countryID;
 		$this->prdProductClientCode = $prdProductClientCode;

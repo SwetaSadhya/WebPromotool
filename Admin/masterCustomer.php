@@ -15,7 +15,7 @@ LEFT JOIN ".CUST_G6_TABLE." g6 ON g6.cusGroup6ClientID = t.cusGroup6ClientID
 AND g6.countryID = t.countryID
 LEFT JOIN ".CUST_G7_TABLE." g7 ON g7.cusGroup7ClientID = t.cusGroup7ClientID
 AND g7.countryID = t.countryID
-GROUP BY t.cusID";
+GROUP BY t.customerID";
 echo $_MasterQuery;
 			$tbl_M = new Model;
             $res = $tbl_M->find_query_all($_MasterQuery );
@@ -23,10 +23,10 @@ echo $_MasterQuery;
 			{
 			foreach($res as $row)
 				{
-					$custMasterQuery='INSERT INTO '.CUST_MASTER_TABLE.'(cusID, customerID, countryID, cusCustomerClientCode, cusCustomerName, cusGroup1ID, cusGroup2ID, cusGroup3ID, cusGroup4ID, cusGroup5ID, cusGroup6ID, cusGroup7ID, isActive)VALUES
-					("", "'.$row->customerID.'", "'.$row->countryID.'","'.$row->cusCustomerClientCode.'","'.$row->cusCustomerName.'","'.$row->g1ID.'","","","'.$row->g4ID.'","'.$row->g5ID.'","'.$row->g6ID.'","'.$row->g7ID.'","'.$row->isActive.'")';
+					$custMasterQuery='INSERT INTO '.CUST_MASTER_TABLE.'(customerID, countryID, cusCustomerClientCode, cusCustomerName, cusGroup1ID, cusGroup2ID, cusGroup3ID, cusGroup4ID, cusGroup5ID, cusGroup6ID, cusGroup7ID, isActive)VALUES
+					("'.$row->customerID.'", "'.$row->countryID.'","'.$row->cusCustomerClientCode.'","'.$row->cusCustomerName.'","'.$row->g1ID.'","","","'.$row->g4ID.'","'.$row->g5ID.'","'.$row->g6ID.'","'.$row->g7ID.'","'.$row->isActive.'")';
 					//echo $custMasterQuery;
-					//$tbl_M->query($custMasterQuery);
+					$tbl_M->query($custMasterQuery);
                 }
 				echo 'Check Master Customer Table';
             }  

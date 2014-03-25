@@ -6,7 +6,6 @@
 class Model_Hierarchy {
 	//Variables 
 	public $productHierarchyID;
-	public $prdID;
 	public $ProductID;
 	public $prdProductClientCode;
 	public $ProductName;
@@ -16,13 +15,15 @@ class Model_Hierarchy {
 	public $prdGroup7Desc ;
 	public $prdGroup9ID;
 	public $prdGroup9Desc ;
-
+	public $prdGroup14ID;
+	public $prdGroup14Desc ;
+	public $prdGroup15ID;
+	public $prdGroup15Desc ;
 
 	
-    public function __construct($productHierarchyID,$prdID,$ProductID,$prdProductClientCode,$ProductName,$prdGroup4ID,$prdGroup4Desc,$prdGroup7ID,$prdGroup7Desc,$prdGroup9ID,$prdGroup9Desc) {
+    public function __construct($productHierarchyID,$ProductID,$prdProductClientCode,$ProductName,$prdGroup4ID,$prdGroup4Desc,$prdGroup7ID,$prdGroup7Desc,$prdGroup9ID,$prdGroup9Desc,$prdGroup14ID,$prdGroup14Desc,$prdGroup15ID,$prdGroup15Desc) {
 		
 		$this->productHierarchyID = $productHierarchyID;
-		$this->prdID = $prdID;
 		$this->ProductID = $ProductID;
 		$this->prdProductClientCode = $prdProductClientCode;
 		$this->ProductName = $ProductName;
@@ -32,6 +33,10 @@ class Model_Hierarchy {
 		$this->prdGroup7Desc = $prdGroup7Desc;
 		$this->prdGroup9ID = $prdGroup9ID;
 		$this->prdGroup9Desc = $prdGroup9Desc;
+		$this->prdGroup14ID = $prdGroup14ID;
+		$this->prdGroup14Desc = $prdGroup14Desc;
+		$this->prdGroup15ID = $prdGroup15ID;
+		$this->prdGroup15Desc = $prdGroup15Desc;
    }
 
 	

@@ -6,7 +6,7 @@
 class Model_Hierarchy {
 	//Variables 
 	public $customerHierarchyID	;
-	public $cusID;
+	public $customerID;
 	public $cusCustomerClientCode;
 	public $cusCustomerName;
 	public $cusGroup1ID ;
@@ -18,10 +18,10 @@ class Model_Hierarchy {
 
 
 	
-    public function __construct($customerHierarchyID,$cusID,$cusCustomerClientCode,$cusCustomerName,$cusGroup1ID,$cusGroup1Desc,$cusGroup5ID,$cusGroup5Desc,$cusGroup6ID,$cusGroup6Desc) {
+    public function __construct($customerHierarchyID,$customerID,$cusCustomerClientCode,$cusCustomerName,$cusGroup1ID,$cusGroup1Desc,$cusGroup5ID,$cusGroup5Desc,$cusGroup6ID,$cusGroup6Desc) {
 		
 		$this->customerHierarchyID = $customerHierarchyID;
-		$this->cusID = $cusID;
+		$this->customerID = $customerID;
 		$this->cusCustomerClientCode = $cusCustomerClientCode;
 		$this->cusCustomerName = $cusCustomerName;
 		$this->cusGroup1ID = $cusGroup1ID;

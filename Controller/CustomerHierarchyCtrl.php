@@ -22,18 +22,7 @@ class CustomerHierarchyController extends Controller_ViewCtrl {
 	   $CustHierarchyData1 = $model->getHierarchyGrop1($cGroup1ID,$cGroup5ID,$cGroup6ID);
 	   $this->loadView('CustomerHierarchy.php', $CustHierarchyData1);
      }
-	 // //Group 2 Hierarchy-list
-	 // function customerHierarchyGroup2($cGroup5ID){
-	   // $model = new Model_CustomerHierarchy();
-	   // $CustHierarchyData2 = $model->getHierarchyGrop2($cGroup5ID);
-	   // $this->loadView('CustomerHierarchy.php', $CustHierarchyData2);
-     // }
-	  // //Group 3 Hierarchy-list
-	 // function customerHierarchyGroup3($cGroup6ID){
-	   // $model = new Model_CustomerHierarchy();
-	   // $CustHierarchyData3 = $model->getHierarchyGrop2($cGroup6ID);
-	   // $this->loadView('CustomerHierarchy.php', $CustHierarchyData3);
-     // }
+	
 	  
 }
 ?>

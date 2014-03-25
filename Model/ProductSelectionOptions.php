@@ -10,7 +10,7 @@ include_once("Product.php");
 
 class Model_ProductSelection extends Model_Product  {
 	//Variables 
-	public $prdID;
+
 	public $ProductID ;
 	public $countryID ;
 	public $prdProductClientCode ;
@@ -24,11 +24,17 @@ class Model_ProductSelection extends Model_Product  {
 	public $prdGroup9ID;
 	public $prdGroup9ClientID;
 	public $prdGroup9Desc;
+	public $prdGroup14ID;
+	public $prdGroup14ClientID;
+	public $prdGroup14Desc;
+	public $prdGroup15ID;
+	public $prdGroup15ClientID;
+	public $prdGroup15Desc;
 	
 
-	public function __construct($prdID,$ProductID,$countryID,$prdProductClientCode,$ProductName,$prdGroup4ID,$prdGroup4ClientID,$prdGroup4Desc,$prdGroup7ID,$prdGroup7ClientID,$prdGroup7Desc,$prdGroup9ID,$prdGroup9ClientID,$prdGroup9Desc) {	
+	public function __construct($ProductID,$countryID,$prdProductClientCode,$ProductName,$prdGroup4ID,$prdGroup4ClientID,$prdGroup4Desc,$prdGroup7ID,$prdGroup7ClientID,$prdGroup7Desc,$prdGroup9ID,$prdGroup9ClientID,$prdGroup9Desc,$prdGroup14ID,$prdGroup14ClientID,$prdGroup14Desc,$prdGroup15ID,$prdGroup15ClientID,$prdGroup15Desc) {	
 		
-		$this->prdID = $prdID;
+	
 		$this->ProductID = $ProductID;
 		$this->countryID = $countryID;
 		$this->prdProductClientCode = $prdProductClientCode;
@@ -42,6 +48,12 @@ class Model_ProductSelection extends Model_Product  {
 		$this->prdGroup9ID = $prdGroup9ID;
 		$this->prdGroup9ClientID = $prdGroup9ClientID;
 		$this->prdGroup9Desc = $prdGroup9Desc;
+		$this->prdGroup14ID = $prdGroup14ID;
+		$this->prdGroup14ClientID = $prdGroup14ClientID;
+		$this->prdGroup14Desc = $prdGroup14Desc;
+		$this->prdGroup15ID = $prdGroup15ID;
+		$this->prdGroup15ClientID = $prdGroup15ClientID;
+		$this->prdGroup15Desc = $prdGroup15Desc;
 	}
 	
 

@@ -9,6 +9,7 @@
                                      <div class="form-horizontal">
                                       <fieldset>
                                         <legend>Customer Selections</legend>
+										<!-- <div><pre ng-model="result">{{result}}</pre></div> -->
                                         <div class="control-group">
 										  <div class="span3">
 											<div class="radio">
@@ -30,7 +31,7 @@
 																<tr>
 																<td>
 																	<tr>
-																		<td> <label>Avaiable</label>
+																		<td> <label>Available</label>
 																		<!-- /.form-group -->
 																			<div class="control-group">
 																			<select id="frmAllChannel" multiple="multiple" size="10" style="width:100%;" ng-model="selectedCusGroupOption1">	
@@ -84,7 +85,7 @@
 																	<tr>
 																	<td>
 																		<tr>
-																			<td> <label>Avaiable</label>
+																			<td> <label>Available</label>
 																			<!-- /.form-group -->
 																				<div class="control-group">
 																				<select id="frmAllSubChannel" multiple="multiple" size="10" style="width:100%;" ng-model="selectedCusGroupOption5">
@@ -138,7 +139,7 @@
 																<tr>
 																<td>
 																	<tr>
-																		<td> <label>Avaiable</label>
+																		<td> <label>Available</label>
 																		<!-- /.form-group -->
 																			<div class="control-group">
 																			<select id="frmAllRegion" multiple="multiple" size="10" style="width:100%;" ng-model="selectedCusGroupOption6">
@@ -191,11 +192,11 @@
 																<tr>
 																<td>
 																	<tr>
-																		<td> <label class="control-label">Avaiable</label>
+																		<td> <label>Available <!-- <input class="input-xlarge focused" id="promoRequestDate" type="text" ng-model="custTxtSearch" ng-change="searchText();"> --></label>
 																		<!-- /.form-group -->
 																			<div class="control-group">
 																			<select id="frmAllCustomer" multiple="multiple" size="10" style="width:100%;" ng-model="selectedCusOptionName">	
-																			<option ng:repeat="OptionName in CusOptionName | unique:'cusID'" value="{{OptionName.cusID}}">{{OptionName.cusCustomerClientCode}}  {{OptionName.cusCustomerName}}</option>
+																			<option ng:repeat="OptionName in CusOptionName | unique:'customerID'" value="{{OptionName.customerID}}">{{OptionName.cusCustomerClientCode}}  {{OptionName.cusCustomerName}}</option>
 																			</select>
 																			</div>
 																		<!-- /.form-group -->
@@ -208,7 +209,7 @@
 																				 <button type="button" class="btn btn-small" id="moveleftall" ng-click="moveAllItems('toSelCustomer','frmAllCustomer');"><b><<</b></button>
 																				</div>
 																		</td>
-																		<td> <label class="control-label">Selected</label>
+																		<td> <label>Selected</label>
 																		<!-- /.form-group -->
 																			<div class="control-group">
 																			<select id="toSelCustomer" multiple="multiple" size="10" style="width:100%;"></select>
@@ -220,6 +221,112 @@
 																</tr>		
 																</table>
 					</div>
+														</div>
+														</div>
+														<div class="control-group">
+														<div class="span3">
+														<div class="radio">
+														  <label>
+															<input type="radio" name="type" id="type" value="alltype" checked>
+															Secondary Customer Type
+														  </label>
+														</div>
+														</div>
+														<div class="span5">
+														<div class="radio">
+															  <label>
+																<input type="radio" name="type" id="type" value="seltype">
+																Secondary Customer Type
+															  </label>
+															</div>
+															<div style="padding:10px;" class="hide" id="Type">
+														<table>
+																<tr>
+																<td>
+																	<tr>
+																		<td> <label>Available</label>
+																		<!-- /.form-group -->
+																			<div class="control-group">
+																			<select id="frmAllType" multiple="multiple" size="10" style="width:100%;" ng-model="selectedSecCusGroupOption1">
+																				<option ng:repeat="SecCusGroup1 in SecCusGroupOption1 | unique:'cusGroup6ID'" value="{{SecCusGroup1.cusGroup6ID}}">{{SecCusGroup1.cusGroup6Desc}}</option>
+																				
+																			</select>
+																			</div>
+																		<!-- /.form-group -->
+																		</td>
+																		<td>
+																				<div class="btn-group btn-group-vertical">
+																				 <button type="button" class="btn btn-small" id="moverightall" ng-click="moveAllItems('frmAllType','toSelType')"><b>>></b></button>
+																				 <button type="button" class="btn btn-small" id="moveright" ng-click="moveItems('frmAllType','toSelType')"><b>></b></button>
+																				 <button type="button" class="btn btn-small" id="moveleft" ng-click="moveItems('toSelType','frmAllType')" ><b><</b></button>
+																				 <button type="button" class="btn btn-small" id="moveleftall" ng-click="moveAllItems('toSelType','frmAllType')"><b><<</b></button>
+																				</div>
+																		</td>
+																		<td> <label>Selected</label>
+																		<!-- /.form-group -->
+																			<div class="control-group">
+																			<select id="toSelType" multiple="multiple" size="10" style="width:100%;"></select>
+																			</div>
+																		<!-- /.form-group -->
+																		</td>
+																		</tr>
+																	</td>
+																</tr>		
+																</table>
+																</div>
+														</div>
+														</div>
+														<div class="control-group">
+														<div class="span3">
+														<div class="radio">
+														  <label>
+															<input type="radio" name="secCustomer" id="secCustomer" value="allsecCustomer" checked>
+															Secondary Customer 
+														  </label>
+														</div>
+														</div>
+														<div class="span5">
+														<div class="radio">
+															  <label>
+																<input type="radio" name="secCustomer" id="secCustomer" value="selsecCustomer">
+																Secondary Customer 
+															  </label>
+															</div>
+															<div style="padding:10px;" class="hide" id="SecondaryCustomer">
+														<table>
+																<tr>
+																<td>
+																	<tr>
+																		<td> <label>Available  <input class="input-xlarge focused" id="promoRequestDate" type="text" ng-model="custTxtSearch" ng-change="searchText();"></label>
+																		<!-- /.form-group -->
+																			<div class="control-group">
+																			<select id="frmAllsecCustomer" multiple="multiple" size="10" style="width:100%;" ng-model="selectedsecCustomer">
+																				<option ng:repeat="SecCusGroup1 in SecCusGroupOption1 | unique:'cusGroup6ID'" value="{{SecCusGroup1.cusGroup6ID}}">{{SecCusGroup1.cusGroup6Desc}}</option>
+																				
+																			</select>
+																			</div>
+																		<!-- /.form-group -->
+																		</td>
+																		<td>
+																				<div class="btn-group btn-group-vertical">
+																				 <button type="button" class="btn btn-small" id="moverightall" ng-click="moveAllItems('frmAllsecCustomer','toSelsecCustomer')"><b>>></b></button>
+																				 <button type="button" class="btn btn-small" id="moveright" ng-click="moveItems('frmAllsecCustomer','toSelsecCustomer')"><b>></b></button>
+																				 <button type="button" class="btn btn-small" id="moveleft" ng-click="moveItems('toSelsecCustomer','frmAllsecCustomer')" ><b><</b></button>
+																				 <button type="button" class="btn btn-small" id="moveleftall" ng-click="moveAllItems('toSelsecCustomer','frmAllsecCustomer')"><b><<</b></button>
+																				</div>
+																		</td>
+																		<td> <label>Selected</label>
+																		<!-- /.form-group -->
+																			<div class="control-group">
+																			<select id="toSelsecCustomer" multiple="multiple" size="10" style="width:100%;"></select>
+																			</div>
+																		<!-- /.form-group -->
+																		</td>
+																		</tr>
+																	</td>
+																</tr>		
+																</table>
+																</div>
 														</div>
 														</div>
 													  </fieldset>
@@ -268,6 +375,22 @@
 		if($(this).attr("value")=="allCustomer"){
 		   $('#Customer').removeClass('show');
 		   $('#Customer').addClass('hide');
+        }
+		if($(this).attr("value")=="seltype"){
+		   $('#Type').removeClass('hide');
+		   $('#Type').addClass('show');  
+		}
+		if($(this).attr("value")=="alltype"){
+		   $('#Type').removeClass('show');
+		   $('#Type').addClass('hide');
+        }
+		if($(this).attr("value")=="selsecCustomer"){
+		   $('#SecondaryCustomer').removeClass('hide');
+		   $('#SecondaryCustomer').addClass('show');  
+		}
+		if($(this).attr("value")=="allsecCustomer"){
+		   $('#SecondaryCustomer').removeClass('show');
+		   $('#SecondaryCustomer').addClass('hide');
         }
 		});
 	 });

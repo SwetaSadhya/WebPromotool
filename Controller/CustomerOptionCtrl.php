@@ -17,9 +17,9 @@ class CustomerController extends Controller_ViewCtrl {
 
 	   }
    
-     function customerListingOptions(){ // Customer Listing
+     function customerListingOptions($searchTxt){ // Customer Listing
 	   $model = new Model_CustomerSelectionOptions();
-	   $CustListingOptions = $model->getCustomers();
+	   $CustListingOptions = $model->getCustomers($searchTxt);
 	   $this->loadView('CustomerListOptions.php', $CustListingOptions);
      }
 	 

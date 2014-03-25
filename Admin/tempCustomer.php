@@ -5,7 +5,7 @@ Written by Sweta Sadhya 2014
 Excel Sheet Uploading of Customer in Temp Table
 Bifurcation of Customer Data into Group Table
 */
-
+ini_set('max_execution_time', 300); //300 seconds = 5 minutes
 //--------------------------------bsic configration---------------------------------
 include_once($_SERVER['DOCUMENT_ROOT'].'/promo/Admin/Library/init.inc.php');
 ?>
@@ -107,10 +107,10 @@ $cusGroup7ClientID = $objPHPExcel->getActiveSheet()->getCell($X.$row)->getValue(
 $cusGroup7Desc = $objPHPExcel->getActiveSheet()->getCell($Y.$row)->getValue();
 $createdOn = $objPHPExcel->getActiveSheet()->getCell($Z.$row)->getValue();
 //echo  $custGroup3ClientID ."-------------------" . $custGroup3Desc ."<br/>";
-$cust[] = new Customer('', $customerID, $countryID, $cusCustomerClientCode, $cusCustomerName, $cusGroup1ID, $cusGroup1ClientID, $cusGroup1Desc, $cusGroup2ID, $cusGroup2ClientID, $cusGroup2Desc, $cusGroup3ID, $cusGroup3ClientID ,$cusGroup3Desc , $cusGroup4ID,$cusGroup4ClientID ,$cusGroup4Desc , $cusGroup5ID ,$cusGroup5ClientID , $cusGroup5Desc, $cusGroup6ID, $cusGroup6ClientID, $cusGroup6Desc, $cusGroup7ID, $cusGroup7ClientID, $cusGroup7Desc, $createdOn);    
+$cust[] = new Customer($customerID, $countryID, $cusCustomerClientCode, $cusCustomerName, $cusGroup1ID, $cusGroup1ClientID, $cusGroup1Desc, $cusGroup2ID, $cusGroup2ClientID, $cusGroup2Desc, $cusGroup3ID, $cusGroup3ClientID ,$cusGroup3Desc , $cusGroup4ID,$cusGroup4ClientID ,$cusGroup4Desc , $cusGroup5ID ,$cusGroup5ClientID , $cusGroup5Desc, $cusGroup6ID, $cusGroup6ClientID, $cusGroup6Desc, $cusGroup7ID, $cusGroup7ClientID, $cusGroup7Desc, $createdOn);    
 //---------------------------------------Cust Temp Table--------------------------------------------------
-$custTemQuery='INSERT INTO '.CUST_TEMP_TABLE.'(cusID, customerID, countryID, cusCustomerClientCode, cusCustomerName, cusGroup1ID, cusGroup1ClientID, cusGroup1Desc, cusGroup2ID, cusGroup2ClientID, cusGroup2Desc, cusGroup3ID,cusGroup3ClientID ,cusGroup3Desc ,cusGroup4ID,cusGroup4ClientID ,cusGroup4Desc , cusGroup5ID ,cusGroup5ClientID , cusGroup5Desc, cusGroup6ID, cusGroup6ClientID, cusGroup6Desc, cusGroup7ID, cusGroup7ClientID, cusGroup7Desc, createdOn, isActive)VALUES
-("", "'.$customerID.'", "'.$countryID.'","'.$cusCustomerClientCode.'","'.$cusCustomerName.'","'.$cusGroup1ID.'","'.$cusGroup1ClientID.'","'.$cusGroup1Desc.'","'.$cusGroup2ID.'","'.$cusGroup2ClientID.'","'.$cusGroup2Desc.'","'.$cusGroup3ID.'","'.$cusGroup3ClientID.'","'.$cusGroup3Desc.'","'.$cusGroup4ID.'","'.$cusGroup4ClientID.'","'.$cusGroup4Desc.'","'.$cusGroup5ID.'","'.$cusGroup5ClientID.'","'.$cusGroup5Desc.'","'.$cusGroup6ID.'","'.$cusGroup6ClientID.'","'.$cusGroup6Desc.'","'.$cusGroup7ID.'","'.$cusGroup7ClientID.'","'.$cusGroup7Desc.'","'.$createdOn.'","1")';
+$custTemQuery='INSERT INTO '.CUST_TEMP_TABLE.'(customerID, countryID, cusCustomerClientCode, cusCustomerName, cusGroup1ID, cusGroup1ClientID, cusGroup1Desc, cusGroup2ID, cusGroup2ClientID, cusGroup2Desc, cusGroup3ID,cusGroup3ClientID ,cusGroup3Desc ,cusGroup4ID,cusGroup4ClientID ,cusGroup4Desc , cusGroup5ID ,cusGroup5ClientID , cusGroup5Desc, cusGroup6ID, cusGroup6ClientID, cusGroup6Desc, cusGroup7ID, cusGroup7ClientID, cusGroup7Desc, createdOn, isActive)VALUES
+("'.$customerID.'", "'.$countryID.'","'.$cusCustomerClientCode.'","'.$cusCustomerName.'","'.$cusGroup1ID.'","'.$cusGroup1ClientID.'","'.$cusGroup1Desc.'","'.$cusGroup2ID.'","'.$cusGroup2ClientID.'","'.$cusGroup2Desc.'","'.$cusGroup3ID.'","'.$cusGroup3ClientID.'","'.$cusGroup3Desc.'","'.$cusGroup4ID.'","'.$cusGroup4ClientID.'","'.$cusGroup4Desc.'","'.$cusGroup5ID.'","'.$cusGroup5ClientID.'","'.$cusGroup5Desc.'","'.$cusGroup6ID.'","'.$cusGroup6ClientID.'","'.$cusGroup6Desc.'","'.$cusGroup7ID.'","'.$cusGroup7ClientID.'","'.$cusGroup7Desc.'","'.$createdOn.'","1")';
 //echo $custTemQuery;
 $tbl->query($custTemQuery);
 }
@@ -120,6 +120,20 @@ $tbl->query($custTemQuery);
 $cust_count = count($cust);
 if(!empty($cust_count))
 {
+
+//--------------------------------Country----------------------------------------------
+$tbl_c=new Model;
+$sql_c="SELECT Distinct countryID FROM ".CUST_TEMP_TABLE." ORDER BY  cusGroup1ClientID";
+$res_c = $tbl_c->find_query_all($sql_c);
+$count_c=count($res_c);
+if($count_c>0)
+{						
+ foreach($res_c as $row_c){
+			$Query_c="INSERT INTO ".CUST_COUNTRY_TABLE."(countryID,ctyCountryDescription,ctyCurrency,isActive)VALUES('".$row_c->countryID."', 'Malaysia','RM','1')";
+			$tbl_c->query($Query_c);	
+			
+	}
+}
 //--------------------------------Group1----------------------------------------------
 $tbl1=new Model;
 $sql1="SELECT countryID,cusGroup1ClientID,cusGroup1Desc FROM ".CUST_TEMP_TABLE." ORDER BY  cusGroup1ClientID";

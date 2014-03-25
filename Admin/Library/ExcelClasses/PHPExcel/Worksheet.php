@@ -1213,11 +1213,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
 	{
 		$cell = $this->_cellCollection->addCacheData(
 			$pCoordinate,
-			new PHPExcel_Cell(
-				NULL, 
-				PHPExcel_Cell_DataType::TYPE_NULL, 
-				$this
-			)
+			new PHPExcel_Cell(NULL, PHPExcel_Cell_DataType::TYPE_NULL, $this)
 		);
         $this->_cellCollectionIsSorted = false;
 

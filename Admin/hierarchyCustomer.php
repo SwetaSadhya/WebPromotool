@@ -21,7 +21,7 @@ echo $_HierQuery;
 					$custHierQuery='INSERT INTO '.CUST_Hierarchy_TABLE.'(customerHierarchyID, cusGroup1ID, cusGroup2ID, cusGroup3ID, cusGroup4ID, cusGroup5ID, cusGroup6ID, cusGroup7ID, secGroup1ID, secGroup2ID, secGroup3ID, isActive)VALUES
 					("", "'.$row->cusGroup1ID.'","","","'.$row->cusGroup4ID.'","'.$row->cusGroup5ID.'","'.$row->cusGroup6ID.'","'.$row->cusGroup7ID.'","","","","1")';
 					//echo $custMasterQuery;
-					//$tbl_H->query($custHierQuery);
+					$tbl_H->query($custHierQuery);
                 }
 				echo 'Check Hierarchy Customer Table';
             }  

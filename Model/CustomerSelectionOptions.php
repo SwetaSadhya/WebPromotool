@@ -10,7 +10,7 @@ Class used to create Customer Options objects.
 
 class Model_CustomerSelection  {
 	//Variables 
-	public $cusID;
+	public $customerID;
 	public $cusCustomerClientCode;
 	public $cusCustomerName;
 	public $countryID;
@@ -25,9 +25,9 @@ class Model_CustomerSelection  {
 	public $cusGroup6Desc;
 	
 
-	public function __construct($cusID,$cusCustomerClientCode,$cusCustomerName,$countryID,$cusGroup1ID,$cusGroup1ClientID,$cusGroup1Desc,$cusGroup5ID,$cusGroup5ClientID,$cusGroup5Desc,$cusGroup6ID,$cusGroup6ClientID,$cusGroup6Desc) {	
+	public function __construct($customerID,$cusCustomerClientCode,$cusCustomerName,$countryID,$cusGroup1ID,$cusGroup1ClientID,$cusGroup1Desc,$cusGroup5ID,$cusGroup5ClientID,$cusGroup5Desc,$cusGroup6ID,$cusGroup6ClientID,$cusGroup6Desc) {	
 		
-		$this->cusID = $cusID;
+		$this->customerID = $customerID;
 		$this->cusCustomerClientCode = $cusCustomerClientCode;
 		$this->cusCustomerName = $cusCustomerName;
 		$this->countryID = $countryID;

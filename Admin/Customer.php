@@ -1,6 +1,6 @@
 <?php
 class Customer{
-    private $custID;
+    private $customerID;
     private $countryID;
     private $custCode;
 	private $custName;
@@ -25,8 +25,8 @@ class Customer{
 	private $custGroup7ID;
 	private $custGroup7ClientID;
 	private $custGroup7Desc; 
-    public function __construct($custID, $countryID, $custCode, $custName, $custGroup1ID, $custGroup1ClientID, $custGroup1Desc, $custGroup2ID, $custGroup2ClientID, $custGroup2Desc, $custGroup3ID, $custGroup3ClientID ,$custGroup3Desc ,$custGroup4ID ,$custGroup4ClientID ,$custGroup4Desc ,$custGroup5ID ,$custGroup5ClientID ,$custGroup5Desc,$custGroup6ID ,$custGroup6ClientID ,$custGroup6Desc,,$custGroup7ID ,$custGroup7ClientID ,$custGroup7Desc) {
-        $this->custID = $custID;
+    public function __construct($customerID, $countryID, $custCode, $custName, $custGroup1ID, $custGroup1ClientID, $custGroup1Desc, $custGroup2ID, $custGroup2ClientID, $custGroup2Desc, $custGroup3ID, $custGroup3ClientID ,$custGroup3Desc ,$custGroup4ID ,$custGroup4ClientID ,$custGroup4Desc ,$custGroup5ID ,$custGroup5ClientID ,$custGroup5Desc,$custGroup6ID ,$custGroup6ClientID ,$custGroup6Desc,$custGroup7ID ,$custGroup7ClientID ,$custGroup7Desc) {
+        $this->customerID = $customerID;
         $this->countryID = $countryID;
         $this->custCode = $custCode;
 		$this->custName = $custName;

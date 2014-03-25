@@ -26,7 +26,7 @@
 <body class="container">
   <div class="navbar">
     <div class="navbar-inner">This is test
-      <ul class="nav">sdfdsfsdfdsfdsdfsdfdfdsfd
+      <ul class="nav">23214234234
         <li><a ui-sref="route1">Route 1</a></li>
         <li><a ui-sref="route2">Route 2</a></li>
       </ul>

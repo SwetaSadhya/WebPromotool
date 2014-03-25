@@ -41,7 +41,7 @@ LEFT JOIN ".PRD_G17_TABLE." g17 ON g17.prdGroup17ClientID = t.prdGroup17ClientID
 AND g17.countryID = t.countryID
 LEFT JOIN ".PRD_G18_TABLE." g18 ON g18.prdGroup18ClientID = t.prdGroup18ClientID
 AND g18.countryID = t.countryID
-GROUP BY t.prdID";
+GROUP BY t.ProductID";
 //echo $_MasterQuery;
 			$tbl_M = new Model;
             $res = $tbl_M->find_query_all($_MasterQuery );
@@ -49,8 +49,8 @@ GROUP BY t.prdID";
 			{
 			foreach($res as $row)
 				{
-					$prdMasterQuery='INSERT INTO '.PRD_MASTER_TABLE.'(prdID, ProductID, countryID,prdProductClientCode,ProductName,prdCreatedOn,prdGST,prdNetWeight,prdNetVolume,prdGroup1ID,prdGroup2ID,prdGroup3ID,prdGroup4ID,prdGroup5ID,prdGroup6ID,prdGroup7ID,prdGroup8ID,prdGroup9ID,prdGroup10ID,prdGroup11ID,prdGroup12ID,prdGroup13ID,prdGroup14ID,prdGroup15ID,prdGroup16ID,prdGroup17ID,prdGroup18ID, isActive)VALUES
-					("", "'.$row->ProductID.'","'.$row->countryID.'","'.$row->prdProductClientCode.'","'.$row->ProductName.'","'.$row->prdCreatedOn.'","'.$row->prdGST.'","'.$row->prdNetWeight.'","'.$row->prdNetVolume.'","'.$row->g1ID.'","'.$row->g2ID.'","'.$row->g3ID.'","'.$row->g4ID.'","'.$row->g5ID.'","'.$row->g6ID.'","'.$row->g7ID.'","'.$row->g8ID.'","'.$row->g9ID.'","'.$row->g10ID.'","'.$row->g11ID.'","'.$row->g12ID.'","'.$row->g13ID.'","'.$row->g14ID.'","'.$row->g15ID.'","'.$row->g16ID.'","'.$row->g17ID.'","'.$row->g18ID.'","'.$row->isActive.'")';
+					$prdMasterQuery='INSERT INTO '.PRD_MASTER_TABLE.'(ProductID, countryID,prdProductClientCode,ProductName,prdCreatedOn,prdGST,prdNetWeight,prdNetVolume,prdGroup1ID,prdGroup2ID,prdGroup3ID,prdGroup4ID,prdGroup5ID,prdGroup6ID,prdGroup7ID,prdGroup8ID,prdGroup9ID,prdGroup10ID,prdGroup11ID,prdGroup12ID,prdGroup13ID,prdGroup14ID,prdGroup15ID,prdGroup16ID,prdGroup17ID,prdGroup18ID, isActive)VALUES
+					("'.$row->ProductID.'","'.$row->countryID.'","'.$row->prdProductClientCode.'","'.$row->ProductName.'","'.$row->prdCreatedOn.'","'.$row->prdGST.'","'.$row->prdNetWeight.'","'.$row->prdNetVolume.'","'.$row->g1ID.'","'.$row->g2ID.'","'.$row->g3ID.'","'.$row->g4ID.'","'.$row->g5ID.'","'.$row->g6ID.'","'.$row->g7ID.'","'.$row->g8ID.'","'.$row->g9ID.'","'.$row->g10ID.'","'.$row->g11ID.'","'.$row->g12ID.'","'.$row->g13ID.'","'.$row->g14ID.'","'.$row->g15ID.'","'.$row->g16ID.'","'.$row->g17ID.'","'.$row->g18ID.'","'.$row->isActive.'")';
 					//echo $prdMasterQuery;
 					$tbl_M->query($prdMasterQuery);
                 }

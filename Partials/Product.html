@@ -1,6 +1,5 @@
 <div ng-controller="ProductListCtrl">
 	<div class="span9" id="content">
-                      <!-- morris stacked chart -->
                     <div class="row-fluid">
                         <!-- block -->
                         <div class="block">
@@ -37,6 +36,24 @@
 										</div>
                                         </div>
 										<div class="control-group">
+                                          <label class="control-label" for="Flavour">Flavour</label>
+                                          <div class="controls">
+                                            <select class="form-control" id="prdFlavour" ng-model="selectedPrdOptionFlavour" ng-change="changePrdGroupItems4(PrdGroupOption14);">
+											  <option value="0">---Select All----------------</option>
+											  <option ng:repeat="PrdOption14 in PrdGroupOption14 | unique:'prdGroup14ID'" value="{{PrdOption14.prdGroup14ID}}">{{PrdOption14.prdGroup14Desc}}</option>
+											</select>
+										</div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="Pack Size">Pack Size</label>
+                                          <div class="controls">
+                                            <select class="form-control" id="prdPackSize" ng-model="selectedPrdOptionPackSize">
+											  <option value="0">---Select All----------------</option>
+											  <option ng:repeat="PrdOption15 in PrdGroupOption15 | unique:'prdGroup15ID'" value="{{PrdOption15.prdGroup15ID}}">{{PrdOption15.prdGroup15Desc}}</option>
+											</select>
+										</div>
+                                        </div>
+										<div class="control-group">
                                           <label class="control-label" for="Parent Code">Parent Code</label>
                                           <div class="controls">
                                             <select class="form-control">
@@ -49,11 +66,11 @@
 												<tr>
 													<td>
 													   <tr>
-												<td>Avaiable
+												<td><label>Available  <input class="input-xlarge focused" id="promoRequestDate" type="text" ng-model="prdTxtSearch" ng-change="searchPrdOptions();"></label>
 												<!-- /.form-group -->
 												<div class="control-group">
 												<select id="frmAllProduct" multiple="multiple" size="10" style="width:100%;"  ng-model="selectedPrdOptionName">	
-												<option ng:repeat="PrdName in PrdOptionName | unique:'ProductID'" value="{{PrdName.prdID}}">{{PrdName.prdProductClientCode}}  {{PrdName.ProductName}}</option>
+												<option ng:repeat="PrdName in PrdOptionName | unique:'ProductID'" value="{{PrdName.ProductID}}">{{PrdName.prdProductClientCode}}  {{PrdName.ProductName}}</option>
 												</select>
 												</div>
 												<!-- /.form-group -->
@@ -69,6 +86,7 @@
 												<td>Selected
 												<!-- /.form-group -->
 												<div class="control-group">
+												<span class="input-xlarge"></span>
 												<select id="toSelProduct" multiple="multiple" size="10" style="width:100%;"></select>
 												</div>
 												<!-- /.form-group -->

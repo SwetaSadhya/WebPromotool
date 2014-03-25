@@ -5,7 +5,6 @@ Created by Sweta on 13 Feb 2014
 
 class Model_Product {
 	//Variables 
-	public $prdID;
 	public $ProductID ;
 	public $countryID ;
 	public $prdProductClientCode ;
@@ -32,12 +31,12 @@ class Model_Product {
 	public $prdGroup16ID; 
 	public $prdGroup17ID; 
 	public $prdGroup18ID; 
+	public $importLogID;
 	public $isActive; 
 
 	
-    public function __construct($prdID,$ProductID,$countryID,$prdProductClientCode,$ProductName,$prdCreatedOn,$prdGST,$prdNetWeight,$prdNetVolume,$prdGroup1ID,$prdGroup2ID,$prdGroup3ID,$prdGroup4ID,$prdGroup5ID,$prdGroup6ID,$prdGroup7ID,$prdGroup8ID,$prdGroup9ID,$prdGroup10ID,$prdGroup11ID,$prdGroup12ID,$prdGroup13ID,$prdGroup14ID,$prdGroup15ID,$prdGroup16ID,$prdGroup17ID,$prdGroup18ID,$isActive) {
+    public function __construct($ProductID,$countryID,$prdProductClientCode,$ProductName,$prdCreatedOn,$prdGST,$prdNetWeight,$prdNetVolume,$prdGroup1ID,$prdGroup2ID,$prdGroup3ID,$prdGroup4ID,$prdGroup5ID,$prdGroup6ID,$prdGroup7ID,$prdGroup8ID,$prdGroup9ID,$prdGroup10ID,$prdGroup11ID,$prdGroup12ID,$prdGroup13ID,$prdGroup14ID,$prdGroup15ID,$prdGroup16ID,$prdGroup17ID,$prdGroup18ID,$importLogID,$isActive) {
 	
-		$this->prdID = $prdID;
 		$this->ProductID = $ProductID;
 		$this->countryID = $countryID;
 		$this->prdProductClientCode = $prdProductClientCode;
@@ -64,6 +63,7 @@ class Model_Product {
 		$this->prdGroup16ID = $prdGroup16ID;
 		$this->prdGroup17ID = $prdGroup17ID;
 		$this->prdGroup18ID = $prdGroup18ID;
+		$this->importLogID = $importLogID;
 		$this->isActive = $isActive;
 		
    }
