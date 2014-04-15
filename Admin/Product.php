@@ -59,7 +59,23 @@ class Product{
 	public $prdGroup18ID;
 	public $prdGroup18ClientID;
 	public $prdGroup18Desc;	
-    public function __construct($ProductID, $countryID, $prdProductClientCode, $ProductName, $prdCreatedOn, $prdGSTGroup, $prdGroup1ID, $prdGroup1ClientID, $prdGroup1Desc,$prdGroup2ID, $prdGroup2ClientID, $prdGroup2Desc,$prdGroup3ID, $prdGroup3ClientID, $prdGroup3Desc,$prdGroup4ID, $prdGroup4ClientID, $prdGroup4Desc,$prdGroup5ID, $prdGroup5ClientID, $prdGroup5Desc,$prdGroup6ID, $prdGroup6ClientID, $prdGroup6Desc,$prdGroup7ID, $prdGroup7ClientID, $prdGroup7Desc,$prdGroup8ID, $prdGroup8ClientID, $prdGroup8Desc,$prdGroup9ID, $prdGroup9ClientID, $prdGroup9Desc,$prdGroup10ID, $prdGroup10ClientID, $prdGroup10Desc,$prdGroup11ID, $prdGroup11ClientID, $prdGroup11Desc,$prdGroup12ID, $prdGroup12ClientID, $prdGroup12Desc,$prdGroup13ID, $prdGroup13ClientID, $prdGroup13Desc,$prdGroup14ID, $prdGroup14ClientID, $prdGroup14Desc,$prdGroup15ID, $prdGroup15ClientID, $prdGroup15Desc,$prdGroup16ID, $prdGroup16ClientID, $prdGroup16Desc,$prdGroup17ID, $prdGroup17ClientID, $prdGroup17Desc,$prdGroup18ID, $prdGroup18ClientID, $prdGroup18Desc ) {
+	public $prdGroup19ID;
+	public $prdGroup19ClientID;
+	public $prdGroup19Desc;	
+	public $prdGroup20ID;
+	public $prdGroup20ClientID;
+	public $prdGroup20Desc;	
+	public $prdGroup21ID;
+	public $prdGroup21ClientID;
+	public $prdGroup21Desc;	
+	public $prdNetWeight;	
+	public $prdNetVolume;	
+	public $prdGST;	
+	public $prdParentCode;	
+	public $prdParentCodeValidFrom;	
+	public $prdParentCodeValidTo;	
+	public $ImportLogID;	
+    public function __construct($ProductID, $countryID, $prdProductClientCode, $ProductName, $prdCreatedOn, $prdGSTGroup, $prdGroup1ID, $prdGroup1ClientID, $prdGroup1Desc,$prdGroup2ID, $prdGroup2ClientID, $prdGroup2Desc,$prdGroup3ID, $prdGroup3ClientID, $prdGroup3Desc,$prdGroup4ID, $prdGroup4ClientID, $prdGroup4Desc,$prdGroup5ID, $prdGroup5ClientID, $prdGroup5Desc,$prdGroup6ID, $prdGroup6ClientID, $prdGroup6Desc,$prdGroup7ID, $prdGroup7ClientID, $prdGroup7Desc,$prdGroup8ID, $prdGroup8ClientID, $prdGroup8Desc,$prdGroup9ID, $prdGroup9ClientID, $prdGroup9Desc,$prdGroup10ID, $prdGroup10ClientID, $prdGroup10Desc,$prdGroup11ID, $prdGroup11ClientID, $prdGroup11Desc,$prdGroup12ID, $prdGroup12ClientID, $prdGroup12Desc,$prdGroup13ID, $prdGroup13ClientID, $prdGroup13Desc,$prdGroup14ID, $prdGroup14ClientID, $prdGroup14Desc,$prdGroup15ID, $prdGroup15ClientID, $prdGroup15Desc,$prdGroup16ID, $prdGroup16ClientID, $prdGroup16Desc,$prdGroup17ID, $prdGroup17ClientID, $prdGroup17Desc,$prdGroup18ID, $prdGroup18ClientID, $prdGroup18Desc,$prdGroup19ID, $prdGroup19ClientID, $prdGroup19Desc,$prdGroup20ID, $prdGroup20ClientID, $prdGroup20Desc, $prdGroup21ID, $prdGroup21ClientID, $prdGroup21Desc, $prdNetWeight , $prdNetVolume , $prdGST , $prdParentCode , $prdParentCodeValidFrom , $prdParentCodeValidTo , $ImportLogID) {
 
         $this->ProductID = $ProductID;
         $this->countryID = $countryID;
@@ -120,7 +136,23 @@ class Product{
 		$this->prdGroup17Desc = $prdGroup17Desc;
 		$this->prdGroup18ID = $prdGroup18ID;
 		$this->prdGroup18ClientID = $prdGroup18ClientID;
-		$this->prdGroup18Desc = $prdGroup1Desc;
+		$this->prdGroup18Desc = $prdGroup18Desc;
+		$this->prdGroup19ID = $prdGroup19ID;
+		$this->prdGroup19ClientID = $prdGroup19ClientID;
+		$this->prdGroup19Desc = $prdGroup19Desc;
+		$this->prdGroup20ID = $prdGroup20ID;
+		$this->prdGroup20ClientID = $prdGroup20ClientID;
+		$this->prdGroup20Desc = $prdGroup20Desc;
+		$this->prdGroup21ID = $prdGroup21ID;
+		$this->prdGroup21ClientID = $prdGroup21ClientID;
+		$this->prdGroup21Desc = $prdGroup21Desc;
+		$this->prdNetWeight = $prdNetWeight;
+		$this->prdNetVolume = $prdNetVolume;
+		$this->prdGST = $prdGST;
+		$this->prdParentCode = $prdParentCode;
+		$this->prdParentCodeValidFrom = $prdParentCodeValidFrom;
+		$this->prdParentCodeValidTo = $prdParentCodeValidTo;
+		$this->ImportLogID = $ImportLogID;
 		
     }
      

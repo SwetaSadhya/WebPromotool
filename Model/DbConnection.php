@@ -9,7 +9,7 @@ Class Model_DbConnection {
 	private $host="localhost";
     private $username="root";    // specify the sever details for mysql
     private $password="";
-    private $database="tbl_promotool";
+    private $database="promotool";
     public $myconn;
 	
 	// Constructor opens a connection to MySQL 

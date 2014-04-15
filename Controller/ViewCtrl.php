@@ -7,6 +7,7 @@ class Controller_ViewCtrl {
 function loadView($templateName,$arrPassValue=''){
 
          $view_path='../View/'.$templateName;
+		 //echo $view_path;
          if(file_exists($view_path)){
             if(isset($arrPassValue)){
                  $arrData=$arrPassValue;

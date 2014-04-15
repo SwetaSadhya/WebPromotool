@@ -3,7 +3,7 @@
 define ('LOCALRHOST','localhost' );// localhost connection
 define ('LOCALUSER','root' );
 define ('LOCALPASSWORD','' );
-define ('LOCALDATABASE','tbl_promotool' );
+define ('LOCALDATABASE','promotool' );
 
 define ('SERVERHOST','' );// server connection
 define ('SERVERUSER','' );
@@ -23,6 +23,7 @@ define ( 'SECCUST_TEMP_TABLE', 'tempSecondaryCustomer' );
 define ( 'SECCUST_MASTER_TABLE', DB_PREFIX . 'SecondaryCustomer' );
 define ( 'SECCUST_G1_TABLE', DB_PREFIX . 'SecGroup1' );
 define ( 'SECCUST_G2_TABLE', DB_PREFIX . 'SecGroup2' );
+define ( 'SECCUST_Hierarchy_TABLE', DB_PREFIX . 'SecCustomerHierarchy' );
 define ( 'CUST_MASTER_TABLE', DB_PREFIX . 'Customer' );
 define ( 'CUST_Hierarchy_TABLE', DB_PREFIX . 'CustomerHierarchy' );
 define ( 'CUST_G1_TABLE', DB_PREFIX . 'CusGroup1' );
@@ -53,7 +54,10 @@ define ( 'PRD_G15_TABLE', DB_PREFIX . 'PrdGroup15' );
 define ( 'PRD_G16_TABLE', DB_PREFIX . 'PrdGroup16' );
 define ( 'PRD_G17_TABLE', DB_PREFIX . 'PrdGroup17' );
 define ( 'PRD_G18_TABLE', DB_PREFIX . 'PrdGroup18' );
-
+define ( 'PRD_G19_TABLE', DB_PREFIX . 'PrdGroup19' );
+define ( 'PRD_G20_TABLE', DB_PREFIX . 'PrdGroup20' );
+define ( 'PRD_G21_TABLE', DB_PREFIX . 'PrdGroup21' );
+define ( 'PRITRANS_TABLE', DB_PREFIX . 'PriTrans' );
 
 
 

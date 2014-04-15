@@ -1,9 +1,10 @@
-<div>
-      <div class="span12" id="content">
+<div ng-controller="VolumeCtrl">
+      <div class="span14" id="content">
                       <!-- morris stacked chart -->
                     <div class="row-fluid">
                         <!-- block -->
                         <div class="block">
+						<!-- <div><pre ng-model="result">{{result}}</pre></div> -->
                             <div class="block-content collapse in">
                                 <div class="span17">
                                      <div class="form-horizontal">
@@ -34,27 +35,27 @@
 										<tr>
 										<td><div class="radio">
 											<label>
-												<input type="radio" id="volumes" name="volumes" value="1" Checked>
-												Individual product
+												<input type="radio" id="prdVolumesType" name="prdVolumesType" value="ProductID" Checked>
+												Individual Product
 											  </label>
 										</div></td>
 										<td><div class="radio">
 											<label>
-												<input type="radio" id="volumes" name="volumes" value="1">
-												By product sub group
+												<input type="radio" id="prdVolumesType" name="prdVolumesType" value="prdGroup7">
+												By product building block
 											  </label>
 										</div></td>
 										</tr>
 										<tr>
 										<td><div class="radio">
 											<label>
-												<input type="radio" id="volumes" name="volumes" value="1" Checked>
-												By product type
+												<input type="radio" id="prdVolumesType" name="prdVolumesType" value="ParentCode">
+												By product parent code
 											  </label>
 										</div></td>
 										<td><div class="radio">
 											<label>
-												<input type="radio" id="volumes" name="volumes" value="1">
+												<input type="radio" id="prdVolumesType" name="prdVolumesType" value="prdGroup4">
 												By product brand
 											  </label>
 										</div></td>
@@ -62,13 +63,13 @@
 										<tr>
 										<td><div class="radio">
 											<label>
-												<input type="radio" id="volumes" name="volumes" value="1" Checked>
+												<input type="radio" id="prdVolumesType" name="prdVolumesType" value="prdGroup9">
 												By product group
 											  </label>
 										</div></td>
 										<td><div class="radio">
 											<label>
-												<input type="radio" id="volumes" name="volumes" value="1">
+												<input type="radio" id="prdVolumesType" name="prdVolumesType" value="All">
 												For all product combine
 											  </label>
 										</div></td>
@@ -76,8 +77,11 @@
 										<tr>
 										<td><label for="Product">Product</label></td>
 										<td>
-										  <select>
-											  <option>All</option>
+										<div>
+										<select id="promoProductVolume" class="chzn-select" ng-model="selectedpromoProductVolume">	
+										<option value="0">---Select All----------</option>
+										<option ng:repeat="PrdName in promoProductVolume | unique:'ProductID'" value="{{PrdName.ProductID}}">{{PrdName.ProductName}}</option>
+										</select>
 										</div>
 										</td>
 										</tr>
@@ -87,7 +91,7 @@
 										<table border='0' cellpadding='15' cellspacing='15' height="auto">
 										<tr>
 										<td></td>
-										<td><button class="btn btn-default">Lookup baseline volumes</button></td>
+										<td><button class="btn btn-default" ng-click="BaselineVol();">Lookup baseline volumes</button></td>
 										<td><button class="btn btn-default">Copy baseline to Plan</button></td>
 										<td><button class="btn btn-default">Lookup actual volumes</button></td>
 										</tr>
@@ -102,15 +106,15 @@
 										</tr>
 										<tr>
 										<td>Baseline</td>
-										<td><input class="input-default focused" id="promoRequestDate" type="text"></td>
-										<td><input class="input-default focused" id="promoRequestDate" type="text"></td>
-										<td><input class="input-default focused" id="promoRequestDate" type="text"></td>
+										<td><input class="input-default focused" id="prmBaselineF" ng-model="prmBaselineF" type="text"></td>
+										<td><input class="input-default focused" id="prmBaselineM" ng-model="prmBaselineM" type="text"></td>
+										<td><input class="input-default focused" id="prmBaselineL" ng-model="prmBaselineL" type="text"></td>
 										</tr>
 										<tr>
 										<td>Plane</td>
-										<td><input class="input-default focused" id="promoRequestDate" type="text"></td>
-										<td><input class="input-default focused" id="promoRequestDate" type="text"></td>
-										<td><input class="input-default focused" id="promoRequestDate" type="text"></td>
+										<td><input class="input-default focused" id="prmPlanF" ng-model="prmBaselineF" type="text"></td>
+										<td><input class="input-default focused" id="prmPlanM" ng-model="prmPlanM" type="text"></td>
+										<td><input class="input-default focused" id="prmPlanL" ng-model="prmPlanL" type="text"></td>
 										</tr>
 										<tr>
 										<td>Actual</td>
@@ -118,20 +122,66 @@
 										<td><input class="input-default focused" id="promoRequestDate" type="text"></td>
 										<td><input class="input-default focused" id="promoRequestDate" type="text"></td>
 										</tr>
+										<tr>
+										<td colspan="3"></td>
+										<td><div class="control-group">
+										  <div class="span5">
+											<div class="radio">
+											<label>
+												<input type="radio" name="sell" id="sell" value="in" checked>
+												Sell In
+											  </label>
+											</div>
+										  </div>
+										  <div class="span5">
+											<div class="radio">
+												  <label>
+													<input type="radio" name="sell" id="sell" value="out">
+													Sell Out
+												  </label>
+											</div>
+											</div>
+										</td>
+										</tr>
 										</table>
 										</div>
+										</div>
+										<div class="span6">
+										<table border='0' cellpadding='15' cellspacing='15' height="auto">
+										<tr>
+										<td></td>
+										<td>Plan%</td>
+										<td>Actual%</td>
+										</tr>
+										<tr>
+										<td>Overall Participation:</td>
+										<td><input class="input-small focused" id="" ng-model="" value="100.0" type="text"></td>
+										<td><input class="input-small disabled" id="" ng-model="" value="100.0"  type="text" disabled="true"></td>
+										</tr>
+										<!-- <tr>
+										<td>Coupon redemption:</td>
+										<td><input class="input-small focused" id="" ng-model="" type="text"></td>
+										<td><input class="input-small focused" id="" ng-model="" type="text"></td>
+										</tr> -->
+										<tr>
+										<td>Card Sales:</td>
+										<td><input class="input-small focused" id="" ng-model="" type="text"></td>
+										<td><input class="input-small focused" id="" ng-model="" type="text"></td>
+										</tr>
+										</table>
+										</div>
+										<div class="span4"><label>Percentage of sales during promotion period expected to fall under promotion condition.</label></div>
 										</td>
-										<td valign="top" width="20%"></td>
+										<td valign="top"></td>
 										<td valign="top"><legend>Volumes</legend>
 										 <div id="Volumes">
-
+											<canvas id="canvas" height="450" width="450"></canvas>
+											<label>Baseline volume is calculated using the average sales for the last available twelve months from BW. </label>
 										 </div>
 										 </td>
 										</tr>
 										</table>
                                       </fieldset>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>

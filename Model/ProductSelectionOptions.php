@@ -30,9 +30,10 @@ class Model_ProductSelection extends Model_Product  {
 	public $prdGroup15ID;
 	public $prdGroup15ClientID;
 	public $prdGroup15Desc;
+	public $prdParentCode;
 	
 
-	public function __construct($ProductID,$countryID,$prdProductClientCode,$ProductName,$prdGroup4ID,$prdGroup4ClientID,$prdGroup4Desc,$prdGroup7ID,$prdGroup7ClientID,$prdGroup7Desc,$prdGroup9ID,$prdGroup9ClientID,$prdGroup9Desc,$prdGroup14ID,$prdGroup14ClientID,$prdGroup14Desc,$prdGroup15ID,$prdGroup15ClientID,$prdGroup15Desc) {	
+	public function __construct($ProductID,$countryID,$prdProductClientCode,$ProductName,$prdGroup4ID,$prdGroup4ClientID,$prdGroup4Desc,$prdGroup7ID,$prdGroup7ClientID,$prdGroup7Desc,$prdGroup9ID,$prdGroup9ClientID,$prdGroup9Desc,$prdGroup14ID,$prdGroup14ClientID,$prdGroup14Desc,$prdGroup15ID,$prdGroup15ClientID,$prdGroup15Desc,$prdParentCode) {	
 		
 	
 		$this->ProductID = $ProductID;
@@ -54,6 +55,7 @@ class Model_ProductSelection extends Model_Product  {
 		$this->prdGroup15ID = $prdGroup15ID;
 		$this->prdGroup15ClientID = $prdGroup15ClientID;
 		$this->prdGroup15Desc = $prdGroup15Desc;
+		$this->prdParentCode = $prdParentCode;
 	}
 	
 

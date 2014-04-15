@@ -13,6 +13,7 @@ class PromoSelectionOptionController extends Controller_ViewCtrl {
   public $PromoObejectiveListing;
   public $PromoTypeListing;
   public $PromoUnitListing;
+  public $PromoBudgetOwnerListing;
 
   
 	   function __construct() {
@@ -37,6 +38,11 @@ class PromoSelectionOptionController extends Controller_ViewCtrl {
 	   $this->loadView('PromoUnit.php', $PromoUnitListing);
      }
 	 
+	 function promoBudgetOwnerOption(){ // Budget Owner Listing
+	   $model = new Model_PromoSelectionOptions();
+	   $PromoBudgetOwnerListing = $model->getBudgetOwnerOptions();
+	   $this->loadView('PromoBudgetOwner.php', $PromoBudgetOwnerListing);
+     }
 
 	 
 

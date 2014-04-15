@@ -13,15 +13,9 @@ class Model_CustomerSelectionOptions extends Model_DbConnection {
 	//Variables 
 	Public $db;
 	Public $con;
-	Public $GpOpt;
-	Public $condition = "";
 	Public $Customers = array();
 	Public $CusSelOpt1 = array();
-	Public $CusDetail = array();
-	Public $Group1Detail = array();
-	Public $Group5Detail = array();
-	Public $Group6Detail = array();
-	Public $Return = array();
+
 
 	public function __construct(){	
 	$db = new Model_DbConnection();
@@ -29,14 +23,9 @@ class Model_CustomerSelectionOptions extends Model_DbConnection {
 	}
 	
 	// get Customers
-	public function getCustomers($searchTxt) {
+	public function getCustomers() {
 	
-	if(isset($searchTxt) && $searchTxt!=""){
-	$condition =" and  cusCustomerName like '%".$searchTxt."%'";
-	$query = "SELECT * FROM tblCustomer where isActive = '1' ".$condition." GROUP BY customerID";
-	}else{
 	$query = "SELECT * FROM tblCustomer where isActive = '1' GROUP BY customerID";
-	}
 	//echo $query;
 	$result = mysql_query($query);
 	while($row = mysql_fetch_array($result)){

@@ -5,7 +5,7 @@
                         <!-- block -->
                         <div class="block">
                             <div class="block-content collapse in">
-                                <div class="span17">
+                                <div class="span20">
                                      <div class="form-horizontal">
                                       <fieldset>
                                         <legend>Promotion Details</legend>
@@ -16,37 +16,56 @@
 										<div class="control-group">
                                           <label class="control-label" for="Objective">Objective</label>
                                           <div class="controls">
-                                            <select id="promoObjective"  class="chzn-select" ng-model="promoObjective">
-											<option ng:repeat="PromoObjective in Objective"  value="{{PromoObjective.prmObjectiveID}}" ng-selected="'102001' == PromoObjective.prmObjectiveID">{{PromoObjective.prmObjectiveDesc}}</option>
+                                            <select id="prmObjective" class="chzn-select" ng-model="selectedpromoObjective">
+											<option value="0">-----Select---------------</option>
+											<option ng:repeat="PromoObjective in Objective"  value="{{PromoObjective.prmObjectiveID}}">{{PromoObjective.prmObjectiveDesc}}</option>
 											</select>
                                           </div>
                                         </div>
 										<div class="control-group">
                                           <label class="control-label" for="Structure">Structure</label>
                                           <div class="controls">
-                                            <select id="promoStructure" class="chzn-select" ng-model="promoStructure">
+                                            <select id="promoStructure" class="chzn-select" ng-model="selectedpromoStructure" ng-change="changeStructure();">
+											   <option value="select">-----Select---------------</option>
 											   <option value="1">Stand alone</option>
-											   <option value="2">Parent</option>
-											   <option value="3">Daughter</option>
+											   <option value="0">Parent</option>
+											   <option value="2">Child</option>
 											</select>
                                           </div>
                                         </div>
+										<div id="Parent" ng-show="Parent">
+										<div class="control-group">
+                                          <label class="control-label" for="Structure">Choose Parent</label>
+                                          <div class="controls">
+                                            <select id="promoParentStructure" class="chzn-select" ng-model="selectedpromoParent">
+											   <option value="0">-----Select---------------</option>
+											   <option value="1">Parent1</option>
+											   <option value="2">Parent1</option>
+											   <option value="3">Parent1</option>
+											</select>
+                                          </div>
+										  </div>
+                                        </div>
+										<div id="TypeUnit" ng-hide="TypeUnit">
 										<div class="control-group">
                                           <label class="control-label" for="Type">Type</label>
                                           <div class="controls">
-                                            <select class="chzn-select" id="promoType"  ng-model="promoType" ng-change="changeDiv();">
-												<option ng:repeat="PromoType in Type"  value="{{PromoType.promotiontypeID +','+PromoType.ptyPromotionTypeParent+','+PromoType.ptyPromotionTypeName }}" ng-selected="'102001' == PromoType.promotiontypeID">{{PromoType.ptyPromotionTypeName}}</option>
+                                            <select class="chzn-select" id="promoType"  ng-model="selectedpromoType"  ng-change="changeDiv();">
+												<option value="0">-----Select---------------</option>
+												<option ng:repeat="PromoType in Type"  value="{{PromoType.promotiontypeID +','+PromoType.ptyPromotionTypeParent+','+PromoType.ptyPromotionTypeName }}" >{{PromoType.ptyPromotionTypeName}}</option>
 											</select>
                                           </div>
                                         </div>
 										<div class="control-group">
                                           <label class="control-label" for="Unit">Unit</label>
                                           <div class="controls">
-                                            <select class="chzn-select" id="promoUnit" ng-model="promoUnit">
-											  <option ng:repeat="PromoUnit in Unit"  value="{{PromoUnit.prmUnitID}}" ng-selected="'102001' == PromoUnit.prmUnitID">{{PromoUnit.prmUnitDesc}}</option>
+                                            <select class="chzn-select" id="promoUnit" ng-model="selectedpromoUnit">
+											  <option value="0">-----Select---------------</option>
+											  <option ng:repeat="PromoUnit in Unit"  value="{{PromoUnit.prmUnitID}}">{{PromoUnit.prmUnitDesc}}</option>
 											</select>
                                           </div>
                                         </div>
+										</div>
 										<!-- <div class="control-group">
 										<div class="controls">
 										<table>
@@ -70,22 +89,17 @@
 										<div class="control-group">
                                           <label class="control-label" for="Budget Owner">Budget Owner</label>
                                           <div class="controls">
-										  <select class="chzn-select">
-											  <option>DIRECT KEY ACCOUNTS</option>
-											  <option>LOCAL KEY ACCOUNTS</option>
-											  <option>GENERAL TRADE</option>
-											  <option>FOOD SERVICE</option>
-											  <option>SHOPPER MARKETING</option>
-											  <option>CONSUMER MARKETING</option>
-											  <!-- <option>MEDICAL MARKETING</option> -->
-											</select>
+										  <select class="chzn-select" id="promoBudgetOwner" ng-model="selectedpromoBudgetOwner">
+											  <option value="0">-----Select---------------</option>
+											  <option ng:repeat="PromoBudgetOwner in BudgetOwner"  value="{{PromoBudgetOwner.BudgetOwnerID}}">{{PromoBudgetOwner.BudgetOwnerClientName}}</option>
+										 </select>
 										</div>
                                         </div>
 										<legend>Information</legend>
 										<div class="control-group">
-                                          <label class="control-label" for="Title">Title</label>
+                                          <label class="control-label" for="Code">Code</label>
                                           <div class="controls">
-                                            <input class="input-xlarge focused" id="promoTitle" type="text" ng-required="true">
+                                            <input class="input-xlarge focused" id="promoCode" type="text" value="" ng-required="true">
                                           </div>
                                         </div>
 										<div class="control-group">
@@ -94,7 +108,7 @@
                                             <textarea class="input-xlarge textarea" id="promoDesc" placeholder="Enter text ..." style="width: 280px; height: 50px"></textarea>
                                           </div>
                                         </div>
-										<div class="control-group">
+										<!-- <div class="control-group">
                                           <label class="control-label" for="IO Number">IO Number</label>
                                           <div class="controls">
                                             <input class="input-xlarge disabled" id="promoIO" type="text" placeholder="Drafted" disabled="true">
@@ -105,7 +119,7 @@
                                           <div class="controls">
                                             <input class="input-xlarge disabled" id="promoCost" type="text" placeholder="12345678" disabled="true">
                                           </div>
-                                        </div>
+                                        </div> -->
 										<div class="control-group">
                                           <label class="control-label" for="promoStartDate">Promo Start Date</label>
                                           <div class="controls">
@@ -118,7 +132,7 @@
                                             <input type="text" class="input-xlarge datepicker" id="promoEndDate" value="04/10/2014">
                                           </div>
                                         </div>
-										<div class="control-group">
+										<!-- <div class="control-group">
                                           <label class="control-label" for="promoFirstOrder">First Order Date</label>
                                           <div class="controls">
                                             <input type="text" class="input-xlarge datepicker" id="promoFirstOrder" value="05/10/2014">
@@ -129,70 +143,26 @@
                                           <div class="controls">
                                             <input type="text" class="input-xlarge datepicker" id="promoLastOrder" value="05/10/2014">
                                           </div>
-										</div>
-										<div class="control-group">
+										</div> -->
+										<!-- <div class="control-group">
                                           <label class="control-label" for="promoRequestDate">Request Dates From</label>
                                           <div class="controls">
                                             <input class="input-xlarge focused" id="promoRequestDate" type="text">
                                           </div>
-                                        </div>
+                                        </div> -->
 										</td>
-										<td valign="top" width="20%"></td>
-										<td valign="top">
+										<td valign="top"></td>
+										<td valign="top" border="2px;">
+										<div id="promoDetails" ng-show="promoDetails">
 										 <legend>Promo Details</legend>
-										 <div id="Discounts" ng-hide="Discounts">
-											<!-- Discount/Premium -->
-										 <ng-include src="'Partials/Discounts.html'"></ng-include>
+										 <div id="promoDetaildiv" ng-show="promoDetaildiv">
+										<!-- Discount/Premium -->
+										 <div ng-model="pageName">
+											<div ng-include="pageName"></div>
+										 </div>
 										<!-- END -->
 										</div>
-										<!-- Display -->
-										<div id="Display" ng-show="Display">
-										<ng-include src="'Partials/Display.html'"></ng-include>
-										<!-- END -->
-										</div>
-										<!-- Free goods -->
-										<div id="Freegoods" ng-show="Freegoods">
-										<ng-include src="'Partials/Freegoods.html'"></ng-include>
-										<!-- END -->
-										</div>
-										<!-- Lumpsum -->
-										<div id="Lumpsum" ng-show="Lumpsum">
-										<ng-include src="'Partials/Lumpsum.html'"></ng-include>
-										<!-- End -->
-										</div>
-										<!-- MixnMatch -->
-										<div id="MixnMatch" ng-show="MixnMatch">
-										<ng-include src="'Partials/MixnMatch.html'"></ng-include>
-										<!-- End -->
-										</div>
-										<!-- MixnMatch FOC-->
-										<div id="MixnMatchFOC" ng-show="MixnMatchFOC">
-										<div id="" style="overflow-y: scroll; height:850px;">
-										<ng-include src="'Partials/MixnMatchFOC.html'"></ng-include>
-										</div>
-										<!-- End -->
-										</div>
-										<!-- Stepdiscount-->
-										<div id="Stepdiscount" ng-show="Stepdiscount">
-										<ng-include src="'Partials/Stepdiscount.html'"></ng-include>
-										<!-- End -->
-										</div>
-										<!-- Stepdiscount FOC-->
-										<div id="StepdiscountFOC" ng-show="StepdiscountFOC">
-										<div id="" style="overflow-y: scroll; height:850px;">
-										<ng-include src="'Partials/StepdiscountFOC.html'"></ng-include>
-										</div>
-										<!-- End -->
-										</div>
-										<!-- KRIS-->
-										<div id="KRIS" ng-show="KRIS">
-										<ng-include src="'Partials/KRIS.html'"></ng-include>
-										<!-- End -->
-										</div>
-										<!-- FFS-->
-										<div id="FFS" ng-show="FFS">
-										<ng-include src="'Partials/FFS.html'"></ng-include>
-										<!-- End -->
+										
 										</div>
 										 </td>
 										</tr>

@@ -1,29 +1,61 @@
+<!--  <pre ng-model="result">{{result}}</pre> -->
  <div class="control-group">
                                           <label class="control-label" for="promoEnter">Enter Products By</label>
                                           <div class="controls">
-                                            <select id="promoTypeID"  class="chzn-select" ng-model="promoTypeID" ng-change="changeValueText();">
+                                            <select id="promoProductType"  class="chzn-select" ng-model="promoProductType" ng-change="changeValueText();">
 											<option value="All">All</option>
-											<option value="Product ID">Product ID</option>
-											<option value="Building Block">Building Block</option>
-											<option value="Product Group">Product Group</option>
+											<option value="ProductID">Product ID</option>
+											<option value="BuildingBlock">Building Block</option>
+											<option value="ProductGroup">Product Group</option>
 											<option value="Brand">Brand</option>
 											</select>
                                           </div>
                                         </div>
 										<div class="control-group">
-                                          <label class="control-label" for="promoValue" ng-model="promoValueText">Select {{promoValueText}} Value</label>
+                                          <label class="control-label" for="promoProductValueText" ng-model="promoValueText">Select {{promoProductValueText}} Value</label>
                                           <div class="controls">
-                                            <select id="prdProductValue" class="chzn-select" ng-model="selectedPrdProductType">
-											  <option value="0">----Select Product---</option>
-											  <option ng:repeat="PrdName in PrdProductValue | unique:'ProductID'" value="{{PrdName.prdID}}">{{PrdName.prdProductClientCode}}  {{PrdName.ProductName}}</option>
-											</select>
-                                          </div>
+																		<!-- /.form-group -->
+																			<div class="control-group" ng-model="field">
+																			<div ng-hide="ALL">
+																			<select id="promoPrdAll" class="chzn-select" ng-model="selectedpromoPrdAll">	
+																			<option value="0">---Select All----------</option>
+																			<option ng:repeat="PrdAll in promoPrdAll | unique:'ProductID'" value="{{PrdAll.ProductID}}">{{PrdAll.ProductName}}</option>
+																			</select>
+																			</div>
+																			<div ng-show="ProductID">
+																			<select id="promoPrdProductID" class="chzn-select" ng-model="selectedpromoPrdProductID">	
+																			<option value="0">---Select All----------</option>
+																			<option ng:repeat="PrdProductID in promoPrdProductID | unique:'ProductID'" value="{{PrdProductID.ProductID}}">{{PrdProductID.ProductID}}</option>
+																			</select>
+																			</div>
+																			<div ng-show="BuildingBlock">
+																			<select id="promoPrdBuildingBlock" class="chzn-select" ng-model="selectedpromoPrdBuildingBlock">	
+																			<option value="0">---Select All----------</option>
+																			<option ng:repeat="PrdBuildingBlock in promoPrdBuildingBlock | unique:'prdGroup7ID'" value="{{PrdBuildingBlock.prdGroup7ID}}">{{PrdBuildingBlock.prdGroup7Desc}}</option>
+																			</select>
+																			</div>
+																			<div ng-show="ProductGroup">
+																			<select id="promoProductGroup" class="chzn-select" ng-model="selectedpromoPrdProductGroup">	
+																			<option value="0">---Select All----------</option>
+																			<option ng:repeat="PrdProductGroup in promoPrdProductGroup | unique:'prdGroup9ID'" value="{{PrdProductGroup.prdGroup9ID}}">{{PrdProductGroup.prdGroup9Desc}}</option>
+																			</select>
+																			</div>
+																			<div ng-show="Brand">
+																			<select id="promoPrdBrand" class="chzn-select" ng-model="selectedpromoPrdBrand">	
+																			<option value="0">---Select All----------</option>
+																			<option ng:repeat="PrdBrand in promoPrdBrand | unique:'prdGroup4ID'" value="{{PrdBrand.prdGroup4ID}}">{{PrdBrand.prdGroup4Desc}}</option>
+																			</select>
+																			</div>
+																			</div>
+																			</div>
                                         </div>
+										<div><p><button type="button" class="btn btn-default" ng-click="summaryDiscount();">Summary</button></p></div>
+										<div ng-show="Count"><label ng-model="inSide">{{inSide}}</label>/<label ng-model="count">{{count}}</label></div>
 										<legend>Details applicable to selected products</legend>
 										<div class="control-group">
-                                          <label class="control-label" for="Volume Requirement">Volume Requirement</label>
+                                          <label class="control-label" for="Unit & Volume Requirement">Volume Requirement</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="promoReq" type="text" value="">
+                                            <input class="input-small focused" id="promoVolReq" type="text" value="">
                                           </div>
                                         </div>
 										<div class="control-group">
@@ -32,58 +64,53 @@
                                             <input class="input-small focused" id="promoSelloutRebate" type="text" value="">RM
                                           </div>
                                         </div>
-										<div class="control-group">
+										<!-- <div class="control-group">
                                           <label class="control-label" for="Trade Discount">Trade Discount</label>
                                           <div class="controls">
                                             <input class="input-small focused" id="promoTradeDiscount" type="text" disabled="true">RM
                                           </div>
-                                        </div>
+                                        </div> -->
 										<div class="control-group">
                                           <label class="control-label" for="CP">Customer Points (Value)</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="" type="text" value="">
-                                          </div>
-                                        </div>
-										<div class="control-group">
-                                          <label class="control-label" for="PM">Premium Mechanic</label>
-                                          <div class="controls">
-                                            <input class="input-small focused" id="" type="text" value="">
-                                          </div>
-                                        </div>
-										<legend>Details applicable to all products</legend>
-										<div class="control-group">
-                                          <label class="control-label" for="MC">Mail Costs (lump sum)</label>
-                                          <div class="controls">
-                                            <input class="input-small focused" id="" type="text" value="">RM
-                                          </div>
-                                        </div>
-										<div class="control-group">
-                                          <label class="control-label" for="POS">POS Material Costs</label>
-                                          <div class="controls">
-                                            <input class="input-small focused" id="" type="text" value="">RM
-                                          </div>
-                                        </div>
-										<div class="control-group">
-                                          <label class="control-label" for="PC">Premium Cost</label>
-                                          <div class="controls">
-                                            <input class="input-small focused" id="" type="text" value="">RM
+                                            <input class="input-small focused" id="promoCusPoints" type="text" value="" disabled="true">
                                           </div>
                                         </div>
 										<div class="control-group">
                                           <label class="control-label" for="PQ">Premium Quantity</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="" type="text" value="">
+                                            <input class="input-small focused" id="promoPreQty" type="text" value="">
                                           </div>
                                         </div>
-<script>
-function changeField(val){
-if(val=='1'){
-$("#promoSelloutRebate").prop('disabled', true);
-$("#promoTradeDiscount").prop('disabled', false);
-}
-if(val=='0'){
-$("#promoTradeDiscount").prop('disabled', true);
-$("#promoSelloutRebate").prop('disabled', false);
-}
-}
-</script>										
+										<legend>Details applicable to all products</legend>
+										<div class="control-group">
+                                          <label class="control-label" for="Sell Out Rebate">Sell Out Rebate Lumpsum</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="promoSelloutRebateL" type="text" value="">RM
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="MC">Mail Costs (lump sum)</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="promoMailCost" type="text" value="">RM
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="POS">POS Material Costs</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="promoMaterialCost" type="text" value="">RM
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="PC">Premium Cost</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="promoPremiumCost" type="text" value="">RM
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="PQ">Total Premium Quantity</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="promoPremiumQty" type="text" value="">
+                                          </div>
+                                        </div>
+									

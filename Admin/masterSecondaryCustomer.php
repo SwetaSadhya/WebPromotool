@@ -1,5 +1,5 @@
 <?php
-ini_set('max_execution_time', 600); //300 seconds = 5 minutes
+ini_set('max_execution_time', 3000); //300 seconds = 5 minutes
 //--------------------------------bsic configration---------------------------------
 include_once($_SERVER['DOCUMENT_ROOT'].'/promo/WebPromotool/Admin/Library/init.inc.php');
 //---------------------------------------Master Table----------------------------------------------------------

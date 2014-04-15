@@ -10,18 +10,16 @@ class Model_Promo {
 	public $cusCustomerName ;
 	public $cusCustomerClientCode ;
 	public $cusGroup1Desc;
-	public $cusGroup6Desc;
 
 
 	
-    public function __construct($promotionID,$prmPromotionName,$cusCustomerName,$cusCustomerClientCode,$cusGroup1Desc,$cusGroup6Desc) {
+    public function __construct($promotionID,$prmPromotionName,$cusCustomerName,$cusCustomerClientCode,$cusGroup1Desc) {
 		
 		$this->promotionID = $promotionID;
 		$this->prmPromotionName = $prmPromotionName;
 		$this->cusCustomerName = $cusCustomerName;
 		$this->cusCustomerClientCode = $cusCustomerClientCode;
 		$this->cusGroup1Desc = $cusGroup1Desc;
-		$this->cusGroup6Desc = $cusGroup6Desc;
    }
 
 	

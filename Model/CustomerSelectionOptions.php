@@ -23,7 +23,6 @@ class Model_CustomerSelection  {
 	public $cusGroup6ID;
 	public $cusGroup6ClientID;
 	public $cusGroup6Desc;
-	
 
 	public function __construct($customerID,$cusCustomerClientCode,$cusCustomerName,$countryID,$cusGroup1ID,$cusGroup1ClientID,$cusGroup1Desc,$cusGroup5ID,$cusGroup5ClientID,$cusGroup5Desc,$cusGroup6ID,$cusGroup6ClientID,$cusGroup6Desc) {	
 		

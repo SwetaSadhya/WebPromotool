@@ -1,7 +1,7 @@
 <?php
 ini_set('max_execution_time', 600); //300 seconds = 5 minutes
 //--------------------------------bsic configration---------------------------------
-include_once($_SERVER['DOCUMENT_ROOT'].'/promo/Admin/Library/init.inc.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/promo/WebPromotool/Admin/Library/init.inc.php');
 //---------------------------------------Master Table----------------------------------------------------------
 $_HierQuery = "SELECT c.cusGroup1ID,g1.cusGroup1Desc,c.cusGroup4ID,g4.cusGroup4Desc,c.cusGroup5ID,g5.cusGroup5Desc,c.cusGroup6ID,g6.cusGroup6Desc,c.cusGroup7ID,g7.cusGroup7Desc 
 FROM ".CUST_MASTER_TABLE."  AS c 

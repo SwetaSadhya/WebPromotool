@@ -10,9 +10,7 @@ class Model_Product {
 	public $prdProductClientCode ;
 	public $ProductName;
 	public $prdCreatedOn;
-	public $prdGST;
-	public $prdNetWeight;
-	public $prdNetVolume;
+	public $prdGSTGroup;
 	public $prdGroup1ID;
 	public $prdGroup2ID;
 	public $prdGroup3ID; 
@@ -31,20 +29,27 @@ class Model_Product {
 	public $prdGroup16ID; 
 	public $prdGroup17ID; 
 	public $prdGroup18ID; 
+	public $prdGroup19ID; 
+	public $prdGroup20ID; 
+	public $prdGroup21ID; 
+	public $prdNetWeight;
+	public $prdNetVolume;
+	public $prdGST;
+	public $prdParentCode;
+	public $prdParentCodeValidFrom;
+	public $prdParentCodeValidTo;
 	public $importLogID;
 	public $isActive; 
 
 	
-    public function __construct($ProductID,$countryID,$prdProductClientCode,$ProductName,$prdCreatedOn,$prdGST,$prdNetWeight,$prdNetVolume,$prdGroup1ID,$prdGroup2ID,$prdGroup3ID,$prdGroup4ID,$prdGroup5ID,$prdGroup6ID,$prdGroup7ID,$prdGroup8ID,$prdGroup9ID,$prdGroup10ID,$prdGroup11ID,$prdGroup12ID,$prdGroup13ID,$prdGroup14ID,$prdGroup15ID,$prdGroup16ID,$prdGroup17ID,$prdGroup18ID,$importLogID,$isActive) {
+    public function __construct($ProductID,$countryID,$prdProductClientCode,$ProductName,$prdCreatedOn,$prdGSTGroup,$prdGroup1ID,$prdGroup2ID,$prdGroup3ID,$prdGroup4ID,$prdGroup5ID,$prdGroup6ID,$prdGroup7ID,$prdGroup8ID,$prdGroup9ID,$prdGroup10ID,$prdGroup11ID,$prdGroup12ID,$prdGroup13ID,$prdGroup14ID,$prdGroup15ID,$prdGroup16ID,$prdGroup17ID,$prdGroup18ID,$prdGroup19ID,$prdGroup20ID,$prdGroup21ID,$prdNetWeight,$prdNetVolume,$prdGST,$prdParentCode,$prdParentCodeValidFrom,$prdParentCodeValidTo,$importLogID,$isActive) {
 	
 		$this->ProductID = $ProductID;
 		$this->countryID = $countryID;
 		$this->prdProductClientCode = $prdProductClientCode;
 		$this->ProductName = $ProductName;
 		$this->prdCreatedOn = $prdCreatedOn;
-		$this->prdGST = $prdGST;
-		$this->prdNetWeight = $prdNetWeight;
-		$this->prdNetVolume = $prdNetVolume;
+		$this->prdGST = $prdGSTGroup;
 		$this->prdGroup1ID = $prdGroup1ID;
 		$this->prdGroup2ID = $prdGroup2ID;
 		$this->prdGroup3ID = $prdGroup3ID;
@@ -63,6 +68,15 @@ class Model_Product {
 		$this->prdGroup16ID = $prdGroup16ID;
 		$this->prdGroup17ID = $prdGroup17ID;
 		$this->prdGroup18ID = $prdGroup18ID;
+		$this->prdGroup19ID = $prdGroup19ID;
+		$this->prdGroup20ID = $prdGroup20ID;
+		$this->prdGroup21ID = $prdGroup21ID;
+		$this->prdNetWeight = $prdNetWeight;
+		$this->prdNetVolume = $prdNetVolume;
+		$this->prdGST = $prdGST;
+		$this->prdParentCode = $prdParentCode;
+		$this->prdParentCodeValidFrom = $prdParentCodeValidFrom;
+		$this->prdParentCodeValidTo = $prdParentCodeValidTo;
 		$this->importLogID = $importLogID;
 		$this->isActive = $isActive;
 		

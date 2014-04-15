@@ -18,16 +18,17 @@ class ProductController extends Controller_ViewCtrl {
 
 	   }
 //----------------Product Selection--------------------
+
    
-     function productListingOptions($prdsearchTxt){
+     function productListingOptions(){
 	   $model = new Model_ProductSelectionOptions();
-	   $PrdListingOptions = $model->getProduct($prdsearchTxt);
+	   $PrdListingOptions = $model->getProduct();
 	   $this->loadView('ProductListOptions.php', $PrdListingOptions);
      }
 	 
-	 function productGroupOption(){
-	   $model = new Model_ProductSelectionOptions();
-	   $PrdSelectionOptions = $model->getGroupOption();
+	 function productGroupOption($prdID){
+	   $model = new Model_ProductSelectionOptions($prdID);
+	   $PrdSelectionOptions = $model->getGroupOption($prdID);
 	   $this->loadView('ProductSelectionOptions.php', $PrdSelectionOptions);
      }
 	 

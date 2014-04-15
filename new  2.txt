@@ -1,0 +1,5 @@
+$query3 = "INSERT INTO tblPromotionDetails VALUES ('','".$promoID."','".$prmTypeID."','".$prmProductType."','".$prmProductValue."','".$prdGroup4ID."','stepNr','groupNr','prmApplyOn','detPercentageOfBudget','detSameProductGroup','detDifferentProductGroupField','detDifferentProductGroupValue','detExclusionProductClientID','".detVolumeReq."','detVolumeReqTargetIncentives','detTradediscount','detTradediscountPercentage','detCustomerpoints',
+'detPremiumMechanic','detPremiumcost','detPremiumquantity',detDisplayfee,detDisplayNumber,detNumberofFreeCTNs,
+detOtherLumpSum,detFreegoodsamount,detFreegoodsunit,detFreegoodscap,detNumberofLumpsums,detlumpType,detlumpAmount,
+detCTNFrom,detDCTNTo,detNTT,detRebate,detRebatepercentage,detRebateLumpsum,detLoyaltycardprinting,detPenetrationcardprinting,
+detMailcost,detPOSMaterialcost)";

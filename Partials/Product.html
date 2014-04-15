@@ -11,8 +11,8 @@
                                          <div class="control-group">
                                           <label class="control-label" for="Building Block">Building Block</label>
                                           <div class="controls">
-                                            <select id="prdBlock"  ng-model="selectedPrdOptionBlock" ng-change="changePrdGroupItems1(PrdGroupOption7);">
-											<option value="0">---Select All----------</option>
+                                            <select id="prdBlock"  ng-model="selectedPrdOptionBlock">
+											<option value="select">---Select All----------</option>
 											<option ng:repeat="PrdOption7 in PrdGroupOption7 | unique:'prdGroup7ID'" value="{{PrdOption7.prdGroup7ID}}">{{PrdOption7.prdGroup7Desc}}</option>
 											</select>
                                           </div>
@@ -20,27 +20,27 @@
 										<div class="control-group">
                                           <label class="control-label" for="Product Group">Product Group</label>
                                           <div class="controls">
-                                            <select id="prdGroup"  ng-model="selectedPrdOptionGroup" ng-change="changePrdGroupItems2(PrdGroupOption9);">
-											 <option value="0">---Select All----------</option>
-											 <option ng:repeat="PrdOption9 in PrdGroupOption9 | unique:'prdGroup9ID'" value="{{PrdOption9.prdGroup9ID}}">{{PrdOption9.prdGroup9Desc}}</option>
+                                            <select id="prdGroup"  ng-model="selectedPrdOptionGroup" >
+											 <option value="select">---Select All----------</option>
+											 <option ng:repeat="PrdOption9 in PrdGroupOption9 | unique:'prdGroup9ID' | filterMultiple:{prdGroup7ID:selectedPrdOptionBlock}" value="{{PrdOption9.prdGroup9ID}}">{{PrdOption9.prdGroup9Desc}}</option>
 											</select>
                                           </div>
                                         </div>
 										<div class="control-group">
                                           <label class="control-label" for="Brand">Brand</label>
                                           <div class="controls">
-                                            <select id="prdBrand"  ng-model="selectedPrdOptionBrand" ng-change="changePrdGroupItems3(PrdGroupOption4);">
-											  <option value="0">---Select All----------</option>
-											 <option ng:repeat="PrdOption4 in PrdGroupOption4 | unique:'prdGroup4ID'" value="{{PrdOption4.prdGroup4ID}}">{{PrdOption4.prdGroup4Desc}}</option>
+                                            <select id="prdBrand"  ng-model="selectedPrdOptionBrand">
+											  <option value="select">---Select All----------</option>
+											 <option ng:repeat="PrdOption4 in PrdGroupOption4 | unique:'prdGroup4ID' | filterMultiple:{prdGroup7ID:selectedPrdOptionBlock,prdGroup9ID:selectedPrdOptionGroup}" value="{{PrdOption4.prdGroup4ID}}">{{PrdOption4.prdGroup4Desc}}</option>
 											</select>
 										</div>
                                         </div>
 										<div class="control-group">
                                           <label class="control-label" for="Flavour">Flavour</label>
                                           <div class="controls">
-                                            <select class="form-control" id="prdFlavour" ng-model="selectedPrdOptionFlavour" ng-change="changePrdGroupItems4(PrdGroupOption14);">
-											  <option value="0">---Select All----------------</option>
-											  <option ng:repeat="PrdOption14 in PrdGroupOption14 | unique:'prdGroup14ID'" value="{{PrdOption14.prdGroup14ID}}">{{PrdOption14.prdGroup14Desc}}</option>
+                                            <select class="form-control" id="prdFlavour" ng-model="selectedPrdOptionFlavour">
+											  <option value="select">---Select All----------------</option>
+											  <option ng:repeat="PrdOption14 in PrdGroupOption14 | unique:'prdGroup14ID' | filterMultiple:{prdGroup7ID:selectedPrdOptionBlock,prdGroup9ID:selectedPrdOptionGroup,prdGroup4ID:selectedPrdOptionBrand}" value="{{PrdOption14.prdGroup14ID}}">{{PrdOption14.prdGroup14Desc}}</option>
 											</select>
 										</div>
                                         </div>
@@ -48,16 +48,17 @@
                                           <label class="control-label" for="Pack Size">Pack Size</label>
                                           <div class="controls">
                                             <select class="form-control" id="prdPackSize" ng-model="selectedPrdOptionPackSize">
-											  <option value="0">---Select All----------------</option>
-											  <option ng:repeat="PrdOption15 in PrdGroupOption15 | unique:'prdGroup15ID'" value="{{PrdOption15.prdGroup15ID}}">{{PrdOption15.prdGroup15Desc}}</option>
+											  <option value="select">---Select All----------------</option>
+											  <option ng:repeat="PrdOption15 in PrdGroupOption15 | unique:'prdGroup15ID' | filterMultiple:{prdGroup7ID:selectedPrdOptionBlock,prdGroup9ID:selectedPrdOptionGroup,prdGroup4ID:selectedPrdOptionBrand,prdGroup14ID:selectedPrdOptionFlavour}" value="{{PrdOption15.prdGroup15ID}}">{{PrdOption15.prdGroup15Desc}}</option>
 											</select>
 										</div>
                                         </div>
 										<div class="control-group">
                                           <label class="control-label" for="Parent Code">Parent Code</label>
                                           <div class="controls">
-                                            <select class="form-control">
-											  <option value="0">---Select All----------------</option>
+                                           <select class="form-control" id="prdParentCode" ng-model="selectedPrdParentCode">
+											  <option value="select">---Select All----------------</option>
+											  <option ng:repeat="PrdParentCode in prdParentCode | unique:'prdParentCode' | filterMultiple:{prdGroup7ID:selectedPrdOptionBlock,prdGroup9ID:selectedPrdOptionGroup,prdGroup4ID:selectedPrdOptionBrand,prdGroup14ID:selectedPrdOptionFlavour,prdGroup15ID:selectedPrdOptionPackSize}" value="{{PrdParentCode.prdParentCode}}">{{PrdParentCode.prdParentCode}}</option>
 											</select>
 										</div>
                                         </div>
@@ -66,28 +67,28 @@
 												<tr>
 													<td>
 													   <tr>
-												<td><label>Available  <input class="input-xlarge focused" id="promoRequestDate" type="text" ng-model="prdTxtSearch" ng-change="searchPrdOptions();"></label>
+												<td><label>Available  <input class="input-xlarge focused" id="prdSearch" type="text" ng-model="prdSearch" value=""></label>
 												<!-- /.form-group -->
 												<div class="control-group">
-												<select id="frmAllProduct" multiple="multiple" size="10" style="width:100%;"  ng-model="selectedPrdOptionName">	
-												<option ng:repeat="PrdName in PrdOptionName | unique:'ProductID'" value="{{PrdName.ProductID}}">{{PrdName.prdProductClientCode}}  {{PrdName.ProductName}}</option>
+												<select id="frmAllProduct" multiple="multiple" size="10" style="width:400px;"  ng-model="selectedPrdOptionName">	
+												<option ng:repeat="PrdName in PrdOptionName | unique:'ProductID' | filterMultiple:{ProductID:prdSearch,prdProductClientCode:prdSearch,ProductName:prdSearch,prdGroup7ID:selectedPrdOptionBlock,prdGroup9ID:selectedPrdOptionGroup,prdGroup4ID:selectedPrdOptionBrand,prdGroup14ID:selectedPrdOptionFlavour,prdGroup15ID:selectedPrdOptionPackSize,prdParentCode:selectedPrdParentCode} " value="{{PrdName.ProductID}}">{{PrdName.prdProductClientCode}}  {{PrdName.ProductName}}</option>
 												</select>
 												</div>
 												<!-- /.form-group -->
 												</td>
 												<td>
 												<div class="btn-group btn-group-vertical">
-												<button type="button" class="btn btn-small" id="moverightall" ng-click="moveAllItems('frmAllProduct','toSelProduct');"><b>>></b></button>
-												<button type="button" class="btn btn-small" id="moveright" ng-click="moveItems('frmAllProduct','toSelProduct');"><b>></b></button>
-												<button type="button" class="btn btn-small" id="moveleft" ng-click="moveItems('toSelProduct','frmAllProduct');" ><b><</b></button>
-												<button type="button" class="btn btn-small" id="moveleftall" ng-click="moveAllItems('toSelProduct','frmAllProduct');"><b><<</b></button>
+												<button type="button" class="btn btn-small" id="moverightall" ng-click="moveAllItems('frmAllProduct','toSelProduct');"><span class="icon-fast-forward"><b>>></b></span></button>
+												<button type="button" class="btn btn-small" id="moveright" ng-click="moveItems('frmAllProduct','toSelProduct');SelprdID();"><span class="icon-fast-forward"><b>></b></span></button>
+												<button type="button" class="btn btn-small" id="moveleft" ng-click="moveItems('toSelProduct','frmAllProduct');SelprdID();" ><span class="icon-fast-forward"><b><</b></span></button>
+												<button type="button" class="btn btn-small" id="moveleftall" ng-click="moveAllItems('toSelProduct','frmAllProduct');"><span class="icon-fast-forward"><b><<</b></span></button>
 												</div>
 												</td>
 												<td>Selected
 												<!-- /.form-group -->
 												<div class="control-group">
 												<span class="input-xlarge"></span>
-												<select id="toSelProduct" multiple="multiple" size="10" style="width:100%;"></select>
+												<select id="toSelProduct" multiple="multiple" size="10" style="width:400px;"></select>
 												</div>
 												<!-- /.form-group -->
 												</td>

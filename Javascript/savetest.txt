@@ -1,0 +1,38 @@
+ $("#toSelChannel option").prop("selected","selected");
+ var cusGroup1ID = $("#toSelChannel").val();
+	if(element(by.model('channel')).click() && cusGroup1ID=='null'){
+	alert('Select Channel');
+	}
+ $("#toSelSubChannel option").prop("selected","selected");
+ var cusGroup5ID = $("#toSelSubChannel").val();
+ $("#toSelRegion option").prop("selected","selected");
+ var cusGroup6ID = $("#toSelRegion").val();
+ $("#toSelCustomer option").prop("selected","selected");
+ var customerID = $("#toSelCustomer").val();
+ $("#toSelOutletType option").prop("selected","selected");
+ var secGroup1ID = $("#toSelOutletType").val();
+ $("#toSelsecCustomer option").prop("selected","selected");
+ var secondaryCustomerID = $("#toSelsecCustomer").val();
+ var SelPrdBlock = $("#prdBlock").val();
+ var SelPrdGroup = $("#prdGroup").val();
+ var SelPrdBrand = $("#prdGroup").val();
+ $("#toSelProduct option").prop("selected","selected");
+ var SelProduct = $("#toSelProduct").val();
+ var promoObjective = $("#promoObjective").val();
+ var promoStructure = $("#promoStructure").val();
+ var promoType = $("#promoType").val();
+ var promoUnit = $("#promoUnit").val();
+ var promoTitle = $("#promoTitle").val();
+if(SelProduct == null){
+	alert("Choose One Product");
+ }else if(promoTitle == ""){
+	alert("Promotion Code cannot be empty");
+ }else{
+ $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'; 
+ $http.post('./test.php', {'SelCusChannel': SelCusChannel,'SelCusSubChannel': SelCusSubChannel,'SelCusRegion': SelCusRegion,'SelCustomer': SelCustomer,'SelPrdBlock': SelPrdBlock,'SelPrdGroup': SelPrdGroup,'SelPrdBrand': SelPrdBrand,'SelProduct': SelProduct,'promoObjective': promoObjective,'promoStructure': promoStructure,'promoType': promoType,'promoUnit': promoUnit,'promoTitle': promoTitle}
+                   ).success(function(data) {
+					//alert(data);
+					window.location = 'Index.html';
+				  });
+ }
+//------------

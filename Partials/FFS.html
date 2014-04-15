@@ -1,7 +1,15 @@
 
 										<p>Requirements</p>
 										<div class="control-group">
-                                          <label class="control-label" for="Volume Requirement">Volume Requirement Retailer</label>
+                                          <label class="control-label" for="selOutlet">Outlet Selection</label>
+                                          <div class="controls">
+                                            <select  class="chzn-select" id="frmAllOutletType"  ng-model="selectedSecCusGroupOption1">
+											<option ng:repeat="SecCusGroup1 in SecCusGroupOption1 | unique:'secGroup1ID'" value="{{SecCusGroup1.secGroup1ID}}">{{SecCusGroup1.secGroup1Desc}}</option>
+											</select>
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="Volume Requirement">Volume Requirement Outlet</label>
                                           <div class="controls">
 										  <table>
 										  <tr>
@@ -18,20 +26,31 @@
                                           </div>
 										</div>
 										<div class="control-group">
-                                          <label class="control-label" for="Display">Display</label>
+                                          <label class="control-label" for="Incentive">Incentive Payout</label>
                                           <div class="controls">
                                             <input class="input-small focused" id="promoDisplay" type="text" value="">
                                           </div>
                                         </div>
-										<legend></legend>
 										<div class="control-group">
+                                          <label class="control-label" for="Display">No. Of Display</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="promoDisplay" type="text" value="">
+                                          </div>
+                                        </div>
+										<!-- <div class="control-group">
                                           <label class="control-label" for="Rebate">Rebate</label>
                                           <div class="controls">
                                             <input class="input-small focused" id="promoRebate" type="text" value="">RM
                                           </div>
+                                        </div> -->
+										<div class="control-group">
+                                          <label class="control-label" for="Rebate%">Sell Out Rebate</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="" type="text" value="">
+                                          </div>
                                         </div>
 										<div class="control-group">
-                                          <label class="control-label" for="Rebate%">Rebate%</label>
+                                          <label class="control-label" for="Rebate%">Sell Out Rebate%</label>
                                           <div class="controls">
                                             <input class="input-small focused" id="" type="text" value="">
                                           </div>
@@ -54,14 +73,20 @@
                                           </div>
 										</div> 
 										<div class="control-group">
-                                          <label class="control-label" for="">Premium Quantity</label>
+                                          <label class="control-label" for="">Display Fee</label>
                                           <div class="controls">
                                             <input class="input-small focused" id="" type="text" value="">
                                           </div>
                                         </div>
-										<legend></legend>
 										<div class="control-group">
-                                          <label class="control-label" for="">Volume Requirement Consumer</label>
+                                          <label class="control-label" for="">Display Percentage</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="" type="text" value="">
+                                          </div>
+                                        </div>
+										<legend>Benefits for all Friso Family Store Outlets </legend>
+										<div class="control-group">
+                                          <label class="control-label" for="">Free goods</label>
                                           <div class="controls">
 										  <table>
 										  <tr>
@@ -78,43 +103,58 @@
                                           </div>
 										</div>
 										<div class="control-group">
-                                          <label class="control-label" for="freegoods">Free goods amount</label>
+                                          <label class="control-label" for="selOutlet">Product Selection</label>
                                           <div class="controls">
-										  <table>
-										  <tr>
-										  <td><input class="input-small focused" id="" type="text" value=""></td>
-										  <td><select class="chzn-select" id="promoFreegoodsamt">
-											  <option>UNIT</option>
-											  <option>KG</option>
-											  <option>MYR</option>
-											  <option>CTN</option>
-											  <option>EA</option>
-											</select></td>
-										  </tr>
-										  </table>
+                                            <select class="chzn-select" id="frmAllOutletType"  ng-model="selectedSecCusGroupOption1">
+											<option ng:repeat="SecCusGroup1 in SecCusGroupOption1 | unique:'secGroup1ID'" value="{{SecCusGroup1.secGroup1ID}}">{{SecCusGroup1.secGroup1Desc}}</option>
+											</select>
                                           </div>
-										</div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="">Volume Requirement Points</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="" type="text" value="">
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="">Consumer Discount</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="" type="text" value="">RM
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="">Consumer Discount%</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="" type="text" value="">%
+                                          </div>
+                                        </div>
 										<legend></legend>
 										<div class="control-group">
-                                          <label class="control-label" for="">Loyalty card printing</label>
+                                          <label class="control-label" for="">Loyalty Card Printing</label>
                                           <div class="controls">
                                             <input class="input-small focused" id="" type="text" value="">RM
                                           </div>
                                         </div>
 										<div class="control-group">
-                                          <label class="control-label" for="">Penetration card printing</label>
+                                          <label class="control-label" for="PC">Redemption Rate</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="" type="text" value="">%
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="PC">POS Material Cost</label>
                                           <div class="controls">
                                             <input class="input-small focused" id="" type="text" value="">RM
                                           </div>
                                         </div>
 										<div class="control-group">
-                                          <label class="control-label" for="">POSM Costs</label>
+                                          <label class="control-label" for="PC">Agency Fees</label>
                                           <div class="controls">
                                             <input class="input-small focused" id="" type="text" value="">RM
                                           </div>
                                         </div>
 										<div class="control-group">
-                                          <label class="control-label" for="PC">Premium Cost</label>
+                                          <label class="control-label" for="PC">Other lumpsum</label>
                                           <div class="controls">
                                             <input class="input-small focused" id="" type="text" value="">RM
                                           </div>

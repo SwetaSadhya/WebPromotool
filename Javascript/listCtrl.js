@@ -76,9 +76,8 @@ function userController($scope,$http) {
         pagingOptions: $scope.pagingOptions,
         columnDefs: [{ field: 'promotionID', displayName: 'PromoID' },
                      { field: 'prmPromotionName', displayName: 'PromoName'},
-                     { field: 'cusCustomerName', displayName: 'CusName',width:600 },
+                     { field: 'cusCustomerName', displayName: 'CusName'},
                      { field: 'cusCustomerClientCode', displayName: 'CusCode'},
-					 { field: 'cusGroup1Desc', displayName: 'Channel' },
-					 { field: 'cusGroup6Desc', displayName: 'Region' }]
+					 { field: 'cusGroup1Desc', displayName: 'Channel' }]
     };   
 };

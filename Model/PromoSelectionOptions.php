@@ -12,10 +12,13 @@ class Model_PromoSelection {
 	public $ptyPromotionTypeParent;
 	public $prmUnitID;
 	public $prmUnitDesc;
+	public $BudgetOwnerID;
+	public $BudgetOwnerClientCode;
+	public $BudgetOwnerClientName;
 
 
 	
-    public function __construct($prmObjectiveID,$prmObjectiveDesc,$promotiontypeID,$ptyPromotionTypeName,$ptyPromotionTypeParent,$prmUnitID,$prmUnitDesc) {
+    public function __construct($prmObjectiveID,$prmObjectiveDesc,$promotiontypeID,$ptyPromotionTypeName,$ptyPromotionTypeParent,$prmUnitID,$prmUnitDesc,$BudgetOwnerID,$BudgetOwnerClientCode,$BudgetOwnerClientName) {
 		
 
 		$this->prmObjectiveID = $prmObjectiveID;
@@ -25,6 +28,9 @@ class Model_PromoSelection {
 		$this->ptyPromotionTypeParent = $ptyPromotionTypeParent;
 		$this->prmUnitID = $prmUnitID;
 		$this->prmUnitDesc = $prmUnitDesc;
+		$this->BudgetOwnerID = $BudgetOwnerID;
+		$this->BudgetOwnerClientCode = $BudgetOwnerClientCode;
+		$this->BudgetOwnerClientName = $BudgetOwnerClientName;
    }
 
 	

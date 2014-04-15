@@ -7,29 +7,50 @@ Customer Controller
 var customerControllers = angular.module('customerControllers', [])// Define new module for our application
 //------------Contoller For Customer Tabs-------------------------//
 customerControllers.controller('CustomerListCtrl', function($scope,$http) {	
+$scope.channel = 'allchannel';
+$scope.subchannel = 'allsubchannel';
+$scope.region = 'allregion';
+$scope.customer = 'allcustomer';
+$scope.outlettype = 'alloutlettype';
+$scope.seccustomer = 'allseccustomer';
 //--------------Customer Group Data-----------//
   $http.get('./Pages/CustomerGroup.php').success(function(custGroupData) {
- //alert(custGroupData);// Bind the data returned from web service to $scope	
+ //alert(custGroupData);// Bind the data returned from web service to $scope
+  $scope.cusGroup = custGroupData;
   $scope.CusGroupOption1 = custGroupData;
   $scope.CusGroupOption5 = custGroupData;
   $scope.CusGroupOption6 = custGroupData;
   });
-   //--------------Customer Group Data-----------//
+//--------------Customer Data---------------//
   $http.get('./Pages/CustomerListing.php').success(function(custListData) {
  //alert(custListData);// Bind the data returned from web service to $scope	
   $scope.CusOptionName = custListData;
   });
- //-------------------Search Text-------------//
-if($scope.custTxtSearch!=""){
-$scope.searchText = function(){
-//alert($scope.custTxtSearch);
-$http.post('./Pages/CustomerListing.php', {'txtSearch': $scope.custTxtSearch}
-                   ).success(function(txtSearch) {
-					$scope.CusOptionName = txtSearch;
-				  });
-}
- }
- //------------Setting Groups w.r.t Group1-------//
+//--------------SecondaryCustomer Group Data-----------//
+  // $http.get('./Pages/SecCustomerListingOpt.php').success(function(secCustListData) {
+ // //alert(secCustListData);// Bind the data returned from web service to $scope	
+  // $scope.SecCusGroupOption1 = secCustListData;
+  // $scope.SecCusOptionName = secCustListData;
+  // });
+//---------------------Show and Hide Div-----------------//
+ $scope.isShown = function(show) {
+	if(show == 'channel'){
+	 return show === $scope.channel;
+	}else if(show == 'subchannel'){
+	 return show === $scope.subchannel;
+	}else if(show == 'region'){
+	 return show === $scope.region;
+	}else if(show == 'customer'){
+	 return show === $scope.customer;
+	}else if(show == 'outlettype'){
+	 return show === $scope.outlettype;
+	}else if(show == 'seccustomer'){
+	 return show === $scope.seccustomer;
+	}else{
+	 return false;
+	}
+};
+//------------Setting Groups w.r.t Group1-------//
 $scope.changeGroupItems1 = function(CusGroupOption1){
 			$("#toSelChannel option").prop("selected","selected");
 			var selectedGroup1Values = $("#toSelChannel").val();

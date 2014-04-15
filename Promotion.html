@@ -5,6 +5,7 @@
   <title>Promotool</title>
   <!-- CSS Files -->
     <link rel="stylesheet" type="text/css" href="./Styles/bootstrap/bootstrap.css" />
+	<link href="./Styles/bootstrap/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" type="text/css" href="./Styles/grid/grid.css" />
 	<link rel="stylesheet" type="text/css" href="./Styles/bootstrap/bootstrap-responsive.min.css" />
 	<link rel="stylesheet" type="text/css" href="./Styles/assets/styles.css" />
@@ -19,29 +20,31 @@
 	<!-- Grid Files -->
 	<script type="text/javascript" src="./Library/grid/plugins/ng-grid-layout.js"></script> 
     <script type="text/javascript" src="./Library/grid/build/ng-grid.debug.js"></script>
+	<script type="text/javascript" src="./Library/barchart/barchart.js"></script>
     <script type="text/javascript" src="./Javascript/listCtrl.js"></script> 
 	<script type="text/javascript" src="./Javascript/customerCtrl.js"></script> 
 	<script type="text/javascript" src="./Javascript/productCtrl.js"></script> 
-	<script type="text/javascript" src="./Javascript/detailCtrl.js"></script> 
+	<script type="text/javascript" src="./Javascript/detailCtrl.js"></script>
+	<script type="text/javascript" src="./Javascript/volumeCtrl.js"></script> 	
     <script type="text/javascript" src="./Javascript/promoCtrl.js"></script>
 </head>
   <body ng-app="myApp" ng-controller="userController">
    <!-- Center Portion -->
-   <form  ng-controller="FrmController">
-  <!--  	<div><pre ng-model="result">{{result}}</pre></div>  -->
+   <form name="promoForm" ng-controller="FrmController">
 	<div class="ui-layout-center">	
+	 <div><input id="promoID" ng-model="promoID" type="hidden" value="{{promoID}}" ></div> 
 	<div>
 		<div ng-controller="TabsDemoCtrl"> 
 		  <tabset>
-		  <tab>
+			<tab>
 			<tab-heading>Customer</tab-heading>
 			<tab-content>
 			<!-- Cutomer Selection-->
-			 <ng-include src="'Partials/Customer.html'"></ng-include>
-				</tab-content>
+		    <ng-include src="'Partials/Customer.html'"></ng-include> 
+			</tab-content>
 			<!-- End -->
 			</tab>
-		   <tab>
+			<tab>
 			<tab-heading>Product</tab-heading>
 			<tab-content>
 			<!-- Product Selection-->
@@ -65,6 +68,22 @@
 			<!-- End -->
 			</tab-content>
 			</tab>
+			<tab>
+			<tab-heading>Budget Review</tab-heading>
+			<tab-content>
+			<!-- Volumes--------->
+			 <ng-include src="'Partials/Budget.html'"></ng-include> 
+			<!-- End -->
+			</tab-content>
+			</tab>
+			<tab>
+			<tab-heading>Budget Overview</tab-heading>
+			<tab-content>
+			<!-- Volumes--------->
+			 <ng-include src="'Partials/BudgetOverview.html'"></ng-include> 
+			<!-- End -->
+			</tab-content>
+			</tab>
 		  </tabset>
 		</div>
 		</div>
@@ -79,7 +98,7 @@
 		<button type="button" class="btn btn-default btn-lg btn-block">Undo</button>
 		<button type="button" class="btn btn-default btn-lg btn-block">Export</button>
 		<button type="button" class="btn btn-default btn-lg btn-block">Set As Default</button>
-		<button type="button" class="btn btn-default btn-lg btn-block" ng-click="CheckValue();" >Save</button>
+		<button type="button" class="btn btn-default btn-lg btn-block" ng-click="checkSubmit();" >Save</button>
 		<button type="button" class="btn btn-default btn-lg btn-block">Close</button>
 		</p>
 		</div> 

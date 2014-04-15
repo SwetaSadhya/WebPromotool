@@ -1,40 +1,33 @@
-
-										<p>Requirements</p>
-										<div class="control-group">
-                                          <label class="control-label" for="Volume Requirement">Volume Requirement Retailer</label>
-                                          <div class="controls">
-                                            <input class="input-small focused" id="promoReq" type="text" value="">RM
-                                          </div>
-                                        </div>
-										<legend></legend>
-										<div class="control-group">
-                                          <label class="control-label" for="Rebate">Rebate</label>
-                                          <div class="controls">
-                                            <input class="input-small focused" id="promoRebate" type="text" value="">RM
-                                          </div>
-                                        </div>
-										<div class="control-group">
-                                          <label class="control-label" for="Rebate%">Rebate%</label>
-                                          <div class="controls">
-                                            <input class="input-small focused" id="" type="text" value="">
-                                          </div>
-                                        </div>
-										<div class="control-group">
-                                          <label class="control-label" for="freegoods">Free goods amount</label>
-                                          <div class="controls">
-										  <table>
-										  <tr>
-										  <td><input class="input-small focused" id="" type="text" value=""></td>
-										  <td><select class="chzn-select" id="promoFreegoodsamt">
-											  <option>UNIT</option>
-											  <option>KG</option>
-											  <option>MYR</option>
-											  <option>CTN</option>
-											  <option>EA</option>
-											</select></td>
-										  </tr>
-										  </table>
-                                          </div>
-										</div>
-										
-										
+<div class="control-group">
+    <label class="control-label" for="tiers">Select number of tiers</label>
+    <div class="controls">
+    <select id="promoTiers"  class="chzn-select" ng-model="selectedpromoTiers" ng-change="Tires();">
+	<option value="0">---select-----</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	</select>
+    </div>
+</div>
+<div class="control-group">
+<table cellpadding="15" cellspacing="15" align="left" border="0">
+                        <tr>
+                        <td><label>Product Group</label></td>
+                        <td><label>Growth Target</label></td>
+						<td><label>Target%</label></td>
+						<td><label>PayOut%</label></td>
+					  </tr>
+					  <tr ng-model="range" ng-repeat="n in [range] | makeRange">
+						<td><select id="frmpromoProductValue" class="chzn-select" ng-model="selectedpromoProductValue">	
+						    <option value="0">---Select All----------</option>
+							<option ng:repeat="PrdName in promoProductValue | unique:'ProductID'" value="{{PrdName.ProductID}}">{{PrdName.ProductName}}</option>
+							</select></td>
+						<td><input type="textbox" class="input-small focused" id="Title"></td>
+						<td><input type="textbox" class="input-small focused" id="Title"></td>
+                        <td><input type="textbox" class="input-small focused" id="Title"></td>
+					  </tr>
+					</table>
+                                    
+</div>

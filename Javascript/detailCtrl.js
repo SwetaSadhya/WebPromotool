@@ -7,20 +7,75 @@ Detail Controller
 var detailControllers = angular.module('detailControllers', [])// Define new module for our application
 //------------Contoller For Customer Tabs-------------------------//
 detailControllers.controller('DetailCtrl', function($scope,$http) {	
-$scope.promoStructure = 1;
-$scope.promoTypeID = "All";
-$scope.promoValueText = "All";
+$scope.selectedpromoObjective = 0;
+$scope.selectedpromoStructure = 'select';
+$scope.selectedpromoParent = 0;
+$scope.selectedpromoType = 0;
+$scope.selectedpromoUnit = 0;
+$scope.selectedpromoBudgetOwner = 0;
+$scope.promoProductType = "All";
+$scope.promoProductValueText = "All";
+$scope.selectedpromoPrdAll = 0;
+$scope.selectedpromoPrdProductID = 0;
+$scope.selectedpromoPrdBuildingBlock = 0;
+$scope.selectedpromoPrdProductGroup = 0;
+$scope.selectedpromoPrdBrand = 0;
+$scope.selectedpromoTiers = 0;
+$scope.pageName = "Partials/Discounts.html";
 $(".datepicker").datepicker();
+//---------------Display Type Text--------------//
 $scope.changeValueText = function(){
-var promoTypeID = $("#promoTypeID").val();
-$scope.promoValueText = promoTypeID;
+var promoProductType = $("#promoProductType").val();
+$scope.promoProductValueText = promoProductType;
+if(promoProductType=='ProductID'){
+ $scope.ALL = true;
+ $scope.ProductID = true;
+ $scope.BuildingBlock = false;
+ $scope.ProductGroup = false;
+ $scope.Brand = false;
+}else if(promoProductType=='BuildingBlock'){
+ $scope.ALL = true;
+ $scope.BuildingBlock = true;
+ $scope.ProductID = false;
+ $scope.ProductGroup = false;
+ $scope.Brand = false;
+}else if(promoProductType=='ProductGroup'){
+ $scope.ALL = true;
+ $scope.ProductGroup = true;
+ $scope.BuildingBlock = false;
+ $scope.ProductID = false;
+ $scope.Brand = false;
+}else if(promoProductType=='Brand'){
+ $scope.ALL = true;
+ $scope.Brand = true;
+ $scope.ProductGroup = false;
+ $scope.BuildingBlock = false;
+ $scope.ProductID = false;
+}else{
+$scope.ALL = false;
+$scope.ProductID = false;
+$scope.BuildingBlock = false;
+$scope.ProductGroup = false;
+$scope.Brand = false;
 }
-//--------------Product Detail Data-----------//
-  $http.get('./Pages/ProductGroup.php').success(function(productListingforType) {
- //alert(productListingforType);// Bind the data returned from web service to $scope
-  $scope.selectedPrdProductType = 0;
-  $scope.PrdProductValue = productListingforType;
-  });
+}
+//--------------Structure On change-----------//
+ $scope.changeStructure = function(){
+ var promoStructure = $("#promoStructure").val();
+	if(promoStructure == 0){
+	 $scope.promoDetails = false;
+	 $scope.TypeUnit = true;
+	 $scope.Parent = false;
+	 }else if(promoStructure == 2){
+	 $scope.Parent = true;
+	 $scope.promoDetails = true;
+	 $scope.TypeUnit = false;
+	 }else{
+	 $scope.promoDetails = false;
+	 $scope.TypeUnit = false;
+	 $scope.Parent = false;
+	 }
+ }
 //--------------Promo Objective Data-----------//
   $http.get('./Pages/PromoObjectiveSelection.php').success(function(ObjectiveData) {
  //alert(ObjectiveData);// Bind the data returned from web service to $scope
@@ -36,126 +91,42 @@ $scope.promoValueText = promoTypeID;
  //alert(TypeData);// Bind the data returned from web service to $scope
 		$scope.Unit = UnitData;
   });
- //---------------Onchange---------------//
+//--------------Promo UnitData-----------//
+  $http.get('./Pages/PromoBudgetOwner.php').success(function(BudgetOwnerData) {
+ //alert(BudgetOwnerData);// Bind the data returned from web service to $scope
+		$scope.BudgetOwner = BudgetOwnerData;
+  });
+
+ //---------------On change---------------//
  $scope.changeDiv = function(){
- var value = ''+$scope.promoType+'';
+ var promoType = $("#promoType").val();
+ var value = ''+promoType+'';
  var promoType = value.split(",");
  var promoMainType = promoType[1].trim();
  var promoTypeName = promoType[2].trim();
- //alert(promoTypeName);
- if(promoMainType == 'Display'){
- $scope.Display = true;
- $scope.Discounts = true;
- $scope.Freegoods = false;
- $scope.Lumpsum = false;
- $scope.MixnMatch = false;
- $scope.MixnMatchFOC = false;
- $scope.promoTypeParent = promoTypeName;
- $scope.Stepdiscount = false;
- $scope.StepdiscountFOC =false;
- $scope.FFS = false;
- $scope.KRIS = false;
- }else if(promoMainType =='Lumpsum'){
- $scope.Lumpsum = true;
- $scope.Discounts = true;
- $scope.Freegoods = false;
- $scope.Display = false;
- $scope.MixnMatch = false;
- $scope.MixnMatchFOC = false;
- $scope.Stepdiscount = false;
- $scope.StepdiscountFOC =false
- $scope.FFS = false;
- $scope.KRIS = false;
- }else if(promoMainType =='MixnMatch'){
- $scope.MixnMatch = true;
- $scope.Discounts = true;
- $scope.Freegoods = false;
- $scope.Display = false;
- $scope.Lumpsum = false;
- $scope.MixnMatchFOC = false;
- $scope.Stepdiscount = false;
- $scope.StepdiscountFOC =false;
- $scope.FFS = false;
- $scope.KRIS = false;
- }else if(promoMainType =='Freegoods'){
- $scope.Freegoods = true;
- $scope.Discounts = true;
- $scope.Display = false;
- $scope.Lumpsum = false;
- $scope.MixnMatch = false;
- $scope.MixnMatchFOC = false;
- $scope.Stepdiscount = false;
- $scope.StepdiscountFOC =false;
- $scope.KRIS = false;
- $scope.FFS = false;
- }else if(promoMainType =='MixnMatchFOC'){
- $scope.MixnMatchFOC = true;
- $scope.Discounts = true;
- $scope.Display = false;
- $scope.Lumpsum = false;
- $scope.MixnMatch = false;
- $scope.Freegoods = false;
- $scope.Stepdiscount = false;
- $scope.StepdiscountFOC =false;
- $scope.FFS = false;
- $scope.KRIS = false;
- }else if(promoMainType =='Stepdiscount'){
- $scope.Stepdiscount = true;
- $scope.Discounts = true;
- $scope.Display = false;
- $scope.Lumpsum = false;
- $scope.MixnMatch = false;
- $scope.Freegoods = false;
- $scope.MixnMatchFOC =false;
- $scope.StepdiscountFOC =false;
- $scope.FFS = false;
- $scope.KRIS = false;
- }else if(promoMainType =='StepdiscountFOC'){
- $scope.StepdiscountFOC = true;
- $scope.Discounts = true;
- $scope.Display = false;
- $scope.Lumpsum = false;
- $scope.MixnMatch = false;
- $scope.Freegoods = false;
- $scope.MixnMatchFOC =false;
- $scope.Stepdiscount = false;
- $scope.FFS = false;
- $scope.KRIS = false;
- }else if(promoMainType =='FFS'){
- $scope.FFS = true;
- $scope.Discounts = true;
- $scope.Display = false;
- $scope.Lumpsum = false;
- $scope.MixnMatch = false;
- $scope.Freegoods = false;
- $scope.MixnMatchFOC =false;
- $scope.Stepdiscount = false;
- $scope.StepdiscountFOC = false;
- $scope.KRIS = false;
- }else if(promoMainType =='KRIS'){
- $scope.KRIS = true;
- $scope.Discounts = true;
- $scope.Display = false;
- $scope.Lumpsum = false;
- $scope.MixnMatch = false;
- $scope.Freegoods = false;
- $scope.MixnMatchFOC =false;
- $scope.Stepdiscount = false;
- $scope.StepdiscountFOC = false;
- $scope.FFS = false;
+ if(promoMainType!=""){
+  $scope.promoDetails = true;
+  $scope.promoDetaildiv = true;
+  $scope.pageName = 'Partials/'+promoMainType+'.html';
  }else{
-  $scope.Discounts = false;
-  $scope.Lumpsum = false;
-  $scope.Display = false;
-  $scope.Freegoods = false;
-  $scope.MixnMatch = false;
-  $scope.MixnMatchFOC = false;
-  $scope.Stepdiscount = false;
-  $scope.StepdiscountFOC =false;
-  $scope.FFS = false;
-  $scope.KRIS = false;
+  $scope.promoDetails = false;
+  $scope.promoDetaildiv = false;
+ }
+ if(promoTypeName!=="" && promoTypeName == "Gondola"){
+ $scope.displayGondola = true;
+ }else{
+ $scope.displayGondola = false;
  }
 }
+//------------------------KRIS----------------------------------//
+$scope.Tires = function(){
+$("#toSelProduct option").prop("selected","selected");
+ var selPrdID = $("#toSelProduct").val();
+ var selTiers = $("#promoTiers").val();
+ var Total = selTiers * selPrdID.length;
+ $scope.range = Total;
+}
+//--------------------Excluded Included Radio------------//
  $scope.SelProduct = function(){
  $("#toExProduct option").prop("selected","selected");
  var toExProduct = $("#toExProduct").val();
@@ -165,6 +136,14 @@ $scope.promoValueText = promoTypeID;
  alert("Cannot Select Same Product");
  $("#toInlProduct option:selected").appendTo("#frmInlProduct");
  }
+ }
+//--------------Summary For Discounts-----------//
+$scope.summaryDiscount = function() {
+alert($scope.promoID);
+$http.post('./Pages/summaryDetail.php', {'promoID': $scope.promoID}).success(function(getData) {
+			alert(getData);// Bind the data returned from web service to $scope
+			$scope.inSide=getData;
+	});
  }
 //-------------------------------------------------------
 });

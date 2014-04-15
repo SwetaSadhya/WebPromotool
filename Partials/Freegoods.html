@@ -92,11 +92,11 @@
 												<tr>
 													<td>
 													   <tr>
-												<td>Avaiable
+												<td>Avaiable <input class="input-xlarge focused" id="prdSearchIn" type="text" ng-model="prdSearchIn">
 												<!-- /.form-group -->
 												<div class="control-group">
 												<select id="frmInlProduct" multiple="multiple" size="10" style="width:100%;"  ng-model="selectedPrdOptionName">	
-												<option ng:repeat="PrdName in PrdOptionName | unique:'ProductID'" value="{{PrdName.prdID}}">{{PrdName.prdProductClientCode}}  {{PrdName.ProductName}}</option>
+												<option ng:repeat="PrdName in PrdOptionName | unique:'ProductID' | filter:prdSearchIn " value="{{PrdName.ProductID}}">{{PrdName.prdProductClientCode}}  {{PrdName.ProductName}}</option>
 												</select>
 												</div>
 												<!-- /.form-group -->
@@ -162,11 +162,11 @@
 												<tr>
 													<td>
 													   <tr>
-												<td>Avaiable
+												<td>Avaiable <input class="input-xlarge focused" id="prdSearchEx" type="text" ng-model="prdSearchEx">
 												<!-- /.form-group -->
 												<div class="control-group">
 												<select id="frmExProduct" multiple="multiple" size="10" style="width:100%;"  ng-model="selectedPrdOptionName">	
-												<option ng:repeat="PrdName in PrdOptionName | unique:'ProductID'" value="{{PrdName.prdID}}">{{PrdName.prdProductClientCode}}  {{PrdName.ProductName}}</option>
+												<option ng:repeat="PrdName in PrdOptionName | unique:'ProductID' | filter:prdSearchEx " value="{{PrdName.ProductID}}">{{PrdName.prdProductClientCode}}  {{PrdName.ProductName}}</option>
 												</select>
 												</div>
 												<!-- /.form-group -->
