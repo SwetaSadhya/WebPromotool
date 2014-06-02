@@ -1,74 +1,52 @@
+<!doctype html>
+<html ng-app="plunker">
+  <head>
+   <!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" href="./Styles/bootstrap/bootstrap.css" />
+	<link href="./Styles/bootstrap/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" type="text/css" href="./Styles/grid/grid.css" />
+	<link rel="stylesheet" type="text/css" href="./Styles/bootstrap/bootstrap-responsive.min.css" />
+	<link rel="stylesheet" type="text/css" href="./Styles/assets/styles.css" />
+	<link rel="stylesheet" type="text/css" href="./Styles/assets/datepicker.css" />
+	<!-- Jquery & Angular  Files -->
+    <script type="text/javascript" src="./Library/jquery/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="./Library/jquery/jquery-ui-1.9.1.custom.min.js"></script> 
+    <script type="text/javascript" src="./Library/jquery/jquery.layout-latest.min.js"></script>  
+    <script type="text/javascript" src="./Library/angular/angular.js"></script>
+	<script type="text/javascript" src="./Library/bootstrap/bootstrap-tab.js"></script>
+	<script type="text/javascript" src="./Library/bootstrap/bootstrap-datepicker.js"></script>
+	<!-- Grid Files -->
+	<script type="text/javascript" src="./Library/grid/plugins/ng-grid-layout.js"></script> 
+    <script type="text/javascript" src="./Library/grid/build/ng-grid.debug.js"></script>
+	<script type="text/javascript" src="./Library/barchart/barchart.js"></script>
+    <script type="text/javascript" src="./Javascript/listCtrl.js"></script> 
+	<script type="text/javascript" src="./Javascript/customerCtrl.js"></script> 
+	<script type="text/javascript" src="./Javascript/productCtrl.js"></script> 
+	<script type="text/javascript" src="./Javascript/detailCtrl.js"></script>
+	<script type="text/javascript" src="./Javascript/volumeCtrl.js"></script> 	
+    <script type="text/javascript" src="./Javascript/promoCtrl.js"></script>
+	<script src="example.js"></script>
+  </head>
+  <body>
+
+<div ng-controller="ModalDemoCtrl">
+    <script type="text/ng-template" id="123.html">
+        <div class = "modal-header">
+            <h3>Promotion Details</h3>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+    <button class="btn btn-default" ng-click="open()">Open me!</button>
+    <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+</div>
 <?php
-$data = json_decode(file_get_contents("php://input"));
-//$request = json_decode($data);
-$SelCusChannel = $data->SelCusChannel;
-$SelCusSubChannel = $data->SelCusSubChannel;
-$SelCusRegion = $data->SelCusRegion;
-$SelCustomer = $data->SelCustomer;
-$SelPrdBlock = $data->SelPrdBlock;
-$SelPrdGroup = $data->SelPrdGroup;
-$SelPrdBrand = $data->SelPrdBrand;
-$SelProduct = $data->SelProduct;
-$promoObjective = $data->promoObjective;
-$promoStructure = $data->promoStructure;
-$promoType = $data->promoType;
-$promoUnit = $data->promoUnit;
-$promoTitle = $data->promoTitle;
-print_r($data );
-$ArrCus = array();
-$ArrSelCusChannel = array();
-$ArrSelCusSubChannel = array();
-$ArrSelCusRegion = array();
-$ArrPrd = array();
-$con = mysql_connect('localhost', 'root', '');
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-$db_selected = mysql_select_db("promotool",$con);
 
-$query = "INSERT INTO tblPromotion VALUES ('','','".$promoTitle."','','".$promoType."','','','".$promoObjective."','','','".$promoUnit."','','','1','','','','','','','','','','','','','')";	
-//$result = mysql_query($query,$con);
-$promoID = mysql_insert_id();
- 
-$ArrCus = $SelCustomer;
-$comma_Customer = implode(",", array_values($ArrCus));
-$ArrSelCusChannel = $SelCusChannel;
-$ArrChannel = implode(",",array_values($ArrSelCusChannel));
-$ArrSelCusSubChannel = $SelCusSubChannel;
-$ArrSubChannel = implode(",",array_values($ArrSelCusSubChannel));
-$ArrSelCusRegion = $SelCusRegion;
-$ArrRegion = implode(",",array_values($ArrSelCusRegion));
-for($ch=0;$ch<count($ArrSelCusChannel);++$ch){
-$channel = $ArrSelCusChannel[$ch];
-$queryChannel = "INSERT INTO tblPromotionCustomerSelection VALUES ('','".$promoID."','','','','','','','','','','','".$channel."','','','','','','','','','','','','')";
-//echo $queryChannel;
-$result = mysql_query($queryChannel,$con);
-}
-for($sb=0;$sb<count($ArrSelCusSubChannel);++$sb){
-$subchannel = $ArrSelCusSubChannel[$sb];
-$querySubChannel = "INSERT INTO tblPromotionCustomerSelection VALUES ('','".$promoID."','','','','','','','','','','','','','','','".$subchannel."','','','','','','','','')";
-//echo $querySubChannel;
-//$result = mysql_query($querySubChannel,$con);
-}
-for($r=0;$r<count($ArrSelCusRegion);++$r){
-$region = $ArrSelCusRegion[$r];
-$queryRegion = "INSERT INTO tblPromotionCustomerSelection VALUES ('','".$promoID."','','','','','','','','','','','','','','','','".$region."','','','','','','','')";
-//echo $queryRegion;
-//$result = mysql_query($queryRegion,$con);
-}
-for($c=0;$c<count($ArrCus);++$c){
-$customer = $ArrCus[$c];
-$queryCustomer = "INSERT INTO tblPromotionCustomerSelection VALUES ('','".$promoID."','','','','','','','','','','','','','','','','','','".$customer."','','','','','')";
-//echo $queryCustomer;
-//$result = mysql_query($queryCustomer,$con);
-}
-$ArrPrd = $SelProduct; 
-for($j=0;$j<count($ArrPrd);++$j){
-$Product = $ArrPrd[$j];
-$query3 = "INSERT INTO tblPromotionProductSelection VALUES ('','".$promoID."','','','','".$SelPrdBrand."','','','".$SelPrdBlock."','','".$SelPrdGroup."','','','','','','','','','','".$Product."')";	
-//$result = mysql_query($query3,$con);
-}
-
-//echo "Promotion is been Saved";
 ?>
+  </body>
+</html>

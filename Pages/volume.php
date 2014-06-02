@@ -25,13 +25,13 @@ $prmEndDate = $endDate->format('Y-m-d');
 $date = new DateTime($prmStartDate);
 $yearAgo = $date->modify('-1 year')->format('Y-m-d');
 
-$datetime1 = new DateTime($prmStartDate);
-$datetime2 = new DateTime($prmEndDate);
-$difference = $datetime1->diff($datetime2);
-$dateDiff = $difference->d;
+$timestamp_start = strtotime($prmStartDate);
+$timestamp_end = strtotime($prmEndDate);
+$difference = abs($timestamp_end - $timestamp_start);
+$dateDiff = floor($difference/(60*60*24));
 
 
-$Baseline = "";
+$Baseline = 0;
 $totalQty = ""; 
 $Qty1 = "";
 $Qty2 = "";
@@ -62,22 +62,36 @@ if(isset($condition) && $condition!="" )
 	//echo $query;
 	$result = mysql_query($query);
 	while($row = mysql_fetch_array($result)){
+	//echo $row['prdGroup6ID']."++".$prmUnit;
 	if($row['prdGroup6ID']== $prmUnit){
 	$Qty1+= $row['prtQuantity'];
-	}
-	if($row['prdGroup6ID']!= $prmUnit){
-	$query2 = "SELECT * FROM tblPrdGroup17 where prdGroup17ID=".$row['prdGroup6ID']."";//note: take prd id check in prd table gp17, get gp17 id frm prd table  check it in tbl prdgp17
+	}else{
+	$query2 = "SELECT p.ProductID, p.prdGroup17ID, g17.prdGroup17ClientID FROM tblProduct p
+	INNER JOIN tblPrdGroup17 g17 ON p.prdGroup17ID = g17.prdGroup17ID where p.ProductID = ".$row['ProductID']."";
 	$result2 = mysql_query($query2);
 	while($row2 = mysql_fetch_array($result2)){
 	$prdGroup17ClientID = $row2['prdGroup17ClientID'];
+	$Qty2+= $row['prtQuantity'] * $prdGroup17ClientID;
 	}
-	$Qty2+= $row['prtQuantity'] * $row2['prdGroup17ClientID'];
 	}
 	}
 	$totalQty = $Qty1 + $Qty2;
-	$Baseline = ($totalQty/365)*$dateDiff;
+	$Baseline = ($totalQty/365) * $dateDiff;
+	if(isset($Baseline) && $Baseline!=0)
+	{
+	$arr = array('baseline' => round($Baseline), 'error' => '');
+	$jsn = json_encode($arr);
+    print_r($jsn);
+	}else if($dateDiff == 0){
+	$arr = array('baseline' => '0', 'error' => 'Start Date and End Date can not be same.' );
+	$jsn = json_encode($arr);
+    print_r($jsn);
+	}else{
+	$arr = array('baseline' => '0', 'error' => 'No records between '.$prmStartDate.' to '.$yearAgo);
+	$jsn = json_encode($arr);
+    print_r($jsn);
+	}
 	
-	echo round($Baseline);
 }
 ?>
 

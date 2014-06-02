@@ -7,25 +7,39 @@ Customer Controller
 var customerControllers = angular.module('customerControllers', [])// Define new module for our application
 //------------Contoller For Customer Tabs-------------------------//
 customerControllers.controller('CustomerListCtrl', function($scope,$http) {	
-$scope.channel = 'allchannel';
-$scope.subchannel = 'allsubchannel';
-$scope.region = 'allregion';
-$scope.customer = 'allcustomer';
-$scope.outlettype = 'alloutlettype';
-$scope.seccustomer = 'allseccustomer';
+//------------Declare--------------------------//
+$scope.custGroup = [];
+$scope.custData = [];
+//--------------------Controls-------------------//
+ $http.get('./Pages/PriCustGroup.php').success(function(response) {
+ //alert(response);// Bind the data returned from web service to $scope
+   $scope.custGroup = response;
+    for(var i=0;i<$scope.custGroup.length;i++){
+	
+	 if($scope.custGroup[i].Group == 'CusGroup1'){
+		$scope.txtCusGroup1 = "Distributed Channel"
+	    $scope.CusGroup1 = true; 
+		}
+	 if ($scope.custGroup[i].Group == 'CusGroup5'){
+	    $scope.txtCusGroup5 = $scope.custGroup[i].GroupName;
+		$scope.CusGroup5 = true; 
+		}
+	 if ($scope.custGroup[i].Group == 'CusGroup6'){
+		$scope.txtCusGroup6 = $scope.custGroup[i].GroupName;
+		$scope.CusGroup6 = true; 
+		}
+	}
+  });
 //--------------Customer Group Data-----------//
-  $http.get('./Pages/CustomerGroup.php').success(function(custGroupData) {
- //alert(custGroupData);// Bind the data returned from web service to $scope
-  $scope.cusGroup = custGroupData;
-  $scope.CusGroupOption1 = custGroupData;
-  $scope.CusGroupOption5 = custGroupData;
-  $scope.CusGroupOption6 = custGroupData;
+  $http.get('./Pages/CustomerGroup.php').success(function(response) {
+ //alert(response);// Bind the data returned from web service to $scope
+   $scope.custData = response;
   });
 //--------------Customer Data---------------//
-  $http.get('./Pages/CustomerListing.php').success(function(custListData) {
- //alert(custListData);// Bind the data returned from web service to $scope	
-  $scope.CusOptionName = custListData;
-  });
+  // $http.get('./Pages/CustomerListing.php').success(function(custListData) {
+ // //alert(custListData);// Bind the data returned from web service to $scope	
+  // $scope.CusOptionName = custListData;
+  // });
 //--------------SecondaryCustomer Group Data-----------//
   // $http.get('./Pages/SecCustomerListingOpt.php').success(function(secCustListData) {
  // //alert(secCustListData);// Bind the data returned from web service to $scope	
@@ -34,13 +48,17 @@ $scope.seccustomer = 'allseccustomer';
   // });
 //---------------------Show and Hide Div-----------------//
  $scope.isShown = function(show) {
-	if(show == 'channel'){
-	 return show === $scope.channel;
-	}else if(show == 'subchannel'){
-	 return show === $scope.subchannel;
-	}else if(show == 'region'){
-	 return show === $scope.region;
+	if(show == 'cusGroup1'){
+	 $scope.AviCusGroup1 = $scope.custData;
+	 return show === $scope.cusGroup1;
+	}else if(show == 'cusGroup5'){
+	 $scope.AviCusGroup5 = $scope.custData;
+	 return show === $scope.cusGroup5;
+	}else if(show == 'cusGroup6'){
+	 $scope.AviCusGroup6 = $scope.custData;
+	 return show === $scope.cusGroup6;
 	}else if(show == 'customer'){
+	 $scope.AviCus = $scope.custData;
 	 return show === $scope.customer;
 	}else if(show == 'outlettype'){
 	 return show === $scope.outlettype;
@@ -50,69 +68,48 @@ $scope.seccustomer = 'allseccustomer';
 	 return false;
 	}
 };
-//------------Setting Groups w.r.t Group1-------//
-$scope.changeGroupItems1 = function(CusGroupOption1){
-			$("#toSelChannel option").prop("selected","selected");
-			var selectedGroup1Values = $("#toSelChannel").val();
-			$("#toSelSubChannel option").prop("selected","selected");
-			var selectedGroup2Values = $("#toSelSubChannel").val();
-			$("#toSelRegion option").prop("selected","selected");
-			var selectedGroup3Values = $("#toSelRegion").val();
-			//---------Selection Of GroupCombo Box--------// 
-			$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'; 
-			$http.post('./Pages/CustomerHierarchyListing.php', {'data1': selectedGroup1Values,'data2': selectedGroup2Values,'data3': selectedGroup3Values}
-                   ).success(function(cusHierarchyDesc1) {
-				   if(cusHierarchyDesc1.length=='1')
-				   {
-					$scope.CusGroupOption5 = CusGroupOption1;
-					$scope.CusGroupOption6 = CusGroupOption1;
-					$scope.CusOptionName = CusGroupOption1;
-					}else{
-					$scope.CusGroupOption5 = cusHierarchyDesc1;
-					$scope.CusGroupOption6 = cusHierarchyDesc1;
-					$scope.CusOptionName = cusHierarchyDesc1;
-					}
-				  }); 
-}  
-//------------Setting Groups w.r.t Group2-------//
-$scope.changeGroupItems2 = function(CusGroupOption5){
-			$("#toSelChannel option").prop("selected","selected");
-			var selectedGroup1Values = $("#toSelChannel").val();
-			$("#toSelSubChannel option").prop("selected","selected");
-			var selectedGroup2Values = $("#toSelSubChannel").val();
-			$("#toSelRegion option").prop("selected","selected");
-			var selectedGroup3Values = $("#toSelRegion").val();
-			//---------Selection Of GroupCombo Box--------// 
-			$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'; 
-			$http.post('./Pages/CustomerHierarchyListing.php', {'data1': selectedGroup1Values,'data2': selectedGroup2Values,'data3': selectedGroup3Values}
-                   ).success(function(cusHierarchyDesc2) {
-				   if(cusHierarchyDesc2.length=='1'){
-				   $scope.CusGroupOption6 = CusGroupOption5;
-				   $scope.CusOptionName = CusGroupOption5;
-				   }else{
-				   $scope.CusOptionName = cusHierarchyDesc2;
-				   $scope.CusGroupOption6 = cusHierarchyDesc2;
-				   }
-				  });
-}  
-//------------Setting Groups w.r.t Group2-------//
-$scope.changeGroupItems3 = function(CusGroupOption6){
-			$("#toSelChannel option").prop("selected","selected");
-			var selectedGroup1Values = $("#toSelChannel").val();
-			$("#toSelSubChannel option").prop("selected","selected");
-			var selectedGroup2Values = $("#toSelSubChannel").val();
-			$("#toSelRegion option").prop("selected","selected");
-			var selectedGroup3Values = $("#toSelRegion").val();
-			//---------Selection Of GroupCombo Box--------// 
-			$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'; 
-			$http.post('./Pages/CustomerHierarchyListing.php', {'data1': selectedGroup1Values,'data2': selectedGroup2Values,'data3': selectedGroup3Values}
-                   ).success(function(cusHierarchyDesc3) {
-				   if(cusHierarchyDesc3.length=='1'){
-					$scope.CusOptionName = CusGroupOption6;
-					}else{
-					$scope.CusOptionName = cusHierarchyDesc3;
-					}
-				  });
-}
+//------ Moving Data MultipleBox----------------//
+ $scope.moveCustomers = function(sourceid, destinationid) {
+  $("#"+sourceid+"  option:selected").appendTo("#"+destinationid);
+  $("#"+destinationid).prop("selected","selected");
+  this.cusFiltering();
+ };
+  $scope.moveAllCustomers = function(sourceid, destinationid) {	
+   $("#"+sourceid+"  option").appendTo("#"+destinationid);
+   $("#"+destinationid).prop("selected","selected");
+   this.cusFiltering();
+ };
+//----------------------Filtering-----------------------------//   
+   $scope.cusFiltering = function() {
+	  $("#SelGroup1 option").prop("selected","selected");
+	  var cusSelGroup1 = $("#SelGroup1").val();
+	  $("#SelGroup5 option").prop("selected","selected");
+	  var cusSelGroup5 = $("#SelGroup5").val();
+	  $("#SelGroup6 option").prop("selected","selected");
+	  var cusSelGroup6 = $("#SelGroup6").val();
+	  $scope.SelGroup1 = cusSelGroup1;
+	  $scope.SelGroup5 = cusSelGroup5;
+	  $scope.SelGroup6 = cusSelGroup6;
+	}
+//-------------------All Checked ---------------------------//
+	$scope.allValue = function() {
+		 if($scope.cusGroup1=="allcusGroup1"){
+		 $("#SelGroup1 option").appendTo("#AviGroup1");
+		 $scope.SelGroup1 = 0;
+		 $scope.SelGroup5 = 0;
+		 $scope.SelGroup6 = 0;
+		 }
+		 if($scope.cusGroup5=="allcusGroup5"){
+		 $("#SelGroup5 option").appendTo("#AviGroup5");
+		 $scope.SelGroup5 = 0;
+		 $scope.SelGroup6 = 0;
+		 }
+		 if($scope.cusGroup6=="allcusGroup6"){
+		 $("#SelGroup6 option").appendTo("#AviGroup6");
+		 $scope.SelGroup6 = 0;
+		 }
+	};
+
+
 //-------------------------------------------------------
 });

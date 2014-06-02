@@ -1,41 +1,40 @@
 <div class="control-group">
                                           <label class="control-label" for="DF"  ng-model="promoTypeParent">{{promoTypeParent}} Fee</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="promoTypeParent" type="text" value=""  onmouseover="changeText('1');" onmouseout="changeTextout('1');">RM
+                                            <input class="input-small focused" id="promoDisplayFee" type="text" onmouseover="changeText('1');" onmouseout="changeTextout('1');"> RM
                                           </div>
                                         </div>
 										<div id="displayGondola" ng-show="displayGondola">
 										<div class="control-group">
                                           <label class="control-label" for="POS">No. Of Displays</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="" type="text" value="">
+                                            <input class="input-small focused" id="promoDisplayNumber" type="text">
                                           </div>
                                         </div>
 										</div>
 										<div class="control-group">
                                           <label class="control-label" for="POS">POS Material Costs</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="" type="text" value="">RM
+                                            <input class="input-small focused" id="promoPOSMaterialcost" type="text"> RM
                                           </div>
                                         </div>
 										<div class="control-group">
                                           <label class="control-label" for="Free">Number OF Free CTN</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="promoFreeCTN" type="text" value=""   onmouseover="changeText('2');" onmouseout="changeTextout('1');">
+                                            <input class="input-small focused" id="promoNumberofFreeCTN" type="text" onmouseover="changeText('2');" onmouseout="changeTextout('1');">
                                           </div>
                                         </div>
 <script>
 function changeText(){
-if($('#promoTypeParent').val()!=''){
-$("#promoFreeCTN").prop('disabled', true);
+if($('#promoDisplayFee').val()!=''){
+$("#promoNumberofFreeCTN").prop('disabled', true);
 }else{
-$("#promoFreeCTN").prop('disabled', false);
+$("#promoNumberofFreeCTN").prop('disabled', false);
 }
-if($('#promoFreeCTN').val()!=''){
-$("#promoTypeParent").prop('disabled', true);
+if($('#promoNumberofFreeCTN').val()!=''){
+$("#promoDisplayFee").prop('disabled', true);
 }else{
-$("#promoTypeParent").prop('disabled', false);
+$("#promoDisplayFee").prop('disabled', false);
 }
 }
-
 </script>

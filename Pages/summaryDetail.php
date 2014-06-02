@@ -1,25 +1,19 @@
 <?php
-$con = mysql_connect('localhost', 'root', '');
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-$db_selected = mysql_select_db("promotool",$con);
+$con = new mysqli('localhost', 'root', '', 'promotool');
 
 $data = file_get_contents("php://input");
 $request = json_decode($data);
-
-$promoID = $request->promoID;
-
 $arrPromoDetail = array();
 
-if(isset($promoID) && $promoID!=""){
-	$query = "SELECT * FROM tblPromotionDetails WHERE PromotionID = '".$promoID."'";
+if(isset($request->promoID) && $request->promoID!=""){
+$promoID = $request->promoID;
+
+	$query = "SELECT * FROM tblPromotionDetails Where PromotionID = '".$promoID."' ";
 	//echo $query;
-	$result = mysql_query($query);
+	$result = $con->query($query);
 	$data = array();
 	$x=0;
-	while($row = mysql_fetch_array($result)){
+	while($row = $result->fetch_object()){
 	$data[$x]['detVolumeReq']= $row->detVolumeReq; 
 	$data[$x]['detRebate']= $row->detRebate; 	
     $data[$x]['detPremiumMechanic']= $row->detPremiumMechanic;
@@ -30,7 +24,7 @@ if(isset($promoID) && $promoID!=""){
 	$data[$x]['detPOSMaterialcost']= $row->detPOSMaterialcost; 
     $x++;
 	}
-	print_r($data);
-}
+	echo json_encode($data);
+	}
 ?>
 

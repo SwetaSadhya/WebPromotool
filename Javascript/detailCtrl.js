@@ -4,7 +4,7 @@ To Fetch Promotion Detail data on
 New Promotion Page 
 Detail Controller
  */
-var detailControllers = angular.module('detailControllers', [])// Define new module for our application
+var detailControllers = angular.module('detailControllers', ['ui.bootstrap'])// Define new module for our application
 //------------Contoller For Customer Tabs-------------------------//
 detailControllers.controller('DetailCtrl', function($scope,$http) {	
 $scope.selectedpromoObjective = 0;
@@ -16,66 +16,16 @@ $scope.selectedpromoBudgetOwner = 0;
 $scope.promoProductType = "All";
 $scope.promoProductValueText = "All";
 $scope.selectedpromoPrdAll = 0;
+$scope.selectedpromoTiers = 0;
+$scope.InputPrd = 0;
+$scope.selectedpromoPrdProductName = 0;
 $scope.selectedpromoPrdProductID = 0;
 $scope.selectedpromoPrdBuildingBlock = 0;
 $scope.selectedpromoPrdProductGroup = 0;
 $scope.selectedpromoPrdBrand = 0;
-$scope.selectedpromoTiers = 0;
-$scope.pageName = "Partials/Discounts.html";
+$scope.pageName = "";
+$scope.volreq = 0;
 $(".datepicker").datepicker();
-//---------------Display Type Text--------------//
-$scope.changeValueText = function(){
-var promoProductType = $("#promoProductType").val();
-$scope.promoProductValueText = promoProductType;
-if(promoProductType=='ProductID'){
- $scope.ALL = true;
- $scope.ProductID = true;
- $scope.BuildingBlock = false;
- $scope.ProductGroup = false;
- $scope.Brand = false;
-}else if(promoProductType=='BuildingBlock'){
- $scope.ALL = true;
- $scope.BuildingBlock = true;
- $scope.ProductID = false;
- $scope.ProductGroup = false;
- $scope.Brand = false;
-}else if(promoProductType=='ProductGroup'){
- $scope.ALL = true;
- $scope.ProductGroup = true;
- $scope.BuildingBlock = false;
- $scope.ProductID = false;
- $scope.Brand = false;
-}else if(promoProductType=='Brand'){
- $scope.ALL = true;
- $scope.Brand = true;
- $scope.ProductGroup = false;
- $scope.BuildingBlock = false;
- $scope.ProductID = false;
-}else{
-$scope.ALL = false;
-$scope.ProductID = false;
-$scope.BuildingBlock = false;
-$scope.ProductGroup = false;
-$scope.Brand = false;
-}
-}
-//--------------Structure On change-----------//
- $scope.changeStructure = function(){
- var promoStructure = $("#promoStructure").val();
-	if(promoStructure == 0){
-	 $scope.promoDetails = false;
-	 $scope.TypeUnit = true;
-	 $scope.Parent = false;
-	 }else if(promoStructure == 2){
-	 $scope.Parent = true;
-	 $scope.promoDetails = true;
-	 $scope.TypeUnit = false;
-	 }else{
-	 $scope.promoDetails = false;
-	 $scope.TypeUnit = false;
-	 $scope.Parent = false;
-	 }
- }
 //--------------Promo Objective Data-----------//
   $http.get('./Pages/PromoObjectiveSelection.php').success(function(ObjectiveData) {
  //alert(ObjectiveData);// Bind the data returned from web service to $scope
@@ -90,14 +40,34 @@ $scope.Brand = false;
   $http.get('./Pages/PromoUnits.php').success(function(UnitData) {
  //alert(TypeData);// Bind the data returned from web service to $scope
 		$scope.Unit = UnitData;
+		$scope.Unit = UnitData;
   });
 //--------------Promo UnitData-----------//
   $http.get('./Pages/PromoBudgetOwner.php').success(function(BudgetOwnerData) {
  //alert(BudgetOwnerData);// Bind the data returned from web service to $scope
 		$scope.BudgetOwner = BudgetOwnerData;
   });
-
- //---------------On change---------------//
+//--------------Structure On change-----------//
+ $scope.changeStructure = function(){
+ var promoStructure = $("#promoStructure").val();
+	if(promoStructure == 0){
+	 $scope.promoDetails = false;
+	 $scope.TypeUnit = true;
+	 $scope.Parent = false;
+	 $scope.selectedpromoType = 0;
+	 }else if(promoStructure == 2){
+	 $scope.Parent = true;
+	 $scope.promoDetails = false;
+	 $scope.TypeUnit = false;
+	 $scope.selectedpromoType = 0;
+	 }else{
+	 $scope.promoDetails = false;
+	 $scope.TypeUnit = false;
+	 $scope.Parent = false;
+	 $scope.selectedpromoType = 0;
+	 }
+ }
+ //--------------- Div On change---------------//
  $scope.changeDiv = function(){
  var promoType = $("#promoType").val();
  var value = ''+promoType+'';
@@ -118,6 +88,78 @@ $scope.Brand = false;
  $scope.displayGondola = false;
  }
 }
+//---------------Display Type Text Onchange--------------//
+$scope.changeValueText = function(){
+var promoProductType = $("#promoProductType").val();
+$scope.promoProductValueText = promoProductType;
+if(promoProductType=='ProductID'){
+ $scope.ALL = true;
+ $scope.ProductID = true;
+ $scope.ProductName = false;
+ $scope.BuildingBlock = false;
+ $scope.ProductGroup = false;
+ $scope.Brand = false;
+ $scope.Summary = true;
+}else if(promoProductType=='ProductName'){
+ $scope.ALL = true;
+ $scope.ProductName = true;
+ $scope.BuildingBlock = false;
+ $scope.ProductID = false;
+ $scope.ProductGroup = false;
+ $scope.Brand = false;
+ $scope.Summary = true;
+}else if(promoProductType=='BuildingBlock'){
+ $scope.ALL = true;
+ $scope.BuildingBlock = true;
+ $scope.ProductID = false;
+ $scope.ProductName = false;
+ $scope.ProductGroup = false;
+ $scope.Brand = false;
+ $scope.Summary = true;
+}else if(promoProductType=='ProductGroup'){
+ $scope.ALL = true;
+ $scope.ProductGroup = true;
+ $scope.BuildingBlock = false;
+ $scope.ProductName = false;
+ $scope.ProductID = false;
+ $scope.Brand = false;
+ $scope.Summary = true;
+}else if(promoProductType=='Brand'){
+ $scope.ALL = true;
+ $scope.Brand = true;
+ $scope.ProductGroup = false;
+ $scope.BuildingBlock = false;
+ $scope.ProductID = false;
+ $scope.ProductName = false;
+ $scope.Summary = true;
+}else{
+$scope.ALL = false;
+$scope.ProductID = false;
+$scope.ProductName = false;
+$scope.BuildingBlock = false;
+$scope.ProductGroup = false;
+$scope.Brand = false;
+$scope.Summary = false;
+}
+
+}
+//------------------------Onchange Unit Value----------------//
+ $scope.prdUnitChange = function(){
+  var promoUnit = $("#promoUnit").val().split(",");
+  $scope.unit = promoUnit[1];
+  if(promoUnit[1]=="CRT" || promoUnit[1]=="CTN" || promoUnit[1]=="EA" ){
+  $("#radio_1").prop("checked", true); 
+  }
+}
+//------------------------Onchange Vol Req Value----------------//
+ $scope.VolReqChange = function(){
+  var volreq = $("#promoVolReq").val();
+  if(volreq != ""){
+  $scope.volreq = volreq ;
+  }else{
+  $scope.volreq = 0 ;
+  }
+}
 //------------------------KRIS----------------------------------//
 $scope.Tires = function(){
 $("#toSelProduct option").prop("selected","selected");
@@ -137,13 +179,61 @@ $("#toSelProduct option").prop("selected","selected");
  $("#toInlProduct option:selected").appendTo("#frmInlProduct");
  }
  }
-//--------------Summary For Discounts-----------//
-$scope.summaryDiscount = function() {
-alert($scope.promoID);
-$http.post('./Pages/summaryDetail.php', {'promoID': $scope.promoID}).success(function(getData) {
-			alert(getData);// Bind the data returned from web service to $scope
-			$scope.inSide=getData;
-	});
- }
+
 //-------------------------------------------------------
 });
+
+//----------------------Model Window--------------------------//
+var ModalDemoCtrl = function ($scope, $http, $modal, $log) {
+
+//------------------------Onchange Product Value----------------//
+ $scope.prdValueChange = function(){
+ $scope.promoVolReq = "";
+ $scope.promoSelloutRebate = "";
+ $scope.promoPreQty = "";
+}
+//--------------Model Window-------------------------------------//
+  $scope.open = function () {
+    alert('dfsdf'+$scope.promoID);
+	$http.post('./Pages/summaryDetail.php', {'promoID': $scope.promoID}).success(function(getSummaryDetail) {
+	//alert(getSummaryDetail);// Bind the data returned from web service to $scope
+	if(getSummaryDetail!="\r\n"){
+	$scope.InputPrd = getSummaryDetail.length;
+	$scope.Summary = getSummaryDetail;
+	}
+					
+    var modalInstance = $modal.open({
+	
+      templateUrl: './Partials/SummaryModal.html',
+      controller: ModalInstanceCtrl,
+      resolve: {
+        Summary: function () {
+          return $scope.Summary;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedSummary) {
+      $scope.selectedDetailList = selectedSummary;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+	});
+  };
+};
+
+// Please note that $modalInstance represents a modal window (instance) dependency.
+// It is not the same as the $modal service used above.
+
+var ModalInstanceCtrl = function ($scope, $http, $modalInstance, Summary) {
+  $scope.Summary = Summary;
+  $scope.selectedDetailList = $scope.Summary;
+  $scope.ok = function () {
+    $modalInstance.close('ok');
+  };
+
+  //$scope.cancel = function () {
+    //$modalInstance.dismiss('cancel');
+  //};
+//----------------------------------------------------------------------
+};

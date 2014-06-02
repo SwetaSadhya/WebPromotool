@@ -1,9 +1,11 @@
+<div ng-controller="ModalDemoCtrl">
 <!--  <pre ng-model="result">{{result}}</pre> -->
  <div class="control-group">
                                           <label class="control-label" for="promoEnter">Enter Products By</label>
                                           <div class="controls">
                                             <select id="promoProductType"  class="chzn-select" ng-model="promoProductType" ng-change="changeValueText();">
 											<option value="All">All</option>
+											<option value="ProductName">Product Name</option>
 											<option value="ProductID">Product ID</option>
 											<option value="BuildingBlock">Building Block</option>
 											<option value="ProductGroup">Product Group</option>
@@ -17,57 +19,66 @@
 																		<!-- /.form-group -->
 																			<div class="control-group" ng-model="field">
 																			<div ng-hide="ALL">
-																			<select id="promoPrdAll" class="chzn-select" ng-model="selectedpromoPrdAll">	
+																			<select id="promoPrdAll" class="chzn-select" ng-model="selectedpromoPrdAll" disabled="true">	
 																			<option value="0">---Select All----------</option>
+																			</select>
+																			</div>
+																			<div ng-show="ProductName">
+																			<select id="promoPrdProductName" class="chzn-select" ng-model="selectedpromoPrdProductName" ng-change="prdValueChange();">
+																			<option value="0">-------Select----------</option>
 																			<option ng:repeat="PrdAll in promoPrdAll | unique:'ProductID'" value="{{PrdAll.ProductID}}">{{PrdAll.ProductName}}</option>
 																			</select>
 																			</div>
 																			<div ng-show="ProductID">
-																			<select id="promoPrdProductID" class="chzn-select" ng-model="selectedpromoPrdProductID">	
-																			<option value="0">---Select All----------</option>
+																			<option value="0">-------Select----------</option>
+																			<select id="promoPrdProductID" class="chzn-select" ng-model="selectedpromoPrdProductID"  ng-change="prdValueChange();">
 																			<option ng:repeat="PrdProductID in promoPrdProductID | unique:'ProductID'" value="{{PrdProductID.ProductID}}">{{PrdProductID.ProductID}}</option>
 																			</select>
 																			</div>
 																			<div ng-show="BuildingBlock">
-																			<select id="promoPrdBuildingBlock" class="chzn-select" ng-model="selectedpromoPrdBuildingBlock">	
-																			<option value="0">---Select All----------</option>
+																			<option value="0">-------Select----------</option>
+																			<select id="promoPrdBuildingBlock" class="chzn-select" ng-model="selectedpromoPrdBuildingBlock"  ng-change="prdValueChange();">
 																			<option ng:repeat="PrdBuildingBlock in promoPrdBuildingBlock | unique:'prdGroup7ID'" value="{{PrdBuildingBlock.prdGroup7ID}}">{{PrdBuildingBlock.prdGroup7Desc}}</option>
 																			</select>
 																			</div>
 																			<div ng-show="ProductGroup">
-																			<select id="promoProductGroup" class="chzn-select" ng-model="selectedpromoPrdProductGroup">	
-																			<option value="0">---Select All----------</option>
+																			<option value="0">-------Select----------</option>
+																			<select id="promoProductGroup" class="chzn-select" ng-model="selectedpromoPrdProductGroup"  ng-change="prdValueChange();">	
 																			<option ng:repeat="PrdProductGroup in promoPrdProductGroup | unique:'prdGroup9ID'" value="{{PrdProductGroup.prdGroup9ID}}">{{PrdProductGroup.prdGroup9Desc}}</option>
 																			</select>
 																			</div>
 																			<div ng-show="Brand">
-																			<select id="promoPrdBrand" class="chzn-select" ng-model="selectedpromoPrdBrand">	
-																			<option value="0">---Select All----------</option>
+																			<option value="0">-------Select----------</option>
+																			<select id="promoPrdBrand" class="chzn-select" ng-model="selectedpromoPrdBrand"  ng-change="prdValueChange();">
 																			<option ng:repeat="PrdBrand in promoPrdBrand | unique:'prdGroup4ID'" value="{{PrdBrand.prdGroup4ID}}">{{PrdBrand.prdGroup4Desc}}</option>
 																			</select>
 																			</div>
 																			</div>
 																			</div>
                                         </div>
-										<div><p><button type="button" class="btn btn-default" ng-click="summaryDiscount();">Summary</button></p></div>
-										<div ng-show="Count"><label ng-model="inSide">{{inSide}}</label>/<label ng-model="count">{{count}}</label></div>
+										<div class="control-group" ng-show="Summary">
+											<script type="text/ng-template" id="SummaryModal.html">
+											</script>
+											<button type="button" class="btn btn-default" ng-click="open()">Summary</button>
+										   <span ng-model="InputPrd">{{InputPrd}}</span>/<span ng-model="NumPrd">{{NumPrd}}</span>
+										</div>
 										<legend>Details applicable to selected products</legend>
 										<div class="control-group">
                                           <label class="control-label" for="Unit & Volume Requirement">Volume Requirement</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="promoVolReq" type="text" value="">
+                                            <input class="input-small focused" id="promoVolReq" ng-model="promoVolReq" type="text" ng-change="VolReqChange();">
                                           </div>
                                         </div>
 										<div class="control-group">
                                           <label class="control-label" for="Sell Out Rebate">Sell Out Rebate</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="promoSelloutRebate" type="text" value="">RM
+                                            <input class="input-small focused" id="promoSelloutRebate" ng-model="promoSelloutRebate" type="text"> RM <span ng-model="volreq"> / {{volreq}}</span> <span ng-model="unit">{{unit}}</span>
                                           </div>
                                         </div>
 										<!-- <div class="control-group">
                                           <label class="control-label" for="Trade Discount">Trade Discount</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="promoTradeDiscount" type="text" disabled="true">RM
+                                            <input class="input-small focused" id="promoTradeDiscount" type="text" disabled="true">
                                           </div>
                                         </div> -->
 										<div class="control-group">
@@ -79,38 +90,38 @@
 										<div class="control-group">
                                           <label class="control-label" for="PQ">Premium Quantity</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="promoPreQty" type="text" value="">
+                                            <input class="input-small focused" id="promoPreQty" ng-model="promoPreQty" type="text"> Piece(s) <span ng-model="volreq"> / {{volreq}}</span> <span ng-model="unit">{{unit}}</span>
                                           </div>
                                         </div>
 										<legend>Details applicable to all products</legend>
 										<div class="control-group">
                                           <label class="control-label" for="Sell Out Rebate">Sell Out Rebate Lumpsum</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="promoSelloutRebateL" type="text" value="">RM
+                                            <input class="input-small focused" id="promoSelloutRebateL" type="text" value=""> RM
                                           </div>
                                         </div>
 										<div class="control-group">
                                           <label class="control-label" for="MC">Mail Costs (lump sum)</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="promoMailCost" type="text" value="">RM
+                                            <input class="input-small focused" id="promoMailCost" type="text" value=""> RM
                                           </div>
                                         </div>
 										<div class="control-group">
                                           <label class="control-label" for="POS">POS Material Costs</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="promoMaterialCost" type="text" value="">RM
+                                            <input class="input-small focused" id="promoMaterialCost" type="text" value=""> RM
                                           </div>
                                         </div>
 										<div class="control-group">
                                           <label class="control-label" for="PC">Premium Cost</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="promoPremiumCost" type="text" value="">RM
+                                            <input class="input-small focused" id="promoPremiumCost" type="text" value=""> RM / Piece
                                           </div>
                                         </div>
 										<div class="control-group">
                                           <label class="control-label" for="PQ">Total Premium Quantity</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="promoPremiumQty" type="text" value="">
+                                            <input class="input-small focused" id="promoPremiumQty" type="text" value=""> Pieces
                                           </div>
                                         </div>
-									
+ </div>

@@ -1,4 +1,30 @@
-<div class="control-group">
+										<div class="control-group">
+                                          <label class="control-label" >Select Product Field</label>
+                                          <div class="controls">
+                                            <select id="prdField"  ng-model="selectedPrdField">
+											<option value="0">---Select All----------</option>
+											</select>
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" >Select Product Value</label>
+                                          <div class="controls">
+                                            <select id="prdValue"  ng-model="selectedPrdValue">
+											<option value="0">---Select All----------</option>
+											</select>
+                                          </div>
+                                        </div>
+										<legend></legend>
+										<div class="control-group">
+                                          <label class="control-label" >Select Outlet</label>
+                                          <div class="controls">
+                                            <select id="prdValue"  ng-model="selectedPrdValue">
+											<option value="0">---Select All----------</option>
+											</select>
+                                          </div>
+                                        </div>
+										<legend></legend>
+										<div class="control-group">
                                           <label class="control-label" for="Volume Requirement">Volume Requirement</label>
                                           <div class="controls">
                                             <input class="input-small focused" id="" type="text" value="">
@@ -21,8 +47,32 @@
 										  </table>
                                           </div>
 										</div> 
-										<br/><br/>
 										<div class="control-group">
+                                          <label class="control-label" for="Volume Requirement">Copped Amount</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="" type="text" value="">
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="Volume Requirement">Rebate</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="" type="text" value="">
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="Volume Requirement">Rebate %</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="" type="text" value="">
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="Volume Requirement">Discount invoice value</label>
+                                          <div class="controls">
+                                            <input class="input-small focused" id="" type="text" value="">
+                                          </div>
+                                        </div>
+										<br/><br/>
+										<!-- <div class="control-group">
 										  <div class="span5">
 											<div class="radio">
 											<label>
@@ -39,7 +89,7 @@
 												  </label>
 											</div>
 										</div>
-										</div>
+										</div> -->
 										<div style="padding:10px;" class="hide" id="prdSelectionLPGT" >
 										<div id="" style="overflow-y: scroll; height:500px;">
 										<div ng-controller="ProductListCtrl">

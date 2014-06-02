@@ -1,0 +1,29 @@
+<div class = "modal-header">
+  <h3>Summary Details</h3>
+    </div>
+    <div class="modal-body">
+     <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th> Volume Requirement</th>
+            <th>Sell Out Rebate</th>
+            <th>Customer Points (Value)</th>
+			<th>Premium Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="DetailList in selectedDetailList">
+            <td>{{$index + 1}}</td>
+            <td>{{DetailList.detVolumeReq}}</td>
+            <td>{{DetailList.detRebate}}</td>
+            <td>{{DetailList.detCustomerpoints}}</td>
+			<td>{{DetailList.detPremiumMechanic}}</td>
+          </tr>
+        </tbody>
+      </table>
+	</div>	 
+    <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+   <!-- <button class="btn btn-warning" ng-click="cancel()">Cancel</button> -->
+</div>

@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+  <head>
+  <style>
+  .done-true {
+  text-decoration: line-through;
+  color: grey;
+}
+
+  </style>
+    <script type="text/javascript" src="./Library/angular/angular.js"></script>
+	<script type="text/javascript" src="./Library/jquery/jquery-1.9.1.js"></script>
+  <script>
+var test = angular.module('test', [])
+function TodoCtrl($scope) {
+  $scope.todos = [
+    {text:'Volume Requirnment', done:true},
+    {text:'Pos Material', done:false}];
+
+  $scope.addTodo = function() {
+    $scope.todos.push({text:$scope.todoText, done:false});
+    $scope.todoText = '';
+  };
+
+  $scope.remaining = function() {
+    var count = 0;
+    angular.forEach($scope.todos, function(todo) {
+      count += todo.done ? 0 : 1;
+    });
+    return count;
+  };
+
+  $scope.archive = function() {
+    var oldTodos = $scope.todos;
+    $scope.todos = [];
+    angular.forEach(oldTodos, function(todo) {
+      if (!todo.done) $scope.todos.push(todo);
+    });
+  };
+  
+    $scope.test1 = function() {
+    var d = new Date();
+    var curr_date = d.getDate();
+    var curr_month = d.getMonth()+1;
+    var curr_year = d.getFullYear();
+    
+    $scope.dateToday = Date.parse(curr_month + "/" + curr_date + "/" + curr_year);
+   alert(curr_year);
+  };
+ //---------------------------------------------------// 
+ 
+ $scope.test = function(conversations, start_date, end_date)
+{
+ conversations =[{"Customer":"1","prtDate":"2014-05-20"},
+ {"Customer":"2","prtDate":"2013-04-20"},
+ {"Customer":"3","prtDate":"2013-03-20"},
+ {"Customer":"4","prtDate":"2013-02-20"},
+ {"Customer":"5","prtDate":"2013-01-20"}];
+ var start_date = "2013-04-20";
+ var end_date = "2013-02-20";
+ var result = [];
+ $scope.data = [];
+// date filters
+//var start_date = (start_date && !isNaN(Date.parse(start_date))) ? Date.parse(start_date) : 0;
+//var end_date = (end_date && !isNaN(Date.parse(end_date))) ? Date.parse(end_date) : new Date().getTime();
+
+// if the conversations are loaded
+if (conversations && conversations.length > 0)
+{ 
+$.each(conversations, function (index, conversation)
+{
+if(conversation.prtDate!=null){
+var conversationDate = new Date(conversation.prtDate);
+var curr_date = conversationDate.getDate();
+var curr_month = conversationDate.getMonth()+1;
+var curr_year = conversationDate.getFullYear();
+
+var strtDate = new Date("2013-04-20");
+var strt_date = strtDate.getDate();
+var strt_month = strtDate.getMonth()+1;
+var strt_year = strtDate.getFullYear();
+
+var edate = new Date("2013-01-20");
+var ed_date = edate.getDate();
+var ed_month = edate.getMonth()+1;
+var ed_year = edate.getFullYear();
+
+
+var ddate = Date.parse(curr_year + "/" + curr_month + "/" + curr_date);
+var sdate = Date.parse(strt_year + "/" + strt_month + "/" + strt_date);
+var eddate = Date.parse(ed_year + "/" + ed_month + "/" + ed_date);
+
+if ( ddate <= sdate && ddate >= eddate)
+{
+//alert (conversation);
+$scope.data.push(conversation);
+}
+}
+});
+ 
+alert($scope.data);
+}
+};
+
+}
+
+
+</script>
+  </head>
+  <body>
+<div ng-app>
+  <h2>Building Block</h2>
+  <div ng-controller="TodoCtrl">
+     <!--<span>{{remaining()}} of {{todos.length}} remaining</span>
+    [ <a href="" ng-click="archive()">archive</a> ]
+    <ul class="unstyled">
+      <li ng-repeat="todo in todos">
+        <input type="checkbox" ng-model="todo.done">
+        <span class="done-{{todo.done}}">{{todo.text}}</span>
+      </li>
+    </ul> -->
+ <!--    <form ng-submit="addTodo()">
+      <input type="text" ng-model="todoText"  size="30"
+             placeholder="add new todo here">
+      <input class="btn-primary" type="submit" value="add">
+    </form> -->
+   <button ng-click="test();">Test</button>
+  <div ng-model="data">{{data}}</div>
+  </div>
+ 
+</div>
+  </body>
+</html>

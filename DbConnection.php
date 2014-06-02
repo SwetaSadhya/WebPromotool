@@ -8,7 +8,7 @@ Class Model_DbConnection {
 
 	private $host="localhost";
     private $username="root";    // specify the sever details for mysql
-    private $password="Lexi@1967";
+    private $password="promo2014";
     private $database="promotool";
     public $myconn;
 	

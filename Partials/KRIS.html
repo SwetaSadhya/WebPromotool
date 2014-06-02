@@ -12,22 +12,33 @@
     </div>
 </div>
 <div class="control-group">
+    <label class="control-label" for="tiers">Select product group field</label>
+    <div class="controls">
+    <select id="promoTiersField"  class="chzn-select" ng-model="selectedpromoTiersField">
+	<option value="0">---select-----</option>
+	</select>
+    </div>
+</div>
+<div class="control-group">
 <table cellpadding="15" cellspacing="15" align="left" border="0">
                         <tr>
-                        <td><label>Product Group</label></td>
+                        <td><label></label></td>
                         <td><label>Growth Target</label></td>
 						<td><label>Target%</label></td>
 						<td><label>PayOut%</label></td>
 					  </tr>
 					  <tr ng-model="range" ng-repeat="n in [range] | makeRange">
-						<td><select id="frmpromoProductValue" class="chzn-select" ng-model="selectedpromoProductValue">	
-						    <option value="0">---Select All----------</option>
-							<option ng:repeat="PrdName in promoProductValue | unique:'ProductID'" value="{{PrdName.ProductID}}">{{PrdName.ProductName}}</option>
-							</select></td>
+						<td>tier {{$index + 1}}</td>
 						<td><input type="textbox" class="input-small focused" id="Title"></td>
 						<td><input type="textbox" class="input-small focused" id="Title"></td>
                         <td><input type="textbox" class="input-small focused" id="Title"></td>
 					  </tr>
 					</table>
                                     
+</div>
+<div class="control-group">
+    <label class="control-label" for="tiers">You can upload attachnments here</label>
+    <div class="controls">
+    <input type="file" class="input-small focused" id="Title">
+    </div>
 </div>

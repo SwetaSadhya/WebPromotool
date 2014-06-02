@@ -9,6 +9,7 @@ $arr2 = array();
 $query  = "SELECT 
 prm.promotionID, 
 prm.prmPromotionName, 
+prm.isActive, 
 tbl.custName,
 tbl.custCode,
 tbl.channelDesc
@@ -41,6 +42,7 @@ LEFT JOIN (SELECT
  	prm.promotionID
 ) AS tbl ON tbl.promotionID = prm.promotionID
 
+WHERE prm.isActive = '1'
 
 GROUP BY 
 prm.promotionID";

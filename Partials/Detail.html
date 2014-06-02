@@ -59,9 +59,9 @@
 										<div class="control-group">
                                           <label class="control-label" for="Unit">Unit</label>
                                           <div class="controls">
-                                            <select class="chzn-select" id="promoUnit" ng-model="selectedpromoUnit">
+                                            <select class="chzn-select" id="promoUnit" ng-model="selectedpromoUnit" ng-change="prdUnitChange();">
 											  <option value="0">-----Select---------------</option>
-											  <option ng:repeat="PromoUnit in Unit"  value="{{PromoUnit.prmUnitID}}">{{PromoUnit.prmUnitDesc}}</option>
+											  <option ng:repeat="PromoUnit in Unit"  value="{{PromoUnit.prmUnitID +','+PromoUnit.prmUnitDesc}}">{{PromoUnit.prmUnitDesc}}</option>
 											</select>
                                           </div>
                                         </div>
@@ -97,9 +97,15 @@
                                         </div>
 										<legend>Information</legend>
 										<div class="control-group">
-                                          <label class="control-label" for="Code">Code</label>
+                                          <label class="control-label" for="Code">Promotion Code</label>
                                           <div class="controls">
                                             <input class="input-xlarge focused" id="promoCode" type="text" value="" ng-required="true">
+                                          </div>
+                                        </div>
+										<div class="control-group">
+                                          <label class="control-label" for="Code">Promotion Name</label>
+                                          <div class="controls">
+                                            <input class="input-xlarge focused" id="promoName" type="text" value="" ng-required="true">
                                           </div>
                                         </div>
 										<div class="control-group">

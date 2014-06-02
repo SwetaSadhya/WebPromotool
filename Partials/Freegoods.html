@@ -1,7 +1,7 @@
 <div class="control-group">
                                           <label class="control-label" for="Volume Requirement">Volume Requirement</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="" type="text" value="">
+                                            <input class="input-small focused" id="promoVolReq" type="text">
                                           </div>
                                         </div>
 										<div class="control-group">
@@ -9,9 +9,9 @@
                                           <div class="controls">
 										  <table>
 										  <tr>
-										  <td><input class="input-small focused" id="" type="text" value=""></td>
-										  <td><select class="chzn-select" id="promoUnit" ng-model="promoUnit">
-											  <option ng:repeat="PromoUnit in Unit"  value="{{PromoUnit.prmUNID}}" ng-selected="'1' == PromoUnit.prmUNID">{{PromoUnit.prmUnitDesc}}</option>
+										  <td><input class="input-small focused" id="promoFreegoodsamount" type="text"></td>
+										  <td><select class="chzn-select" id="promoFreegoodsunit" ng-model="promoFreegoodsunit">
+											  <option ng:repeat="PromoUnit in Unit"  value="{{PromoUnit.prmUNID}}">{{PromoUnit.prmUnitDesc}}</option>
 											</select></td>
 										  </tr>
 										  </table>
@@ -20,13 +20,13 @@
 										<div class="control-group">
                                           <label class="control-label" for="MC">Mail Costs</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="" type="text" value="">RM
+                                            <input class="input-small focused" id="promoMailCost" type="text" value=""> RM
                                           </div>
                                         </div>
 										<div class="control-group">
                                           <label class="control-label" for="POS">POS Material Costs</label>
                                           <div class="controls">
-                                            <input class="input-small focused" id="" type="text" value="">RM
+                                            <input class="input-small focused" id="promoPOSMaterialcost" type="text"> RM
                                           </div>
                                         </div>
 										<br/><br/>
