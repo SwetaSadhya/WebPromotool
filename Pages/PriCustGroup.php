@@ -9,15 +9,16 @@ $db_selected = mysql_select_db("promotool",$con);
 $arr = array();
 $arr2 = array();
 
-	$query = "SELECT * FROM tblPrimaryCustGroup WHERE GroupSelection = '1' ";
+	$query = "SELECT * FROM tblCusSelTab WHERE 	countryID = '102' AND cstOrder <>0 Order By cstOrder ";
 	//echo $query;
 	$result = mysql_query($query);
 	$x=0;
 	while($row = mysql_fetch_array($result)){
 	//echo $row['prdGroup6ID']."++".$prmUnit;
 	$data[$x]['countryID'] = $row['countryID'];
-	$data[$x]['Group'] = $row['Group'];
-	$data[$x]['GroupName'] = $row['GroupName'];
+	$data[$x]['cstFieldName'] = $row['cstFieldName'];
+	$data[$x]['cstFieldID'] = $row['cstFieldID'];
+	$data[$x]['cstCustGroupClientName'] = $row['cstCustGroupClientName'];
 	//$arr = array('countryID' => $row['countryID'],'Group' => $row['Group'],'GroupName' => $row['GroupName']);
 	$x++;
 	}

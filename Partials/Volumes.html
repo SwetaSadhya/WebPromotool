@@ -1,20 +1,19 @@
 <div ng-controller="VolumeCtrl">
-      <div class="span14" id="content">
+      <div class="span13" id="content">
                       <!-- morris stacked chart -->
                     <div class="row-fluid">
                         <!-- block -->
                         <div class="block">
 						<!-- <div><pre ng-model="result">{{result}}</pre></div> -->
-                            <div class="block-content collapse in">
-                                <div class="span17">
-                                     <div class="form-horizontal">
-                                      <fieldset>
-                                        <legend>Expected Lift</legend>
-										<table border='0' cellpadding='15' cellspacing='15' height="auto">
-										<tr>
-										<td valign="top" height='auto'>
-										<legend>Volumes in:</legend>
-										<table border='0' cellpadding='15' cellspacing='15' height="auto">
+                        <div class="block-content collapse in">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                  <legend>Expected Lift</legend>
+								  <table border='0' cellpadding='0' cellspacing='0'>
+								  <tr><td>
+								  <div class="span6">
+								   <legend>Volumes in:</legend>
+								   <table border='0' cellpadding='5' cellspacing='5'>
 										<tr>
 										<td><div class="radio">
 											<label>
@@ -29,9 +28,9 @@
 											  </label>
 										</div></td>
 										</tr>
-										</table>
-										<legend>Enter volumes by:</legend>
-										<table border='0' cellpadding='15' cellspacing='15' height="auto">
+									</table>
+									<legend>Enter volumes by:</legend>
+									<table border='0' cellpadding='5' cellspacing='5'>
 										<tr>
 										<td><div class="radio">
 											<label>
@@ -75,34 +74,25 @@
 										</div></td>
 										</tr>
 										<tr>
-										<td><label for="Product">Product</label></td>
-										<td>
-										<div>
-										<select id="promoProductVolume" class="chzn-select" ng-model="selectedpromoProductVolume">	
-										<option value="0">---Select All----------</option>
-										<option ng:repeat="PrdName in promoProductVolume | unique:'ProductID'" value="{{PrdName.ProductID}}">{{PrdName.ProductName}}</option>
-										</select>
-										</div>
-										</td>
+										<td colspan="2">Product</label>   <select id="promoProductVolume" class="chzn-select" ng-model="selectedpromoProductVolume">	
+											<option value="0">---Select All----------</option>
+											<option ng:repeat="PrdName in promoProductVolume | unique:'ProductID'" value="{{PrdName.ProductID}}">{{PrdName.ProductName}}</option>
+											</select></td>
 										</tr>
 										</table>
 										<legend>Volume</legend>
-										<div class="span6" id="content">
-										<table border='0' cellpadding='15' cellspacing='15' height="auto">
+										<table border='0' cellpadding='0' cellspacing='0'>
 										<tr>
 										<td></td>
-										<td><button class="btn btn-default" ng-click="BaselineVol();">Lookup baseline volumes</button></td>
-										<td><button class="btn btn-default" ng-click="PlanVol();">Copy baseline to Plan</button></td>
-										<td><button class="btn btn-default">Lookup actual volumes</button></td>
+										<td><button class="btn btn-default btn-xs" ng-click="BaselineVol();">Lookup baseline volumes</button></td>
+										<td><button class="btn btn-default btn-xs" ng-click="PlanVol();">Copy baseline to Plan</button></td>
+										<td><button class="btn btn-default btn-xs">Lookup actual volumes</button></td>
 										</tr>
 										<tr>
 										<td></td>
-										<td><input class="input-default disabled" type="text" placeholder="P-1" disabled="true">
-                                          </td>
-										<td><input class="input-default disabled" type="text" placeholder="P" disabled="true">
-                                         </td>
-										<td><input class="input-default disabled" type="text" placeholder="P+1" disabled="true">
-                                          </td>
+										<td><input class="input-default" type="text" placeholder="P-1" disabled="true"></td>
+										<td><input class="input-default" type="text" placeholder="P" disabled="true"></td>
+										<td><input class="input-default" type="text" placeholder="P+1" disabled="true"></td>
 										</tr>
 										<tr>
 										<td>Baseline</td>
@@ -111,7 +101,7 @@
 										<td><input class="input-default focused" id="prmBaselineL" ng-model="prmBaselineL" type="text" value={{prmBaselineF}} ng-change="Barchart();"></td>
 										</tr>
 										<tr>
-										<td>Plane</td>
+										<td>Plan</td>
 										<td><input class="input-default focused" id="prmPlanF" ng-model="prmPlanF" type="text" value={{prmPlanF}} ng-change="Barchart();"></td>
 										<td><input class="input-default focused" id="prmPlanM" ng-model="prmPlanM" type="text" value={{prmPlanM}} ng-change="Barchart();"></td>
 										<td><input class="input-default focused" id="prmPlanL" ng-model="prmPlanL" type="text" value={{prmPlanL}} ng-change="Barchart();"></td>
@@ -141,13 +131,14 @@
 												  </label>
 											</div>
 											</div>
+										</div>	
 										</td>
 										</tr>
 										</table>
-										</div>
-										</div>
-										<div class="span6">
-										<table border='0' cellpadding='15' cellspacing='15' height="auto">
+										<table border='0' cellpadding='0' cellspacing='0'>
+										<tr>
+										<td>
+										<table border='0' cellpadding='0' cellspacing='0'>
 										<tr>
 										<td></td>
 										<td>Plan%</td>
@@ -169,20 +160,29 @@
 										<td><input class="input-small focused" id="" ng-model="" type="text"></td>
 										</tr>
 										</table>
-										</div>
-										<div class="span4"><label>Percentage of sales during promotion period expected to fall under promotion condition.</label></div>
 										</td>
-										<td valign="top"></td>
-										<td valign="top"><legend>Volumes</legend>
-										 <div id="Volumes">
-											<canvas id="canvas" height="450" width="450"></canvas>
-											<label>Baseline volume is calculated using the average sales for the last available twelve months from BW. </label>
-										 </div>
-										 </td>
+										<td style="padding-left:20px;"><label>Percentage of sales during promotion period expected to fall under promotion condition.</label></td>
 										</tr>
 										</table>
-                                      </fieldset>
-                                </div>
+								  </td>
+								  <td valign="top">
+								  <div class="span6">
+								  <legend>Volumes</legend>
+								  <table border='0'>
+									<tr>
+										<td> <div id="Volumes">
+											<canvas id="canvas" height="450" width="450"></canvas>
+										 </div></td>
+									</tr>
+									<tr>
+									<td style="padding-left:20px;"><label>Baseline volume is calculated using the average sales for the last available twelve months from BW. </label></td>
+									</tr>
+								  </table>
+								  </div>
+								  </td>
+								  </tr>
+								  </table>
+                                </fieldset>
                             </div>
                         </div>
 

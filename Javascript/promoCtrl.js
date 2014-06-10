@@ -9,7 +9,6 @@ var promotionControllers = angular.module('promotionControllers', [])
 //------------Contoller For Tabs-------------------------//
 promotionControllers.controller('TabsDemoCtrl', function($scope,$http) {	
 //-------------variables-----------------------------------//
-$scope.imageSource = './Images/BudgetOverview.png';
 $scope.NumPrd = 0;
 //--------------Product Detail Data-----------//
 $scope.SelprdID = function(PrdOptionName) {

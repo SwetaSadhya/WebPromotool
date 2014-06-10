@@ -34,9 +34,8 @@ $scope.SelProduct = [];
  if($scope.selectedAviProduct!= ""){
 	 $.each(products, function (index, product){
 	for(var i=0;i<$scope.selectedAviProduct.length;i++) {
-	if (product.ProductID == $scope.selectedProduct[i])
+	if (product.ProductID == $scope.selectedAviProduct[i])
 	 {  $scope.SelProduct.push(product);}}});
-	 alert($scope.SelProduct);
  }
  };
 //-------------------Product Pre Sales-----------------------------//

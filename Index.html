@@ -5,35 +5,120 @@
     <title>Promotool</title>
 	<!-- CSS Files -->
     <link rel="stylesheet" type="text/css" href="./Styles/bootstrap/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="./Styles/grid/grid.css" />
+	<link rel="stylesheet" type="text/css" href="./Styles/grid/grid.css" />
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Jquery & Angular  Files -->
     <script type="text/javascript" src="./Library/jquery/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="./Library/jquery/jquery-ui-1.9.1.custom.min.js"></script> 
     <script type="text/javascript" src="./Library/jquery/jquery.layout-latest.min.js"></script>  
-    <script type="text/javascript" src="./Library/angular/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script>
+	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
 	<!-- Grid Files -->
 	<script type="text/javascript" src="./Library/grid/plugins/ng-grid-layout.js"></script> 
     <script type="text/javascript" src="./Library/grid/build/ng-grid.debug.js"></script>
-    <script type="text/javascript" src="./Javascript/listCtrl.js"></script>
-    <script>
-        angular.module('myApp',['ngGrid']);
-    </script>
+    <script type="text/javascript" src="./Javascript/listdirective.js"></script>
+	<script type="text/javascript" src="./Javascript/listCtrl.js"></script>
+	<script>
+	function AccordionDemoCtrl($scope) {
+		  $scope.oneAtATime = false;
+		  $scope.status = {
+			isFirstOpen: false
+		  };
+		}
+	</script>
 </head>
-    <body ng-app="myApp" ng-controller="userController">
-   <!-- Center Portion -->
-	<div class="ui-layout-center">	
-	<div style="position: absolute;  left: 0; right: 0; top: 0; bottom: 0; overflow: hidden; height 100%" ng-grid="gridOptions">
-	</div>
-	</div> 
-	
-	</div>
-		<!-- Header Portion -->
-		<div class="ui-layout-north">Header</div>
-		<!-- Middle Portion  -->
-		<div class="ui-layout-south">&copy; Lexia Consulting - all rights reserved</div>
-		<!-- Right Portion  -->
-		<!--<div class="ui-layout-east">General Actions</div> -->
-		<!-- Left Portion  -->
-		<div class="ui-layout-west" >Search</div>
-    </body>
+   <body  ng-app="listView" layout ng-controller="userController">
+   <!-- Header Portion -->
+    <div class="ui-layout-north">
+        <div class="ui-layout-north" style="height:85px;"><img src="./Images/Friesland_Campina_Logo1.png" alt="Friesland Campina Logo"></div>
+    </div>
+	<!-- Left Portion  -->
+    <div class="ui-layout-west">
+		<div ng-controller="AccordionDemoCtrl">
+		  <accordion close-others="oneAtATime">
+			<accordion-group is-open="status.open">
+				<accordion-heading>
+					Filter By Promotion Details  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+				</accordion-heading>
+				<div class="form-group">
+					<label for="PromotionType">Promotion Type:</label>
+					<select class="form-control input-sm">...</select>
+				  </div>
+				  <div class="form-group">
+					<label for="StartDate">Start Date</label>
+					<input type="text" class="form-control" id="" placeholder="">
+				  </div>
+				  <div class="form-group">
+					<label for="StartDate">End Date</label>
+					<input type="text" class="form-control" id="" placeholder="">
+				  </div>
+				  <div class="form-group">
+					<label for="InvoiceType">Invoice Type:</label>
+					<select class="form-control input-sm">...</select>
+				  </div>
+				  <div class="form-group">
+					<label for="ApprovalStatus">Approval Status:</label>
+					<select class="form-control input-sm">...</select>
+				  </div>
+				  <div class="form-group">
+					<label for="CreatedBy">Created By:</label>
+					<select class="form-control input-sm">...</select>
+				  </div>
+			</accordion-group>
+			<accordion-group is-open="status.open">
+				<accordion-heading>
+					Filter By Product Group  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+				</accordion-heading>
+				<div class="form-group">
+					<label for="ProductCategory">Product Category:</label>
+					<select class="form-control input-sm">...</select>
+				  </div>
+				  <div class="form-group">
+					<label for="ProductGroup">Product Group:</label>
+					<select class="form-control input-sm">...</select>
+				  </div>
+				  <div class="form-group">
+					<label for="ProductSubGroup">Product Sub Group:</label>
+					<select class="form-control input-sm">...</select>
+				  </div>
+				   <div class="form-group">
+					<label for="ProductBrand">Product Brand:</label>
+					<select class="form-control input-sm">...</select>
+				  </div>
+				   <div class="form-group">
+					<label for="PackSize">Pack Size:</label>
+					<select class="form-control input-sm">...</select>
+				  </div>
+				   <div class="form-group">
+					<label for="Flavour">Flavour:</label>
+					<select class="form-control input-sm">...</select>
+				  </div>
+			</accordion-group>
+			<accordion-group is-open="status.open">
+				<accordion-heading>
+					Filter By Customer Group <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+				</accordion-heading>
+				Content
+			</accordion-group>
+			<accordion-group is-open="status.open">
+				<accordion-heading>
+					Output <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+				</accordion-heading>
+				Content
+			</accordion-group>
+		  </accordion>
+		</div>
+    </div>
+	<!-- Middle Portion  -->
+    <div class="ui-layout-center">
+        <div style="position: absolute;  left: 0; right: 0; top: 0; bottom: 0; overflow: hidden; height 100%" ng-grid="gridOptions"></div>
+    </div>
+	<!-- Right Portion  -->
+    <div class="ui-layout-east">
+        East
+    </div>           
+    <div class="ui-layout-south">
+       &copy; Lexia Analytics - all rights reserved
+    </div>                
+</body>
 </html>

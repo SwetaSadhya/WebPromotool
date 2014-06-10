@@ -1,9 +1,59 @@
-<div class = "modal-header">
-            <h3>Promotion Details</h3>
-        </div>
-        <div class="modal-body">
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-        </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Promotool</title>
+		<!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" href="./Styles/bootstrap/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="./Styles/grid/grid.css" />
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Jquery & Angular  Files -->
+    <script type="text/javascript" src="./Library/jquery/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="./Library/jquery/jquery-ui-1.9.1.custom.min.js"></script> 
+    <script type="text/javascript" src="./Library/jquery/jquery.layout-latest.min.js"></script>  
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script>
+	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+	<!-- Grid Files -->
+	<script type="text/javascript" src="./Library/grid/plugins/ng-grid-layout.js"></script> 
+    <script type="text/javascript" src="./Library/grid/build/ng-grid.debug.js"></script>
+    <script type="text/javascript" src="./Javascript/listdirective.js"></script>
+	<script type="text/javascript" src="./Javascript/listCtrl.js"></script>
+	<!-- <script src="http://layout.jquery-dev.net/lib/js/jquery-latest.js"></script>
+	<script src="http://layout.jquery-dev.net/lib/js/jquery.layout-latest.js"></script> -->
+	
+</head>
+<body ng-app="listView"  ng-controller="userController" >
+<div class="ui-layout-center"><div style="position: absolute;  left: 0; right: 0; top: 0; bottom: 0; overflow: hidden; height 100%" ng-grid="gridOptions"></div></div>
+<div class="ui-layout-north"><img src="./Images/logo_org.png" alt="Logo" ></div>
+<div class="ui-layout-south">South</div>
+<div class="ui-layout-east">East</div>
+<div class="ui-layout-west">West</div>
+<script>
+	$(document).ready(function () {
+	$('body').layout({ 
+	       defaults: {
+
+                applyDefaultStyles: true
+
+            },
+
+            north: {
+
+                enableCursorHotkey: false,
+                closable: false,
+                resizable: false,
+				size: 122
+
+            },
+			   south: {
+
+                enableCursorHotkey: false,
+                closable: false,
+                resizable: false
+
+            }
+	  });
+	});
+	</script>
+</body>
+</html>

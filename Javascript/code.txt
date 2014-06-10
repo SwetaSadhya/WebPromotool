@@ -1,0 +1,19 @@
+
+	//For each group in available groups
+	for(var j = 0; j < selAviGroup.avlbOptions.length; j++) {
+
+	  //loop through all items to move
+	  for(var i = 0; i < itemsToMove.length; i++) {
+
+		//if the id of the currently selected available group equals an item to move
+		if (selAviGroup.avlbOptions[j].id == itemsToMove[i])
+		 {
+		 //remove from avlbOptions, remove selected value from the collection
+		 selAviGroup.avlbOptions.splice(j, 1);
+		 //add to selGroups, add to the array
+		 selAviGroup.selGroups.splice(i, 0, selAviGroup.avlbOptions[j]);
+		 }
+		 
+	  }
+	
+   }

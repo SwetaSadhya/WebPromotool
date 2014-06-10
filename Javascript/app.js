@@ -14,7 +14,24 @@ Promo Controller
  'formControllers',
  'ui.bootstrap'
  ])// Define new module for our application
+//---------------Layout----------------------------//
+promo.directive('layout', function() {
+    return {        
+        
+        link: function(scope, elm, attrs) {
+            var layout = elm.layout({ applyDefaultStyles: true });
 
+            scope.layout  = layout;
+            
+            scope.$watch(attrs.layout, function() {
+                    scope.layout.sizePane('west', 200);
+					scope.layout.hide('east');
+                    scope.layout.show('south');
+                    scope.layout.sizePane('north', 120);               
+            });                
+        }
+    };
+});
  //---------------------Generic Function to call HTML pages------------//
 // configure our routes
 // promo.config(function($routeProvider) {

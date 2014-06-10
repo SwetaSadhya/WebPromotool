@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Promotool</title>
+<!-- CSS Files -->
+<link rel="stylesheet" type="text/css" href="./Styles/bootstrap/bootstrap.css"/>
+<link href="./Styles/bootstrap/bootstrap.min.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" type="text/css" href="./Styles/grid/grid.css"/>
+<link rel="stylesheet" type="text/css" href="./Styles/bootstrap/bootstrap-responsive.min.css"/>
+<link rel="stylesheet" type="text/css" href="./Styles/assets/styles.css"/>
+<link rel="stylesheet" type="text/css" href="./Styles/assets/datepicker.css"/>
+<!-- Jquery & Angular  Files -->
+
+<script type="text/javascript" src="./Library/jquery/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="./Library/jquery/jquery-ui-1.9.1.custom.min.js"></script>
+<script type="text/javascript" src="./Library/jquery/jquery.layout-latest.min.js"></script>
+<script type="text/javascript" src="./Library/angular/angular.js"></script>
+<script type="text/javascript" src="./Library/bootstrap/bootstrap-tab.js"></script>
+<script type="text/javascript" src="./Library/bootstrap/bootstrap-datepicker.js"></script>
+<!-- Grid Files -->
+<script type="text/javascript" src="./Library/grid/plugins/ng-grid-layout.js"></script>
+<script type="text/javascript" src="./Library/grid/build/ng-grid.debug.js"></script>
+<script type="text/javascript" src="./Library/barchart/barchart.js"></script>
+<script type="text/javascript" src="./Javascript/listCtrl.js"></script>
+<script type="text/javascript" src="./Javascript/app.js"></script>
+<script type="text/javascript" src="./Javascript/filters.js"></script>
+<script type="text/javascript" src="./Javascript/promoCtrl.js"></script>
+<script type="text/javascript" src="./Javascript/customerCtrl.js"></script>
+<script type="text/javascript" src="./Javascript/productCtrl.js"></script>
+<script type="text/javascript" src="./Javascript/detailCtrl.js"></script>
+<script type="text/javascript" src="./Javascript/volumeCtrl.js"></script>
+<script type="text/javascript" src="./Javascript/promoCtrl.js"></script>
+<script type="text/javascript" src="./Javascript/formCtrl.js"></script>
+</head>
+<body ng-app="promo" layout>
+<!-- Header Portion -->
+<div class="ui-layout-north">
+	<div class="ui-layout-north" style="height:85px;">
+		<img src="./Images/Friesland_Campina_Logo1.png" alt="Friesland Campina Logo">
+	</div>
+</div>
+<!-- Left Portion  -->
+<div class="ui-layout-west">
+</div>
+<!-- Middle Portion  -->
+<div class="ui-layout-center">
+ <div id="customer" ng-controller="CustomerListCtrl">
+ <div ng-repeat="tests in selGroups">{{tests}}</div>
+	<legend>Customer Selections</legend>
+		<div class="span9" id="content">
+			<fieldset>
+				<div class="control-group" ng-repeat="aviGroup in aviGroups">
+					<div class="span2">
+						<div class="radio">
+							<label>
+							<input type="radio" ng-model="radioSelect" value="true" ng-checked="true" ng-click="hide = false">
+							All <span ng-model="txtCusGroup1">{{aviGroup.name}}</span>
+							</label>
+						</div>
+					</div>
+					<div  class="span5">
+						<div class="radio">
+							<label>
+							<input type="radio" ng-model="radioSelect" value="false" ng-click="hide = true">
+							Selected <span ng-model="txtCusGroup1">{{aviGroup.name}}</span>
+							</label>
+						</div>
+						<div  style="padding:10px;" ng-show="hide" >
+							<table border="0">
+									<tr>
+										<td>
+											<label>Available</label>
+											<!-- /.form-group -->
+											<div class="control-group">
+												<select  ng-model="available" multiple="multiple" size="10" style="width:250px;">
+													<option ng-repeat="option in aviGroup.avlbOptions | unique:'id'"  value={{option.id}}>{{option.value}}</option>
+												</select>
+											</div>
+											<!-- /.form-group -->
+										</td>
+										<td>
+											<div class="btn-group btn-group-vertical">
+												<button type="button" class="btn btn-small" id="moverightall" ng-click="moveAllCustomers();"><span class="icon-fast-forward"><b>>></b></span></button>
+												<button type="button" class="btn btn-small" id="moveright" ng-click="moveCustomers(available, aviGroup);"><span class="icon-fast-forward"><b>></b></span></button>
+												<button type="button" class="btn btn-small" id="moveleft" ng-click="moveCustomers(selected, aviGroup);"><span class="icon-fast-forward"><b><</b></span></button>
+												<button type="button" class="btn btn-small" id="moveleftall" ng-click="moveAllCustomers();"><span class="icon-fast-forward"><b><<</b></span></button>
+											</div>
+										</td>
+										<td>
+											<label>Selected</label>
+											<!-- /.form-group -->
+											<div class="control-group">
+												<select multiple="multiple" size="10" style="width:250px;" ng-model="selected">
+												<option ng-repeat="seloption in aviGroup.selGroups | unique:'id'"  value={{seloption.id}}>{{seloption.value}}</option>
+												</select>
+											</div>
+											<!-- /.form-group -->
+										</td>
+									</tr>
+							</table>
+						</div>
+					</div>
+				</div>	
+			 </fieldset>
+		</div>
+	</div>
+</div>
+<!-- Right Portion  -->
+<div class="ui-layout-east">
+	 East
+</div>
+<div class="ui-layout-south">
+	 &copy; Lexia Analytics - all rights reserved
+</div>
+</body>
+</html>

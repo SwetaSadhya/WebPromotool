@@ -10,8 +10,10 @@ function userController($scope,$http) {
     });
 	$http.get('./promoRecords.php').success(function(data) {
 	//alert(data);   // alert to show data
-	//$scope.myData = [{"promotionID":"1","prmPromotionName":"promoTest","cusCustomerName":"101308,101321,101343","cusCustomerClientCode":"BAN CHUAN TRADING CO S\/B,CHOP HUP HUAT,KIM SENG HIN (MUAR) S\/B","cusGroup1Desc":"","cusGroup6Desc":""}] ;
-	$scope.myData = data;
+	$scope.myData = [{"promotionID":"2662","lstModified":"06-May-14","IOnumber":"Drafted","channel":"General Trade","type":"AMB","group":"KIDS","promoType":"Free goods(FOC)","status":"Draft","strtDate":"26-Jan-14","endDate":"08-May-14","creator":"Wouter"},
+	{"promotionID":"2661","lstModified":"06-May-14","IOnumber":"Drafted","channel":"General Trade","type":"AMB","group":"KIDS","promoType":"Free goods(FOC)","status":"Draft","strtDate":"26-Jan-14","endDate":"08-May-14","creator":"Wouter"},
+	{"promotionID":"2663","lstModified":"06-May-14","IOnumber":"Drafted","channel":"General Trade","type":"AMB","group":"KIDS","promoType":"Free goods(FOC)","status":"Draft","strtDate":"26-Jan-14","endDate":"08-May-14","creator":"Wouter"}] ;
+	//$scope.myData = data;
 		largeLoad = function (){
 	return data;
 	}
@@ -58,8 +60,8 @@ function userController($scope,$http) {
     self.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
     $scope.gridOptions = {
 		data: 'myData',
-		jqueryUITheme: false,
-		jqueryUIDraggable: false,
+		jqueryUITheme: true,
+		jqueryUIDraggable: true,
         selectedItems: $scope.mySelections,
         showSelectionCheckbox: false,
         multiSelect: true,
@@ -74,10 +76,16 @@ function userController($scope,$http) {
         totalServerItems: 'totalServerItems',
         filterOptions: $scope.filterOptions,
         pagingOptions: $scope.pagingOptions,
-        columnDefs: [{ field: 'promotionID', displayName: 'PromoID' },
-                     { field: 'prmPromotionName', displayName: 'PromoName'},
-                     { field: 'cusCustomerName', displayName: 'CustomerName'},
-                     { field: 'cusCustomerClientCode', displayName: 'CustomerCode'},
-					 { field: 'cusGroup1Desc', displayName: 'CustomerChannel' }]
+        columnDefs: [{ field: 'lstModified', displayName: 'Last Modified' },
+					 { field: 'promotionID', displayName: 'ID' },
+					 { field: 'IOnumber', displayName: 'Promotion Code' },
+                     { field: 'channel', displayName: 'Channel'},
+                     { field: 'group', displayName: 'Building Block'},
+					 { field: 'group', displayName: 'Region (BW)'},
+					 { field: 'promoType', displayName: 'Promo Type'},
+					 { field: 'status', displayName: 'Status'},
+					 { field: 'strtDate', displayName: 'Start Date'},
+					 { field: 'endDate', displayName: 'End Date'},
+					 { field: 'creator', displayName: 'Creator' }]
     };   
 };

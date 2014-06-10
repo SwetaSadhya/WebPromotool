@@ -53,7 +53,7 @@ $scope.PlanVol = function(){
 			}
 
 //-------------------Graph---------------------------------//	
-$scope.Barchart = function(){
+//$scope.Barchart = function(){
 var barChartData = {
 			labels : ["P+1","P","P-1"],
 			datasets : [
@@ -70,7 +70,7 @@ var barChartData = {
 				{
 					fillColor : "rgba(93,186,133,0.5)",
 					strokeColor : "rgba(74,174,117,1)",
-					data : [3,3,3]
+					data : [$scope.prmActualF,$scope.prmActualM,$scope.prmActualL]
 				}
 			]
 			
@@ -78,7 +78,7 @@ var barChartData = {
 
 	var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Bar(barChartData);
 		
-}	
+//}	
 		
 
 

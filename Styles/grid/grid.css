@@ -437,3 +437,7 @@
 .ngFooterTotalItems {
   padding: 2px;
 }
+.ui-layout-pane-north ,
+.ui-layout-pane-south {
+    overflow: hidden !important;
+}

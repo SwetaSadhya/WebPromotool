@@ -1,8 +1,632 @@
-<div class="control-group">
-<table cellpadding="15" cellspacing="15" align="left" border="0">
-<tr><td  valign="top">
-<img ng-src="{{imageSource}}">
-</td>
+<table>
 <tr>
-</table>                                  
+<td>
+<div class="span8">
+<legend>Budget owner name</legend>
+<table class="table table-bordered table-hover table-striped">
+  <tr>
+    <td width="40%">Trade spend budget percentage</td>
+	<td width="20%"></td>
+	<td width="40%">16.9%</td>
+  </tr>
+  <tr>
+    <td width="40%">Trade spend budget including Listing fees</td>
+	<td width="20%"></td>
+	<td width="40%">19%</td>
+  </tr>
+  <tr>
+    <td width="40%">Absolute amount for shopper marketing</td>
+	<td width="20%"></td>
+	<td width="40%">400.000</td>
+  </tr>
+</table>
 </div>
+</td>
+</tr>
+<tr><td>
+<div class="span15">
+<table class="table table-bordered table-hover">
+  <tr>
+    <th>Category</th>
+	<th>Item</th>
+	<th>Jan</th>
+	<th>Feb</th>
+	<th>Mar</th>
+	<th>Apr</th>
+	<th>May</th>
+	<th>Jun</th>
+	<th>Jul</th>
+	<th>Aug</th>
+	<th>Sep</th>
+	<th>Oct</th>
+	<th>Nov</th>
+	<th>Dec</th>
+	<th>Total</th>
+  </tr>
+  <tr>
+  <td rowspan="6" style="padding-top:50px;">Gross Sales</td>
+  <td> Budget </td>
+	<td> 3,000,000 </td>
+	<td> 3,000,000 </td>
+	<td> 4,000,000 </td>
+	<td> 5,000,000 </td>
+	<td> 7,000,000 </td>
+	<td> 8,000,000 </td>
+	<td> 9,000,000 </td>
+	<td> 5,000,000 </td>
+	<td> 8,000,000 </td>
+	<td> 3,000,000 </td>
+	<td> 3,000,000 </td>
+	<td> 3,000,000 </td>
+	<td> 61,000,000 </td>
+  </tr>
+  <tr>
+	<td> Revised Forecast 1 (RF1) </td>
+	<td> 3,000,000 </td>
+	<td> 3,000,000 </td>
+	<td> 4,000,000 </td>
+	<td> 5,000,000 </td>
+	<td> 7,000,000 </td>
+	<td> 8,000,000 </td>
+	<td> 9,000,000 </td>
+	<td> 5,000,000 </td>
+	<td> 8,000,000 </td>
+	<td> 3,000,000 </td>
+	<td> 3,000,000 </td>
+	<td> 3,000,000 </td>
+	<td> 61,000,000 </td>
+  </tr>
+  <tr>
+	<td> Latest Forecast (RFX) </td>
+	<td>  3,500,000  </td>
+	<td>  2,500,000  </td>
+	<td>  4,500,000 </td>
+	<td>  5,000,000 </td>
+	<td>  7,100,000 </td>
+	<td>  8,050,000  </td>
+	<td>  8,910,000  </td>
+	<td>  4,750,000  </td>
+	<td>  7,900,000  </td>
+	<td>  3,000,000 </td>
+	<td>  3,100,000  </td>
+	<td>  3,250,000 </td>
+	<td>  61,060,000 </td>
+  </tr>
+  <tr>
+	<td> Actual </td>
+	<td>  3,500,000  </td>
+	<td>  2,500,000  </td>
+	<td>  4,500,000 </td>
+	<td colspan="10"> </td>
+  </tr>
+  <tr>
+	<td> Gap Actual vs RF1 </td>
+	<td>  500,000  </td>
+	<td> (500,000)  </td>
+	<td>  500,000  </td>
+	<td>  500,000  </td>
+	<td colspan="9"> </td>
+  </tr>
+  <tr>
+	<td> Gap Actual vs Budget </td>
+	<td>  500,000  </td>
+	<td> (500,000)  </td>
+	<td>  500,000  </td>
+	<td>  500,000  </td>
+	<td colspan="9"> </td>
+  </tr>
+  <tr><td colspan="15"></td></tr>
+  <tr>
+  <td rowspan="38" style="padding-top:30%;">Trade spend</td>
+  <td> Available budget based on latest forecast </td>
+	<td>  591,500  </td>
+	<td>  422,500  </td>
+	<td>  760,500  </td>
+	<td>  507,000  </td>
+	<td>  1,199,900  </td>
+	<td>  1,360,450  </td>
+	<td>  1,505,790  </td>
+	<td>  802,750  </td>
+	<td>  1,335,100  </td>
+	<td>  523,900  </td>
+	<td>  549,250  </td>
+	<td>  507,000  </td>
+	<td>  10,065,640  </td>
+  </tr>
+  <tr>
+	<td> Unconditional trade spend - Actual Sales </td>
+	<td>  350,000  </td>
+	<td>  250,000  </td>
+	<td>  450,000  </td>
+	<td>  300,000  </td>
+	<td>  710,000  </td>
+	<td>  805,000  </td>
+	<td>  891,000  </td>
+	<td>  475,000  </td>
+	<td>  790,000  </td>
+	<td>  300,000  </td>
+	<td>  310,000  </td>
+	<td>  325,000  </td>
+	<td>  5,956,000 </td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Rebates </td>
+	<td colspan="15"></td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Sell-out Reimbursements </td>
+	<td>   10,000   </td>
+	<td>   10,000   </td>
+	<td>   5,000    </td>
+	<td>   5,000    </td>
+	<td colspan="8"> </td>
+	<td>   30,000   </td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Displays</td>
+	<td colspan="15"></td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Promotions </td>
+	<td>   10,000   </td>
+	<td>   10,000   </td>
+	<td>   10,000    </td>
+	<td>   10,000    </td>
+	<td colspan="8"> </td>
+	<td>   40,000    </td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Sell-in rebates </td>
+	<td colspan="15"></td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Assets Management </td>
+	<td colspan="15"></td>
+  </tr>
+   <tr>
+	<td style="padding-left:20px;"> Advertising </td>
+	<td>    25,000    </td>
+	<td>    25,000    </td>
+	<td>    15,000     </td>
+	<td>    8,000    </td>
+	<td colspan="9"> </td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Distribution </td>
+	<td colspan="15"></td>
+  </tr>
+  <tr>
+	<td> Actual (accruals corrected for actual claims) </td>
+	<td>  350,000  </td>
+	<td>  250,000  </td>
+	<td>  450,000  </td>
+	<td>  300,000  </td>
+	<td>  710,000  </td>
+	<td>  805,000  </td>
+	<td>  891,000  </td>
+	<td>  475,000  </td>
+	<td>  790,000  </td>
+	<td>  300,000  </td>
+	<td>  310,000  </td>
+	<td>  325,000  </td>
+	<td>  5,956,000 </td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Rebates </td>
+	<td colspan="15"></td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Sell-out Reimbursements </td>
+	<td>   10,000   </td>
+	<td>   10,000   </td>
+	<td>   5,000    </td>
+	<td>   5,000    </td>
+	<td colspan="8"> </td>
+	<td>   30,000   </td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Displays</td>
+	<td colspan="15"></td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Promotions </td>
+	<td>   10,000   </td>
+	<td>   10,000   </td>
+	<td>   10,000    </td>
+	<td>   10,000    </td>
+	<td colspan="8"> </td>
+	<td>   40,000    </td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Sell-in rebates </td>
+	<td colspan="15"></td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Assets Management </td>
+	<td colspan="15"></td>
+  </tr>
+   <tr>
+	<td style="padding-left:20px;"> Advertising </td>
+	<td>    25,000    </td>
+	<td>    25,000    </td>
+	<td>    15,000     </td>
+	<td>    8,000    </td>
+	<td colspan="9"> </td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Distribution </td>
+	<td colspan="15"></td>
+  </tr>
+  <tr>
+	<td> Approved  (not yet accrued) </td>
+	<td>  350,000  </td>
+	<td>  250,000  </td>
+	<td>  450,000  </td>
+	<td>  300,000  </td>
+	<td>  710,000  </td>
+	<td>  805,000  </td>
+	<td>  891,000  </td>
+	<td>  475,000  </td>
+	<td>  790,000  </td>
+	<td>  300,000  </td>
+	<td>  310,000  </td>
+	<td>  325,000  </td>
+	<td>  5,956,000 </td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Rebates </td>
+	<td colspan="15"></td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Sell-out Reimbursements </td>
+	<td>   10,000   </td>
+	<td>   10,000   </td>
+	<td>   5,000    </td>
+	<td>   5,000    </td>
+	<td colspan="8"> </td>
+	<td>   30,000   </td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Displays</td>
+	<td colspan="15"></td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Promotions </td>
+	<td>   10,000   </td>
+	<td>   10,000   </td>
+	<td>   10,000    </td>
+	<td>   10,000    </td>
+	<td colspan="8"> </td>
+	<td>   40,000    </td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Sell-in rebates </td>
+	<td colspan="15"></td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Assets Management </td>
+	<td colspan="15"></td>
+  </tr>
+   <tr>
+	<td style="padding-left:20px;"> Advertising </td>
+	<td>    25,000    </td>
+	<td>    25,000    </td>
+	<td>    15,000     </td>
+	<td>    8,000    </td>
+	<td colspan="9"> </td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Distribution </td>
+	<td colspan="15"></td>
+  </tr>
+  <tr>
+	<td> Planned (not yet approved) </td>
+	<td>  350,000  </td>
+	<td>  250,000  </td>
+	<td>  450,000  </td>
+	<td>  300,000  </td>
+	<td>  710,000  </td>
+	<td>  805,000  </td>
+	<td>  891,000  </td>
+	<td>  475,000  </td>
+	<td>  790,000  </td>
+	<td>  300,000  </td>
+	<td>  310,000  </td>
+	<td>  325,000  </td>
+	<td>  5,956,000 </td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Rebates </td>
+	<td colspan="15"></td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Sell-out Reimbursements </td>
+	<td>   10,000   </td>
+	<td>   10,000   </td>
+	<td>   5,000    </td>
+	<td>   5,000    </td>
+	<td colspan="8"> </td>
+	<td>   30,000   </td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Displays</td>
+	<td colspan="15"></td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Promotions </td>
+	<td>   10,000   </td>
+	<td>   10,000   </td>
+	<td>   10,000    </td>
+	<td>   10,000    </td>
+	<td colspan="8"> </td>
+	<td>   40,000    </td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Sell-in rebates </td>
+	<td colspan="15"></td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Assets Management </td>
+	<td colspan="15"></td>
+  </tr>
+   <tr>
+	<td style="padding-left:20px;"> Advertising </td>
+	<td>    25,000    </td>
+	<td>    25,000    </td>
+	<td>    15,000     </td>
+	<td>    8,000    </td>
+	<td colspan="9"> </td>
+  </tr>
+  <tr>
+	<td style="padding-left:20px;"> Distribution </td>
+	<td colspan="15"></td>
+  </tr>
+  <tr>
+    <td> Conditional trade spend </td>
+	<td>  591,500  </td>
+	<td>  422,500  </td>
+	<td>  760,500  </td>
+	<td>  507,000  </td>
+	<td>  1,199,900  </td>
+	<td>  1,360,450  </td>
+	<td>  1,505,790  </td>
+	<td>  802,750  </td>
+	<td>  1,335,100  </td>
+	<td>  523,900  </td>
+	<td>  549,250  </td>
+	<td>  507,000  </td>
+	<td>  10,065,640  </td>
+  </tr>
+  <tr><td colspan="15"></td></tr>
+  <td rowspan="7" style="padding-top:50px;">Month</td>
+  <td> Available budget based on latest forecast </td>
+	<td>  591,500  </td>
+	<td>  422,500  </td>
+	<td>  760,500  </td>
+	<td>  507,000  </td>
+	<td>  1,199,900  </td>
+	<td>  1,360,450  </td>
+	<td>  1,505,790  </td>
+	<td>  802,750  </td>
+	<td>  1,335,100  </td>
+	<td>  523,900  </td>
+	<td>  549,250  </td>
+	<td>  507,000  </td>
+	<td>  10,065,640  </td>
+  </tr>
+  <tr>
+	<td> Trade spend budget in use (approved trade spend) </td>
+	<td>  350,000  </td>
+	<td>  250,000  </td>
+	<td>  450,000  </td>
+	<td>  300,000  </td>
+	<td>  710,000  </td>
+	<td>  805,000  </td>
+	<td>  891,000  </td>
+	<td>  475,000  </td>
+	<td>  790,000  </td>
+	<td>  300,000  </td>
+	<td>  310,000  </td>
+	<td>  325,000  </td>
+	<td>            </td>
+  </tr>
+  <tr>
+	<td> Trade spend budget in use (inc. planned trade spend) </td>
+	<td>  350,000  </td>
+	<td>  250,000  </td>
+	<td>  450,000  </td>
+	<td>  300,000  </td>
+	<td>  710,000  </td>
+	<td>  805,000  </td>
+	<td>  891,000  </td>
+	<td>  475,000  </td>
+	<td>  790,000  </td>
+	<td>  300,000  </td>
+	<td>  310,000  </td>
+	<td>  325,000  </td>
+	<td>            </td>
+  </tr>
+  <tr>
+	<td> Trade spend / forecasted gross sales </td>
+	<td>  350,000  </td>
+	<td>  250,000  </td>
+	<td>  450,000  </td>
+	<td>  300,000  </td>
+	<td>  710,000  </td>
+	<td>  805,000  </td>
+	<td>  891,000  </td>
+	<td>  475,000  </td>
+	<td>  790,000  </td>
+	<td>  300,000  </td>
+	<td>  310,000  </td>
+	<td>  325,000  </td>
+	<td>            </td>
+  </tr>
+   <tr>
+	<td> Balance </td>
+	<td>  350,000  </td>
+	<td>  250,000  </td>
+	<td>  450,000  </td>
+	<td>  300,000  </td>
+	<td>  710,000  </td>
+	<td>  805,000  </td>
+	<td>  891,000  </td>
+	<td>  475,000  </td>
+	<td>  790,000  </td>
+	<td>  300,000  </td>
+	<td>  310,000  </td>
+	<td>  325,000  </td>
+	<td>            </td>
+  </tr>
+   <tr>
+	<td> Balance % </td>
+	<td>  350,000  </td>
+	<td>  250,000  </td>
+	<td>  450,000  </td>
+	<td>  300,000  </td>
+	<td>  710,000  </td>
+	<td>  805,000  </td>
+	<td>  891,000  </td>
+	<td>  475,000  </td>
+	<td>  790,000  </td>
+	<td>  300,000  </td>
+	<td>  310,000  </td>
+	<td>  325,000  </td>
+	<td>            </td>
+  </tr>
+   <tr>
+	<td> Trade spend / actual gross sales </td>
+	<td>  350,000  </td>
+	<td>  250,000  </td>
+	<td>  450,000  </td>
+	<td>  300,000  </td>
+	<td>  710,000  </td>
+	<td>  805,000  </td>
+	<td>  891,000  </td>
+	<td>  475,000  </td>
+	<td>  790,000  </td>
+	<td>  300,000  </td>
+	<td>  310,000  </td>
+	<td>  325,000  </td>
+	<td>            </td>
+  </tr>
+  <tr><td colspan="15"></td></tr>
+  <tr>
+  <td rowspan="7" style="padding-top:50px;">Cumulative</td>
+  <td> YTD available budget - based on latest forecast </td>
+	<td>  591,500  </td>
+	<td>  422,500  </td>
+	<td>  760,500  </td>
+	<td>  507,000  </td>
+	<td>  1,199,900  </td>
+	<td>  1,360,450  </td>
+	<td>  1,505,790  </td>
+	<td>  802,750  </td>
+	<td>  1,335,100  </td>
+	<td>  523,900  </td>
+	<td>  549,250  </td>
+	<td>  507,000  </td>
+	<td>  10,065,640  </td>
+  </tr>
+  <tr>
+	<td> YTD  trade spend budget in use (approved trade spend) </td>
+	<td>  350,000  </td>
+	<td>  250,000  </td>
+	<td>  450,000  </td>
+	<td>  300,000  </td>
+	<td>  710,000  </td>
+	<td>  805,000  </td>
+	<td>  891,000  </td>
+	<td>  475,000  </td>
+	<td>  790,000  </td>
+	<td>  300,000  </td>
+	<td>  310,000  </td>
+	<td>  325,000  </td>
+	<td>            </td>
+  </tr>
+  <tr>
+	<td> YTD trade spend budget in use (inc. planned trade spend) </td>
+	<td>  350,000  </td>
+	<td>  250,000  </td>
+	<td>  450,000  </td>
+	<td>  300,000  </td>
+	<td>  710,000  </td>
+	<td>  805,000  </td>
+	<td>  891,000  </td>
+	<td>  475,000  </td>
+	<td>  790,000  </td>
+	<td>  300,000  </td>
+	<td>  310,000  </td>
+	<td>  325,000  </td>
+	<td>            </td>
+  </tr>
+  <tr>
+	<td> YTD trade spend / forecasted gross sales </td>
+	<td>  350,000  </td>
+	<td>  250,000  </td>
+	<td>  450,000  </td>
+	<td>  300,000  </td>
+	<td>  710,000  </td>
+	<td>  805,000  </td>
+	<td>  891,000  </td>
+	<td>  475,000  </td>
+	<td>  790,000  </td>
+	<td>  300,000  </td>
+	<td>  310,000  </td>
+	<td>  325,000  </td>
+	<td>            </td>
+  </tr>
+   <tr>
+	<td> Balance </td>
+	<td>  350,000  </td>
+	<td>  250,000  </td>
+	<td>  450,000  </td>
+	<td>  300,000  </td>
+	<td>  710,000  </td>
+	<td>  805,000  </td>
+	<td>  891,000  </td>
+	<td>  475,000  </td>
+	<td>  790,000  </td>
+	<td>  300,000  </td>
+	<td>  310,000  </td>
+	<td>  325,000  </td>
+	<td>            </td>
+  </tr>
+   <tr>
+	<td> Balance % </td>
+	<td>  350,000  </td>
+	<td>  250,000  </td>
+	<td>  450,000  </td>
+	<td>  300,000  </td>
+	<td>  710,000  </td>
+	<td>  805,000  </td>
+	<td>  891,000  </td>
+	<td>  475,000  </td>
+	<td>  790,000  </td>
+	<td>  300,000  </td>
+	<td>  310,000  </td>
+	<td>  325,000  </td>
+	<td>            </td>
+  </tr>
+   <tr>
+	<td> YTD trade spend / actual gross sales </td>
+	<td>  350,000  </td>
+	<td>  250,000  </td>
+	<td>  450,000  </td>
+	<td>  300,000  </td>
+	<td>  710,000  </td>
+	<td>  805,000  </td>
+	<td>  891,000  </td>
+	<td>  475,000  </td>
+	<td>  790,000  </td>
+	<td>  300,000  </td>
+	<td>  310,000  </td>
+	<td>  325,000  </td>
+	<td>            </td>
+  </tr>
+</table>
+</div>
+</tr></td>
+</table>
+
+

@@ -4,80 +4,76 @@ To Fetch Customer data on
 New Promotion Page 
 Customer Controller
  */
+
 var customerControllers = angular.module('customerControllers', [])// Define new module for our application
-//------------Contoller For Customer Tabs-------------------------//
+
+//------------Controller For Customer Tabs-------------------------//
 customerControllers.controller('CustomerListCtrl', function($scope,$http) {	
 //------------Declare--------------------------//
 $scope.custGroup = [];
 $scope.custData = [];
+$scope.radioSelect = "true";
+//Declare the aviGroups as a blank array
+$scope.aviGroups = [];
+$scope.selGroups = [];
+$scope.test = [];
 //--------------------Controls-------------------//
  $http.get('./Pages/PriCustGroup.php').success(function(response) {
- //alert(response);// Bind the data returned from web service to $scope
-   $scope.custGroup = response;
-    for(var i=0;i<$scope.custGroup.length;i++){
+    //alert(response);// Bind the data returned from web service to $scope
+	$scope.custGroupList = response;
+	//--------------Customer Group Data-----------// 
+	$http.get('./Pages/CustomerGroup.php').success(function(response2) {
+	//alert(response);// Bind the data returned from web service to $scope
+	$scope.custData = response2;
 	
-	 if($scope.custGroup[i].Group == 'CusGroup1'){
-		$scope.txtCusGroup1 = "Distributed Channel"
-	    $scope.CusGroup1 = true; 
+	// Get all the values for the selected fieldName
+	function getOptions(fieldName,fieldId) {
+		var options = [];
+		for (var i = 0 ; i < $scope.custData.length ; i++) {
+			//alert('We got this far');
+			var dataRow = $scope.custData[i];
+			var option = {'value':'','id':''};
+			option.value = dataRow[fieldName];
+			option.id = dataRow[fieldId];
+			options[i] = option;
 		}
-	 if ($scope.custGroup[i].Group == 'CusGroup5'){
-	    $scope.txtCusGroup5 = $scope.custGroup[i].GroupName;
-		$scope.CusGroup5 = true; 
-		}
-	 if ($scope.custGroup[i].Group == 'CusGroup6'){
-		$scope.txtCusGroup6 = $scope.custGroup[i].GroupName;
-		$scope.CusGroup6 = true; 
-		}
+		return options;
 	}
-  });
-//--------------Customer Group Data-----------//
-  $http.get('./Pages/CustomerGroup.php').success(function(response) {
- //alert(response);// Bind the data returned from web service to $scope
-   $scope.custData = response;
-  });
-//--------------Customer Data---------------//
-  // $http.get('./Pages/CustomerListing.php').success(function(custListData) {
- // //alert(custListData);// Bind the data returned from web service to $scope	
-  // $scope.CusOptionName = custListData;
-  // });
-//--------------SecondaryCustomer Group Data-----------//
-  // $http.get('./Pages/SecCustomerListingOpt.php').success(function(secCustListData) {
- // //alert(secCustListData);// Bind the data returned from web service to $scope	
-  // $scope.SecCusGroupOption1 = secCustListData;
-  // $scope.SecCusOptionName = secCustListData;
-  // });
-//---------------------Show and Hide Div-----------------//
- $scope.isShown = function(show) {
-	if(show == 'cusGroup1'){
-	 $scope.AviCusGroup1 = $scope.custData;
-	 return show === $scope.cusGroup1;
-	}else if(show == 'cusGroup5'){
-	 $scope.AviCusGroup5 = $scope.custData;
-	 return show === $scope.cusGroup5;
-	}else if(show == 'cusGroup6'){
-	 $scope.AviCusGroup6 = $scope.custData;
-	 return show === $scope.cusGroup6;
-	}else if(show == 'customer'){
-	 $scope.AviCus = $scope.custData;
-	 return show === $scope.customer;
-	}else if(show == 'outlettype'){
-	 return show === $scope.outlettype;
-	}else if(show == 'seccustomer'){
-	 return show === $scope.seccustomer;
-	}else{
-	 return false;
-	}
-};
+	
+	for (var i = 0 ; i < $scope.custGroupList.length ; i++) {
+
+		var aviGroup = {'name':'','descriptionFieldName':'','avlbOptions':[],'selGroups':[]};
+		aviGroup.name = $scope.custGroupList[i].cstCustGroupClientName;
+		aviGroup.descriptionFieldName = $scope.custGroupList[i].cstFieldName;
+		aviGroup.descriptionFieldID = $scope.custGroupList[i].cstFieldID;
+		aviGroup.avlbOptions = getOptions($scope.custGroupList[i].cstFieldName,$scope.custGroupList[i].cstFieldID);
+		aviGroup.selGroups = []; //This should load from server when loading a promotion, but should be empty for a new promotion, for now leave empty
+		$scope.aviGroups[i] = aviGroup; // Add the group to the array
+		};
+	
+	});
+	
+});
+
 //------ Moving Data MultipleBox----------------//
- $scope.moveCustomers = function(sourceid, destinationid) {
-  $("#"+sourceid+"  option:selected").appendTo("#"+destinationid);
-  $("#"+destinationid).prop("selected","selected");
-  this.cusFiltering();
- };
-  $scope.moveAllCustomers = function(sourceid, destinationid) {	
+ $scope.moveCustomers = function(itemsToMove, selAviGroup) { 
+ //For each group in available groups
+	 angular.forEach(selAviGroup.avlbOptions, function (value, key){
+	  var index = selAviGroup.avlbOptions.indexOf(value);
+	   selAviGroup.avlbOptions.splice(index , 1);
+		//loop through all items to move
+	    for(var i = 0; i < itemsToMove.length; i++) {
+			if(value.id == itemsToMove[i]){
+			 selAviGroup.selGroups.push(value); 
+			 }
+		   }
+	 });
+  
+};
+	
+$scope.moveAllCustomers = function(sourceid, destinationid) {	
    $("#"+sourceid+"  option").appendTo("#"+destinationid);
    $("#"+destinationid).prop("selected","selected");
-   this.cusFiltering();
  };
 //----------------------Filtering-----------------------------//   
    $scope.cusFiltering = function() {
@@ -109,7 +105,18 @@ $scope.custData = [];
 		 $scope.SelGroup6 = 0;
 		 }
 	};
-
+ 
+//--------------Customer Data---------------//
+  // $http.get('./Pages/CustomerListing.php').success(function(custListData) {
+ // //alert(custListData);// Bind the data returned from web service to $scope	
+  // $scope.CusOptionName = custListData;
+  // });
+//--------------SecondaryCustomer Group Data-----------//
+  // $http.get('./Pages/SecCustomerListingOpt.php').success(function(secCustListData) {
+ // //alert(secCustListData);// Bind the data returned from web service to $scope	
+  // $scope.SecCusGroupOption1 = secCustListData;
+  // $scope.SecCusOptionName = secCustListData;
+  // });
 
 //-------------------------------------------------------
 });
